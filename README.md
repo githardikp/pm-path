@@ -1,30 +1,106 @@
 # PM Path
 
-A self-contained learning and tracking site for becoming an APM / PM / AI PM in 14 weeks. Designed around a full-time study plan (9 hours a day Monday–Saturday, a 1-hour review on Sundays), with Bengaluru job-market guidance. The start date and daily hours are adjustable in Settings.
+**A free, 14-week plan for becoming an APM, PM or AI PM, with everything you need to follow it in one website.**
 
-Everything lives inside the site: lessons, tool guides, templates, frameworks, interview questions and hands-on tools. External links are only optional “Go deeper” extras. There is no backend and no login. Progress is saved in your browser, and the whole site works offline once it has loaded.
+Live site: **https://githardikp.github.io/pm-path/**
+
+PM Path tells you what to study each day, teaches it, gives you the tools to practise it, and tracks your progress until you have a portfolio, a resume and interview practice behind you. There is no sign-up, no backend and no cost. Your progress stays in your own browser, and the site works offline once it has loaded.
+
+---
+
+## The problem it solves
+
+People switching into product management usually hit the same walls:
+
+- **Too much scattered material.** Courses, blogs, YouTube playlists and book lists, with no clear order and lots of overlap.
+- **No plan.** It’s hard to know what to do today, this week, or when you’re “ready” to apply.
+- **Learning without proof.** Watching courses doesn’t produce anything a hiring manager can look at.
+- **Paid tools and courses.** Many guides assume subscriptions you don’t need.
+- **Interviews as an afterthought.** Practice often starts only after the first interview call.
+
+## How PM Path helps
+
+| Problem | What PM Path does |
+|---|---|
+| Scattered material | 101 original lessons in one place, in the order you need them, each with worked Indian examples, exercises with answers and a short quiz |
+| No plan | A 14-week roadmap mapped to real dates from your start date, plus a **Today** page that turns each day into timed blocks |
+| Learning without proof | Every week ends in a **portfolio deliverable**. By week 11 you have four projects, including a live AI product with real users |
+| Paid tools | 42 step-by-step guides for free tools (Figma, Notion, Jira, PostHog, BigQuery, Postman, Google AI Studio and more), and 10 practice tools built into the site |
+| Interviews too late | Interview practice is part of every day from week 1, with 207 questions, a timed mock mode and a STAR story bank |
+| Losing momentum | Progress bars, a study streak, study-hour tracking, weekly checkpoints and a guided Sunday review |
+
+## How it works
+
+### 1. Set up (two minutes)
+Open **Settings** and enter your name (optional), your start date and how many hours a day you can study. The roadmap is designed around 9 hours a day, Monday to Saturday, with a 1-hour review on Sunday. Every week is then pinned to real calendar dates.
+
+### 2. Follow the 14 weeks
+
+| Phase | Weeks | What you learn | What you finish with |
+|---|---|---|---|
+| 1. PM foundations | 1–4 | What PMs do, discovery and user interviews, strategy and prioritisation, PRDs, agile and launches | **P1:** a full product case: teardowns, discovery report, strategy doc, RICE roadmap, PRD and backlog |
+| 2. Data, tech and UX | 5–8 | Metrics, SQL, funnels, A/B testing, APIs and system basics, prototyping and usability testing | **P2:** an analytics and experimentation case. **P3:** a technical teardown. A published P1 case study |
+| 3. AI product management | 9–11 | How LLMs work, prompting, AI UX, RAG, agents, evals, cost, safety and AI strategy | **P4:** a live AI product used by 20+ real people, with an eval set and a case study |
+| 4. Getting hired | 12–14, then 15+ | Portfolio, resume, LinkedIn, referrals, then interview practice across every question type | Portfolio, resumes, a 10-story bank, 10 mock interviews and a steady flow of applications |
+
+Week 15 onwards is a repeatable job-search routine that runs until you have an offer.
+
+### 3. Work through each day
+The **Today** page splits the day into blocks, each with a timer and a checklist:
+
+| Block | Time | What you do |
+|---|---|---|
+| Learn | 2.5 h | Read the day’s lessons, do the exercises and quizzes |
+| Hands-on with tools | 2.25 h | Follow a tool guide or use a built-in tool (SQL, RICE, A/B tests and more) |
+| Portfolio deliverable | 2.5 h | Build this week’s project piece using a template |
+| Interview practice | 1 h | Answer questions from the bank or run a timed mock |
+| Write-up and applications | 0.75 h | Post your learning, update LinkedIn, send outreach |
+
+You end the day with a 3-question reflection. The timers feed your study-hour chart on the Dashboard.
+
+### 4. Check in every week
+Each week ends with a **checkpoint** to confirm you’re ready to move on. On Sunday, the **Weekly review** asks 7 guided questions and fills in your stats automatically (lessons done, hours studied, quiz scores, applications sent).
+
+### 5. Get hired
+From week 12, the **Job search** board tracks every application from Wishlist to Offer, counts your daily outreach against a target of 5, and shows your callback rate with and without referrals. A Bengaluru APM guide covers which companies hire, how and when.
 
 ## What’s inside
 
 | Area | What you get |
 |---|---|
-| Roadmap | 14 weeks in 4 phases (+ Week 15+ job-search mode), each with topics, a deliverable and a checkpoint, mapped to real calendar dates from your start date |
-| Lessons | 101 original lessons with worked Indian examples, diagrams, practice exercises with answers and quizzes |
-| Tool guides | 42 step-by-step guides (Figma, Notion, PostHog, BigQuery, Postman, Google AI Studio and more), all on free tiers |
-| Today | Your day as time blocks with timers, a checklist and a 3-question reflection |
-| Toolkit | SQL Playground (real SQLite in the browser, 7,203-row food-delivery dataset, 40 graded problems), RICE calculator, Metrics Tree Builder, Funnel & Retention Explorer, A/B test calculator, Estimation Scratchpad, AI Cost Calculator, Eval Labeler, Prompt Lab, Mock Interview Timer |
-| Templates | 21 fill-in templates (PRD, teardown, discovery report, AI feature spec, eval sheet, resume, referral message, STAR story and more), each with a filled example |
-| Frameworks | 51 frameworks: what, when, when not, steps, an Indian worked example and common mistakes |
-| Interview prep | 207 questions across 9 categories with answer outlines, what interviewers look for and pitfalls; mock mode with a 45-minute phased timer and rubric; mock log; 10-slot STAR story bank |
-| Job search | Kanban board, daily outreach counter (target 5), callback rates with and without referrals, Bengaluru APM guide |
+| Dashboard | Overall progress, current week, study hours, streak and what to do next |
+| Roadmap and weeks | 14 weeks in 4 phases, each with topics, a deliverable and a checkpoint |
+| Lessons | 101 original lessons with diagrams, worked examples, practice exercises with answers and quizzes |
+| Tool guides | 42 step-by-step guides, all on free tiers |
+| Toolkit | 10 built-in tools: SQL Playground (real SQLite in the browser, a 7,203-row food-delivery dataset and 40 graded problems), RICE calculator, Metrics Tree Builder, Funnel and Retention Explorer, A/B test calculator, Estimation Scratchpad, AI Cost Calculator, Eval Labeler, Prompt Lab and Mock Interview Timer |
+| Templates | 21 fill-in templates (PRD, teardown, discovery report, AI feature spec, eval sheet, resume, referral message, STAR story and more), each with a filled example. Drafts save automatically and download as Markdown |
+| Frameworks | 51 frameworks, each with what it is, when to use it and when not to, steps, a worked example and common mistakes |
+| Interview prep | 207 questions in 9 categories with answer outlines, what interviewers look for and common pitfalls; a 45-minute timed mock mode with a scoring rubric; a mock log; a 10-slot STAR story bank |
+| Job search | Kanban board, daily outreach counter, callback rates, Bengaluru APM guide |
 | Portfolio | The four projects with milestones, a case-study checklist and links |
 | Glossary | 277 plain-English terms |
-| Weekly review | Guided questions, automatic stats and history |
 | Skip this | What not to spend time or money on, and what to do instead |
 
 Search everything with **Ctrl/Cmd + K** or **/**.
 
-## Run it locally
+## Your data and privacy
+
+- No account and no server. All progress (lessons, quiz scores, notes, timers, reflections, applications, mocks, stories, portfolio, reviews and tool work) is saved in your browser under the key `pm-path-state`.
+- The only optional network call is in **Prompt Lab**: if you add your own Gemini API key in Settings, prompts go straight from your browser to Google. The key is stored only in your browser. Everything else works without it.
+- **Back up regularly:** Settings → **Export JSON** downloads your progress as a file.
+- **Move to another device or restore:** Settings → **Import JSON**.
+- Clearing browser data, private browsing, or switching browsers or devices starts fresh unless you import a backup.
+- **Reset** in Settings wipes everything after a double confirmation. Export first.
+
+## Offline use
+
+After the first visit, every page, lesson, guide, font and the SQL engine is cached. You can use PM Path without internet, including the SQL Playground. On a phone, use your browser’s **Add to Home screen** to install it like an app. New versions update automatically on the next visit.
+
+---
+
+## For developers
+
+### Run it locally
 
 You need [Node.js](https://nodejs.org) 20 or newer.
 
@@ -54,49 +130,28 @@ npm run preview
 
 `npm test` validates all content (lesson structure, quiz explanations, templates, frameworks, questions, glossary) and checks that every SQL problem’s model solution runs against the dataset. `npm run build` type-checks and produces a static site in `dist/`.
 
-## Deploy for free
+### Deploy for free
 
-The build output in `dist/` is a plain static site. Any static host works. Because it is a single-page app, the host must serve `index.html` for unknown paths; the config for that is already included.
+The build output in `dist/` is a plain static site, so any static host works. Because it is a single-page app, the host must serve `index.html` for unknown paths; the config for that is included.
 
-### Netlify
-1. Push this folder to a GitHub repository.
-2. In Netlify, choose **Add new site → Import an existing project** and pick the repo.
-3. Build command: `npm run build`. Publish directory: `dist`.
-4. `public/_redirects` handles page refreshes on deep links.
-
-### Vercel
-1. Import the repository in Vercel.
-2. Framework preset: **Vite** (build `npm run build`, output `dist`).
-3. `vercel.json` handles the rewrites.
-
-### Cloudflare Pages
-Build command `npm run build`, output directory `dist`. `public/_redirects` works here too.
-
-### GitHub Pages
+**GitHub Pages** (how the live site is hosted)
 1. Push to a repository with a `main` branch.
 2. In the repo, go to **Settings → Pages → Source** and choose **GitHub Actions**.
-3. The included workflow (`.github/workflows/deploy-pages.yml`) runs the tests, builds with the right sub-path (`/<repo-name>/`) and publishes. It also copies `index.html` to `404.html` so deep links work.
+3. The included workflow (`.github/workflows/deploy-pages.yml`) runs the tests, builds with the right sub-path (`/<repo-name>/`) and publishes on every push to `main`. It also copies `index.html` to `404.html` so deep links work.
 
-To build for any other sub-path yourself:
+**Netlify:** import the repo, build command `npm run build`, publish directory `dist`. `public/_redirects` handles deep links.
+
+**Vercel:** import the repo with the **Vite** preset. `vercel.json` handles the rewrites.
+
+**Cloudflare Pages:** build command `npm run build`, output directory `dist`. `public/_redirects` works here too.
+
+To build for any other sub-path:
 
 ```bash
 BASE_PATH=/my-sub-path/ npm run build
 ```
 
-## Your data and backups
-
-- All progress (lesson completion, quiz scores, notes, timers, reflections, applications, mocks, stories, portfolio, reviews, tool work) is stored in your browser’s `localStorage` under the key `pm-path-state`.
-- Nothing is sent to a server. The only optional network call is in **Prompt Lab** if you add your own Gemini API key in Settings; that key is stored only in your browser and requests go straight from your browser to Google.
-- **Back up regularly:** Settings → **Export JSON** downloads a JSON file. Keep it in Google Drive or email it to yourself.
-- **Restore or move to another device:** Settings → **Import JSON** and choose the JSON file.
-- Clearing browser data, using private browsing, or switching browsers or devices starts fresh unless you import a backup.
-- **Reset** in Settings wipes everything after a double confirmation. Export first.
-
-## Offline use
-
-After the first visit the service worker caches every page, lesson, guide, font and the SQLite engine. You can then use PM Path without internet, including the SQL Playground. On a phone, use your browser’s **Add to Home screen** to install it like an app. When a new version is deployed, it updates automatically on the next visit.
-
-## Project structure
+### Project structure
 
 ```
 src/
@@ -110,8 +165,8 @@ src/
   styles/         design tokens and component styles
 ```
 
-To change the plan, edit `src/data/curriculum.ts`. To edit a lesson, edit its Markdown file; run `npm test` afterwards to check the structure. `PROGRESS.md` documents the content formats.
+To change the plan, edit `src/data/curriculum.ts`. To edit a lesson, edit its Markdown file and run `npm test` to check the structure. `PROGRESS.md` documents the content formats.
 
-## Tech
+### Tech
 
 Vite, React, TypeScript, Tailwind CSS v4, React Router, Zustand, Recharts, sql.js, MiniSearch, marked, lucide icons, self-hosted fonts via Fontsource, vite-plugin-pwa and Vitest. No runtime CDNs and no paid services.
