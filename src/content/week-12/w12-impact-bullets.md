@@ -67,15 +67,15 @@ Reorder and tweak bullets to match each role:
 
 ### Bullets from non-PM experience
 
-Translate your Technical Marketing Engineer work into product-relevant outcomes:
+Translate your current work into product-relevant outcomes, whatever the role:
 - Customer insight → “Synthesised feedback from 30+ enterprise calls into prioritised requests…”
-- Technical depth → “Built demo environments for X features, used by Y engineers…”
+- Technical depth → “Built [tool, test suite, report or demo] for X, used by Y people…”
 - Cross-functional → “Partnered with product and engineering on 3 launches…”
 - Communication → “Wrote launch content read by…; reduced escalations by…”
 
 ## Worked example
 
-**Turning weak bullets into XYZ bullets (P-projects and TME role):**
+**Turning weak bullets into XYZ bullets (P-projects and current role):**
 
 | Weak | Strong |
 |---|---|
@@ -109,7 +109,7 @@ Translate your Technical Marketing Engineer work into product-relevant outcomes:
 
 Rewriting your bullets:
 
-1. **List every accomplishment** (projects and TME role), one per line, in plain words.
+1. **List every accomplishment** (projects and current role), one per line, in plain words.
 2. **For each, find the number**: scale, change, time, money, quality or rigour.
 3. **Write the XYZ version.**
 4. **Check the verb** (strong, specific, true).

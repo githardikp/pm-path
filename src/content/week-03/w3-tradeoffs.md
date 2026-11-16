@@ -122,7 +122,7 @@ When a request competes with current priorities:
 
 > [!INTERVIEW]
 > **“Tell me about a time you had to say no.”**
-> Outline (STAR): situation and stakes → why you said no (criteria, data) → how you said it (alternatives offered) → outcome → relationship afterwards. From your Palo Alto experience, a customer feature request you redirected is a good candidate.
+> Outline (STAR): situation and stakes → why you said no (criteria, data) → how you said it (alternatives offered) → outcome → relationship afterwards. From your own work, a request you pushed back on or redirected (from a customer, manager or teammate) is a good candidate.
 
 ## Practice exercise
 

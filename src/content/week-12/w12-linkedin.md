@@ -25,7 +25,7 @@ In India’s tech job market, LinkedIn is where recruiters search, referrers che
 3. **Headline (220 characters max):** the most important line. Shows in search results and next to every comment you make.
 4. **About:** your story in 3–5 short paragraphs (the written version of your career story).
 5. **Featured:** pin your best work: portfolio, P4 live app, a case study, a strong post.
-6. **Experience:** your TME role with product-lens bullets; add a **Projects** entry or a “Product projects” experience entry for P1–P4 (be honest: “Independent product projects”, not a fake company).
+6. **Experience:** your current role with product-lens bullets; add a **Projects** entry or a “Product projects” experience entry for P1–P4 (be honest: “Independent product projects”, not a fake company).
 7. **Skills:** add relevant skills (Product Management, Product Discovery, SQL, A/B Testing, Product Analytics, Generative AI, Prompt Engineering, LLM Evaluation) and pin the top three.
 8. **Open to work:** set job preferences (titles, Bengaluru, remote/hybrid). You can make it visible to recruiters only.
 9. **Custom URL:** linkedin.com/in/yourname-pm style.
@@ -35,10 +35,10 @@ In India’s tech job market, LinkedIn is where recruiters search, referrers che
 Formula: **Target role/identity | Proof | Domain/strength**
 
 Examples:
-- “Aspiring APM | Shipped an AI expense app to 40+ users | Ex-Technical Marketing Engineer, Palo Alto Networks”
+- “Aspiring APM | Shipped an AI expense app to 40+ users | Ex-Customer Success Engineer, Nimbus Cloud”
 - “Product builder → APM/AI PM | Discovery, SQL, evals | 4 product case studies | Bengaluru”
 
-Avoid: “Seeking opportunities”, a list of buzzwords, or only your current title (“Technical Marketing Engineer at Palo Alto Networks”) if you’re repositioning.
+Avoid: “Seeking opportunities”, a list of buzzwords, or only your current title (“Customer Success Engineer at Nimbus Cloud”) if you’re repositioning.
 
 **Honesty rule:** don’t call yourself “Product Manager” if you haven’t held the role. “Aspiring APM”, “Product builder” or “Transitioning to product” are honest and common.
 
@@ -46,7 +46,7 @@ Avoid: “Seeking opportunities”, a list of buzzwords, or only your current ti
 
 Structure:
 1. **Hook (first 2 lines, visible before “see more”):** who you are and your strongest proof.
-2. **Story:** pivot from TME to product (short).
+2. **Story:** your pivot from your current role to product (short).
 3. **Proof:** 3 bullets with projects and numbers.
 4. **What you’re looking for:** roles, domains, location.
 5. **Call to action:** “Happy to chat about product, AI evals or fintech. Message me.”
@@ -70,17 +70,19 @@ Posting about your learning and projects is one of the most effective ways for c
 
 ## Worked example
 
+Fictional candidate Asha, a Customer Success Engineer at Nimbus Cloud (a B2B data-backup company):
+
 **Before:**
-> **Headline:** Technical Marketing Engineer at Palo Alto Networks
+> **Headline:** Customer Success Engineer at Nimbus Cloud
 > **About:** (empty)
 
 **After:**
-> **Headline:** Aspiring APM / AI PM | Shipped an AI expense app to 40+ users | Ex-TME, Palo Alto Networks | SQL · Discovery · LLM evals
+> **Headline:** Aspiring APM / AI PM | Shipped an AI expense app to 40+ users | Ex-Customer Success, Nimbus Cloud | SQL · Discovery · LLM evals
 >
 > **About:**
 > I help technical products make sense to the people who use them, and I’m moving into product management to decide what gets built.
 >
-> For 16 months as a Technical Marketing Engineer at Palo Alto Networks, I worked between engineering and enterprise customers: building demos, running technical sessions and turning field feedback into prioritised requests (4 of 12 shipped within two releases).
+> For two years as a Customer Success Engineer at Nimbus Cloud, I worked between engineering and enterprise customers: running technical onboarding and turning customer feedback into prioritised requests (4 of 12 shipped within two releases).
 >
 > Recently I’ve done structured product work end to end:
 > • FlatSplit AI: shipped an LLM expense assistant to 40+ users; raised eval pass rate from 66% to 90%; cost under ₹2/user/month.
@@ -121,7 +123,7 @@ Rewriting your LinkedIn this week:
 2. **Headline** with role/identity, proof and strengths (honest titles).
 3. **About** using the 5-part structure; check the first 2 lines.
 4. **Featured**: portfolio, P4 app, a case study, a post.
-5. **Experience**: product-lens bullets for your TME role; an honest projects entry for P1–P4.
+5. **Experience**: product-lens bullets for your current role; an honest projects entry for P1–P4.
 6. **Skills**: add and pin the top 3 relevant skills.
 7. **Open to work** preferences (recruiters only if you prefer).
 8. **Write your first post** (e.g., your P4 launch asking for users, or an eval lesson).
@@ -172,8 +174,8 @@ If you share flat expenses in Bengaluru, I’d love you to try it (link in comme
 
 ```quiz
 Q: Which headline is best for a career switcher targeting APM roles?
-- [ ] Technical Marketing Engineer at Palo Alto Networks :: Accurate but doesn’t signal the target role or product proof.
-- [x] Aspiring APM | Shipped an AI expense app to 40+ users | Ex-TME, Palo Alto Networks :: Correct. Honest target, proof and background.
+- [ ] Customer Success Engineer at Nimbus Cloud :: Accurate but doesn’t signal the target role or product proof.
+- [x] Aspiring APM | Shipped an AI expense app to 40+ users | Ex-Customer Success, Nimbus Cloud :: Correct. Honest target, proof and background.
 - [ ] Product Manager | Visionary Leader :: Claims a title not held and uses buzzwords.
 - [ ] Seeking opportunities :: Gives recruiters nothing to search or remember.
 

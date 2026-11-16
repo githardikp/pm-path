@@ -34,9 +34,9 @@ Many companies use an **ATS** (software that stores and filters applications). S
 For someone with under ~5 years of experience, **one page** is the norm.
 
 1. **Header:** name, city (Bengaluru), phone, email, LinkedIn URL, portfolio URL. No photo, date of birth, marital status or full address (not needed; reduces bias).
-2. **Summary (optional, 2 lines):** who you are and what you’re aiming for, with your strongest proof. Example: “Technical Marketing Engineer turned product builder. Shipped an AI expense assistant used by 40+ flatmates; 4 product case studies in discovery, analytics, technical design and AI evals.”
+2. **Summary (optional, 2 lines):** who you are and what you’re aiming for, with your strongest proof. Example: “Customer Success Engineer turned product builder. Shipped an AI expense assistant used by 40+ flatmates; 4 product case studies in discovery, analytics, technical design and AI evals.”
 3. **Product experience / Projects:** for a career switcher, put your **portfolio projects** (P1–P4) near the top, written like jobs: name, one-line context, 2–3 impact bullets each.
-4. **Professional experience:** your Technical Marketing Engineer role at Palo Alto Networks, with bullets emphasising product-relevant work: customer insight, technical depth, cross-functional work, launches, measurable outcomes.
+4. **Professional experience:** your current and past roles, with bullets emphasising product-relevant work: customer insight, technical depth, cross-functional work, launches, measurable outcomes.
 5. **Education:** degree, institution, year; relevant coursework only if strong.
 6. **Skills:** grouped, not a long list: *Product:* discovery, PRDs, prioritisation, A/B testing. *Data:* SQL, Mixpanel/PostHog, Google Sheets. *Technical:* APIs, Postman, system design basics. *AI:* prompting, RAG, evals, LLM-as-judge. *Tools:* Jira, Figma, Notion.
 7. **Optional:** awards, publications, notable side projects, languages spoken (useful for Indian multilingual products).
@@ -63,17 +63,19 @@ Keep one base resume, then tailor:
 
 ## Worked example
 
+This example uses a fictional candidate, Asha, a Customer Success Engineer at Nimbus Cloud (a B2B data-backup company). The same before-and-after works for any role.
+
 **Before (weak):**
-> **Technical Marketing Engineer, Palo Alto Networks** (2023–2024)
-> - Responsible for creating demos and documentation.
+> **Customer Success Engineer, Nimbus Cloud** (2023–2025)
+> - Responsible for onboarding customers and writing documentation.
 > - Worked with product managers and sales teams.
 > - Attended customer calls.
 
 **After (strong):**
-> **Technical Marketing Engineer, Palo Alto Networks** · Bengaluru · Jan 2023 – Apr 2024
-> - Turned feedback from 30+ enterprise customer calls into 12 prioritised feature requests for the firewall product team; 4 shipped in the next two releases.
-> - Built technical demos and launch content for 3 security feature launches, used by 200+ sales engineers globally.
-> - Created a troubleshooting guide for a common configuration issue that reduced related escalations from the field (reported by support leads).
+> **Customer Success Engineer, Nimbus Cloud** · Bengaluru · Jan 2023 – Apr 2025
+> - Turned feedback from 30+ enterprise customer calls into 12 prioritised feature requests for the product team; 4 shipped in the next two releases.
+> - Built onboarding guides and demo setups for 3 feature launches, used by 200+ customer-facing staff globally.
+> - Created a troubleshooting guide for a common setup issue that reduced related support escalations (reported by support leads).
 
 **Projects section (top of resume):**
 > **FlatSplit AI – AI expense assistant (P4)** · Live with 40+ users
@@ -98,7 +100,7 @@ Keep one base resume, then tailor:
 <text x="195" y="103" class="d-text-dark" font-size="11" font-weight="700">Product projects (P4, P1, P2, P3)</text>
 <g class="d-ink" stroke-width="1"><line x1="200" y1="118" x2="440" y2="118"/><line x1="200" y1="132" x2="420" y2="132"/><line x1="200" y1="146" x2="430" y2="146"/><line x1="200" y1="160" x2="410" y2="160"/></g>
 <rect x="185" y="182" width="270" height="56" rx="4" class="d-sky d-ink" stroke-width="1.5"/>
-<text x="195" y="199" class="d-text-dark" font-size="11" font-weight="700">Experience (TME, Palo Alto Networks)</text>
+<text x="195" y="199" class="d-text-dark" font-size="11" font-weight="700">Experience (current role)</text>
 <g class="d-ink" stroke-width="1"><line x1="200" y1="214" x2="430" y2="214"/><line x1="200" y1="228" x2="410" y2="228"/></g>
 <rect x="185" y="244" width="130" height="36" rx="4" class="d-peach d-ink" stroke-width="1.5"/><text x="193" y="266" class="d-text-dark" font-size="10" font-weight="700">Education</text>
 <rect x="325" y="244" width="130" height="36" rx="4" class="d-peach d-ink" stroke-width="1.5"/><text x="333" y="266" class="d-text-dark" font-size="10" font-weight="700">Skills (grouped)</text>
@@ -112,11 +114,11 @@ Keep one base resume, then tailor:
 
 Building your PM resume:
 
-1. **Collect raw material**: every project, number, result and piece of feedback from P1–P4 and your TME role.
+1. **Collect raw material**: every project, number, result and piece of feedback from P1–P4 and your current role.
 2. **Choose a simple template** (Google Docs or Canva single-column; see the tool guide).
 3. **Write the header** with portfolio and LinkedIn links (custom LinkedIn URL).
 4. **Write project entries** for P1–P4: context line + 2–3 impact bullets each (next lesson for bullets).
-5. **Rewrite TME bullets** with a product lens: customer insight, technical depth, cross-functional work, outcomes.
+5. **Rewrite your job bullets** with a product lens: customer insight, technical depth, cross-functional work, outcomes.
 6. **Add education and grouped skills.**
 7. **Cut to one page**: remove weak bullets, merge duplicates.
 8. **Create the AI PM variant**: reorder projects, adjust summary and skills.
@@ -149,7 +151,7 @@ Building your PM resume:
 ```answer Reveal a model answer (structure to compare against)
 **[Your Name]** · Bengaluru · email · +91 phone · linkedin.com/in/yourname · portfolio link
 
-**Summary:** Technical Marketing Engineer moving into product. Shipped an AI expense assistant used by 40+ people and completed four product case studies across discovery, analytics, technical design and AI evaluation.
+**Summary:** [Your current role] moving into product. Shipped an AI expense assistant used by 40+ people and completed four product case studies across discovery, analytics, technical design and AI evaluation.
 
 **Product projects**
 - *FlatSplit AI (AI product, live)*: 3 bullets: launch and adoption; evals and improvement (X% → Y%); cost per user and responsible AI.
@@ -158,7 +160,7 @@ Building your PM resume:
 - *P3 technical teardown*: UPI payment architecture, Postman collection, trade-offs note.
 
 **Experience**
-- *Technical Marketing Engineer, Palo Alto Networks* (dates): 3 bullets with a product lens and real numbers.
+- *[Your role], [Company]* (dates): 3 bullets with a product lens and real numbers.
 
 **Education**: degree, college, year.
 

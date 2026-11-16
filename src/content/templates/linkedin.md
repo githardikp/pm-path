@@ -30,12 +30,12 @@ Before you start outreach (Week 12). Recruiters search by keywords in the headli
 
 <!-- example -->
 ## Headline
-Associate Product Manager | Shipped an AI expense app to 40+ users | Ex-Technical Marketing Engineer, Palo Alto Networks
+Associate Product Manager | Shipped an AI expense app to 40+ users | Ex-Customer Success Engineer, Nimbus Cloud
 
 ## About
 I like turning messy, technical things into products people actually use.
 
-For 16 months at Palo Alto Networks I was a Technical Marketing Engineer. I spoke with customers and field engineers every week, found where they got stuck, and worked with product and engineering to fix it. That’s where I realised I wanted to own the “what” and “why”, not only explain it.
+For two years at Nimbus Cloud I was a Customer Success Engineer. I spoke with customers and support engineers every week, found where they got stuck, and worked with product and engineering to fix it. That’s where I realised I wanted to own the “what” and “why”, not only explain it.
 
 Since then I’ve built four product projects end to end:
 • FlatSplit AI: an LLM-powered expense assistant live with 40+ users. I built an eval set and raised accuracy from 82% to 94%.

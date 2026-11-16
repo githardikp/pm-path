@@ -112,7 +112,7 @@ How to explain the PM role in an interview, in about 60 seconds:
 3. **Contrast with project management.** “A project manager makes sure we build the thing right and on time. A PM makes sure we build the right thing.”
 4. **Mention the product owner.** “The product owner is a Scrum role that owns the backlog. In most product companies the PM plays it.”
 5. **Ground it in an example.** Use a feature you know, like Swiggy’s order tracking or CRED’s bill reminders.
-6. **End with why you fit.** Connect it to your background. For example: “As a Technical Marketing Engineer I translated between customers and engineering every week. That is the core of the PM job.”
+6. **End with why you fit.** Connect it to your background. For example: “In my current role I translate between customers and engineering every week. That is the core of the PM job.”
 
 ## Common mistakes
 

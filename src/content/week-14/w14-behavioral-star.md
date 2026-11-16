@@ -49,7 +49,7 @@ Target length: **2–3 minutes** per story.
 ### Building a story bank
 
 Aim for **10 stories** that each cover several competencies. Sources for a career switcher:
-- **Palo Alto Networks TME work:** customer escalations, launches, cross-team collaboration, feedback that changed the product, tight deadlines, explaining complex tech to non-technical audiences.
+- **Your current and past jobs:** customer escalations, launches, cross-team collaboration, feedback that changed the product, tight deadlines, explaining complex tech to non-technical audiences.
 - **P1–P4 projects:** user research that changed your direction, prioritisation decisions, a failed experiment, eval improvements, cost trade-offs, shipping with real users, handling negative feedback.
 - **Education or earlier work:** leadership roles, team projects, setbacks.
 - **This roadmap itself:** learning fast, managing a demanding schedule.
@@ -87,11 +87,13 @@ Choose a **real** failure (not a disguised strength like “I work too hard”),
 
 **Question:** “Tell me about a time you influenced a decision without authority.”
 
-**S:** At Palo Alto Networks, I was a Technical Marketing Engineer supporting a firewall product. Over two months, three enterprise customers struggled with the same configuration step during proofs of concept, delaying deals.
+*(Example story from a fictional candidate, Asha, a Customer Success Engineer at Nimbus Cloud, a B2B data-backup company. Use your own.)*
+
+**S:** At Nimbus Cloud, I supported enterprise customers on our backup product. Over two months, three customers struggled with the same backup-policy setup step during trials, delaying deals.
 **T:** I didn’t own the product roadmap, but I wanted the product team to prioritise a fix, since it was affecting deals and customer trust.
 **A:**
 - I documented each case: what the customer tried, where they got stuck, the time lost and the deal at stake, with screenshots.
-- I checked whether it was more widespread: I asked two sales engineers in other regions, who confirmed similar issues.
+- I checked whether it was more widespread: I asked two colleagues in other regions, who confirmed similar issues.
 - I estimated impact: roughly 6 hours of extra engineering support per proof of concept and two delayed deals.
 - I presented a one-page summary to the PM with the problem (not a solution), the evidence and the impact, and suggested two possible fixes I’d heard customers ask for.
 - When the PM said the roadmap was full, I offered to write a temporary troubleshooting guide to reduce the pain meanwhile, and asked if it could be considered in the next planning cycle.
@@ -120,7 +122,7 @@ Choose a **real** failure (not a disguised strength like “I work too hard”),
 
 Building your 10-story bank (deliverable):
 
-1. **List 20 candidate moments** from TME work, P1–P4 and earlier experience.
+1. **List 20 candidate moments** from your current job, P1–P4 and earlier experience.
 2. **Pick 10** that cover the competencies (each story should cover 2–3).
 3. **Write each in STAR+L** in PM Path’s Story Bank (tag competencies).
 4. **Add numbers** wherever honest.
@@ -200,5 +202,5 @@ Q: What should you add after the Result?
 - Behavioural rounds test **ownership, influence, conflict, data use, failure, prioritisation, customer focus**.
 - Use **STAR (+ Learning)**; spend **~55% on Actions**; finish in **2–3 minutes**.
 - Say **“I”**, add **specifics and numbers**, and include **real tension**.
-- Build a **10-story bank** from TME work, P1–P4 and earlier experience, tagged by competency.
+- Build a **10-story bank** from your work, P1–P4 and earlier experience, tagged by competency.
 - Prepare **follow-ups** and practise aloud.

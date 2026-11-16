@@ -44,7 +44,7 @@ AI: {prompting, evals, RAG basics, LLM cost/latency trade-offs, responsible AI} 
 Bengaluru · +91 9XXXX XXXXX · yourname@email.com · linkedin.com/in/yourname · yourname.notion.site
 
 ## Summary
-Product candidate who has shipped an LLM-powered app to 40+ users and improved its accuracy from 82% to 94% using a structured eval process. Former Technical Marketing Engineer at Palo Alto Networks with a strength in explaining complex technology to customers.
+Product candidate who has shipped an LLM-powered app to 40+ users and improved its accuracy from 82% to 94% using a structured eval process. Former Customer Success Engineer at Nimbus Cloud with a strength in explaining complex technology to customers.
 
 ## AI product work
 **FlatSplit AI** — turns messages like “dedh hazaar dinner with Rohan” into split expenses · yourname.notion.site/flatsplit-ai
@@ -53,8 +53,8 @@ Product candidate who has shipped an LLM-powered app to 40+ users and improved i
 - Shipped to 40+ users at about ₹1.2 per user per month; added human confirmation, a “who is Sam?” clarification path and a 30-day data retention rule
 
 ## Experience
-**Technical Marketing Engineer**, Palo Alto Networks · Jul 2024 – Oct 2025
-- Interviewed 20+ customers and field engineers to find the top setup blockers for a firewall feature, shaping onboarding changes in the next release
+**Customer Success Engineer**, Nimbus Cloud · Jul 2023 – Oct 2025
+- Interviewed 20+ customers and support engineers to find the top setup blockers for a backup feature, shaping onboarding changes in the next release
 - Built demo environments used by 150+ sales engineers, cutting demo prep time by about 30%
 
 ## Other product projects

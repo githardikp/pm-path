@@ -37,12 +37,14 @@ To prepare for behavioural questions (“Tell me about a time…”). Build 10 s
 
 **Themes:** influence, customer, data
 
-**Situation:** At Palo Alto Networks, a new firewall feature was about to launch with a setup guide that the product team felt was complete.
+*(Example from a fictional candidate, Asha, a Customer Success Engineer at Nimbus Cloud, a B2B data-backup company.)*
 
-**Task:** As the Technical Marketing Engineer, I owned the launch demo and customer-facing content, but I had no authority over the product.
+**Situation:** At Nimbus Cloud, a new backup-policy feature was about to launch with a setup guide that the product team felt was complete.
+
+**Task:** As the Customer Success Engineer for our largest accounts, I owned the customer onboarding guide, but I had no authority over the product.
 
 **Action:**
-1. I ran the setup with 6 field engineers and timed them. Four got stuck at the same policy step, taking 40+ minutes.
+1. I ran the setup with 6 colleagues from support and sales and timed them. Four got stuck at the same policy step, taking 40+ minutes.
 2. I grouped their blockers into 3 themes and recorded short clips of where they hesitated.
 3. I shared a one-page summary with the PM, suggesting two small changes: a default policy template and a clearer error message.
 4. When the PM said the release was locked, I proposed a compromise: ship the template in the guide now and the error message in the next patch.

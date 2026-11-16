@@ -142,7 +142,7 @@ Running your first P1 interview:
 
 > [!INTERVIEW]
 > **“Tell me about a time you talked to customers and it changed your direction.”**
-> Outline: STAR story. The assumption you had → what you asked → the surprising answer (quote it) → what you changed → the result. Your Technical Marketing Engineer experience likely has one.
+> Outline: STAR story. The assumption you had → what you asked → the surprising answer (quote it) → what you changed → the result. Your current or past work likely has one.
 
 ## Practice exercise
 

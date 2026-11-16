@@ -31,7 +31,7 @@ Create a quick **match table**: top 5–7 requirements → your strongest eviden
 |---|---|---|
 | “Comfortable with SQL and data” | 40 SQL problems; activation-drop analysis | P2 bullet #1, skills |
 | “Experience with A/B testing” | Experiment plan with sample size | P2 bullet #2 |
-| “Strong technical understanding” | TME at Palo Alto Networks; UPI teardown | Experience, P3 |
+| “Strong technical understanding” | Your current role’s technical work; UPI teardown | Experience, P3 |
 | “Customer empathy” | 6 interviews; enterprise customer calls | P1, Experience |
 | “GenAI experience” (nice to have) | Shipped P4; evals | P4 (move to top) |
 

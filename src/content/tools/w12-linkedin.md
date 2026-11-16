@@ -36,12 +36,12 @@ You likely have an account. Make sure your email is verified and your profile is
 
 ### 3. Find referrers
 1. Search: `"product manager" [Company]` → filter **People** → **Current company**.
-2. Add filters: **School** (your college) for alumni; **Past company** (Palo Alto Networks) for ex-colleagues.
+2. Add filters: **School** (your college) for alumni; **Past company** (your current or previous employers) for ex-colleagues.
 3. For each of your 25 companies, save 2 names in the Job Tracker’s referral contact field.
 
 ### 4. Send connection requests with notes
 1. Click **Connect** → **Add a note** (keep within the note length limit; usually short).
-2. Example: “Hi Sneha, fellow [college] alum and TME moving into product. Enjoyed your post on pricing experiments. Would love to connect.”
+2. Example: “Hi Sneha, fellow [college] alum moving into product from [your current role]. Enjoyed your post on pricing experiments. Would love to connect.”
 3. After they accept, send the referral message (Referral outreach lesson) as a regular message.
 4. Pace yourself: about 5–10 personalised requests a day; LinkedIn limits weekly invitations.
 

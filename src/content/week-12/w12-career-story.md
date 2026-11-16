@@ -8,7 +8,7 @@ tags: [careers, storytelling, interviews]
 
 ## Why this matters for a PM
 
-Almost every interview starts with “Tell me about yourself” or “Why product?” For a career switcher, this answer does heavy lifting: it must turn a non-PM background into a reason you’ll be a *better* PM, not a gap to apologise for. Your story here: **16 months as a Technical Marketing Engineer (TME) at Palo Alto Networks, customer-facing technical work → why product.** A crisp 90-second story sets the tone for the whole interview.
+Almost every interview starts with “Tell me about yourself” or “Why product?” For a career switcher, this answer does heavy lifting: it must turn a non-PM background into a reason you’ll be a *better* PM, not a gap to apologise for. Your story here: **what you do today → the moment that pulled you towards product → the proof you’ve built.** A crisp 90-second story sets the tone for the whole interview.
 
 ## Core concepts
 
@@ -28,21 +28,26 @@ In 60–120 seconds, your story should answer:
 4. **Present:** what you bring now (your unique combination).
 5. **Future:** why this role and company is the logical next step.
 
-### Turning your TME background into a strength
+### Turning your background into a strength
 
-What a Technical Marketing Engineer typically does maps closely to PM skills:
-- **Translating** between engineering and customers/sales → PMs translate between users, business and engineering.
-- **Deep technical understanding** of a complex product (network security) → technical fluency for engineering conversations.
-- **Customer conversations** (demos, POCs, field feedback) → discovery and empathy.
-- **Launch work** (demos, docs, enablement) → go-to-market and launches.
-- **Explaining complex things simply** → writing PRDs and stakeholder communication.
+Almost every background maps to part of the PM job. Find your row, then lead with that strength:
 
-Frame it as: “I’ve spent 16 months at the boundary between a complex technical product and the people who buy and use it. Product management is doing that boundary work with ownership of *what* gets built.”
+| If you’ve been a… | You already practise… | Lead with |
+|---|---|---|
+| Software or QA engineer | How products are built, trade-offs, edge cases | Technical fluency and execution |
+| Customer success, support or sales engineer | Talking to users, spotting repeated problems | Customer insight and discovery |
+| Data or business analyst | Metrics, SQL, finding the story in numbers | Analytics and decision-making |
+| Designer or researcher | User needs, flows, usability testing | User empathy and product sense |
+| Consultant | Structured problem solving, stakeholder work | Strategy and communication |
+| Marketer | Positioning, launches, knowing the customer | Go-to-market and growth |
+| Operations or founder | Running things end to end, prioritising with limits | Ownership and prioritisation |
+
+Frame it as one sentence about the overlap. For example: “For two years I’ve sat between our customers and the team that builds the product. Product management is doing that work with ownership of *what* gets built.”
 
 ### Addressing the obvious questions proactively
 
-- **“Why leave after 16 months?”** Focus on pull, not push: what you’re moving *towards*. Mention the deliberate preparation (the roadmap, the projects) as evidence it’s considered, not impulsive.
-- **“You haven’t been a PM.”** Point to evidence: shipped P4 with real users, case studies, the product decisions you made, and product-adjacent work at Palo Alto Networks.
+- **“Why switch now?”** Focus on pull, not push: what you’re moving *towards*. Mention the deliberate preparation (the roadmap, the projects) as evidence it’s considered, not impulsive.
+- **“You haven’t been a PM.”** Point to evidence: shipped P4 with real users, case studies, the product decisions you made, and the product-adjacent parts of your current job.
 - **“Why AI PM?”** Connect your technical comfort and the P4 experience (evals, cost, guardrails) to how AI products are built.
 
 ### Avoid clichés and over-sharing
@@ -61,18 +66,18 @@ Tailor the last line to each company.
 
 ## Worked example
 
-**90-second version (for an AI PM role at a fintech; replace with your real details and numbers):**
+**90-second version** from a fictional candidate, Asha, a Customer Success Engineer at Nimbus Cloud (a B2B data-backup company), applying for an AI PM role at a fintech. Use the shape, not the details:
 
-> “I’m a technical product builder moving into product management. For the last 16 months I’ve been a Technical Marketing Engineer at Palo Alto Networks, working on network security products. My job sat between engineering and customers: I built demos, ran technical sessions with enterprise customers and brought their feedback back to the product team.
+> “I’m a technical product builder moving into product management. For the last two years I’ve been a Customer Success Engineer at Nimbus Cloud, a B2B backup product. My job sits between engineering and customers: I run technical onboarding for enterprise customers and bring their feedback back to the product team.
 >
-> The moment that pulled me towards product was a series of customer calls where three different customers struggled with the same configuration step. I wrote up the pattern with examples, the product team prioritised a fix, and it shipped two releases later. I realised I cared less about explaining features and more about deciding which ones should exist.
+> The moment that pulled me towards product was a series of customer calls where three different customers struggled with the same setup step. I wrote up the pattern with examples, the product team prioritised a fix, and it shipped two releases later. I realised I cared less about explaining features and more about deciding which ones should exist.
 >
 > So I trained deliberately. Over the last few months I completed four product case studies: discovery with real interviews, an analytics and experimentation case, a technical teardown of UPI payments, and an AI product I shipped myself: an expense assistant now used by over 40 people, where I improved eval pass rates from 66% to 90% and brought cost per user under ₹2 a month.
 >
 > I bring technical depth, customer empathy and hands-on AI product experience. That’s why this AI PM role excites me: you’re building AI features for people managing money, where accuracy, trust and cost all matter, which is exactly what I spent the last month working on.”
 
 **30-second version:**
-> “I’m a Technical Marketing Engineer at Palo Alto Networks moving into product. I’ve spent 16 months between engineering and enterprise customers, and recently shipped my own AI product to 40+ users, improving its accuracy from 66% to 90%. I’m looking for APM and AI PM roles where technical depth and customer insight matter.”
+> “I’m a Customer Success Engineer at Nimbus Cloud moving into product. I’ve spent two years between engineering and enterprise customers, and recently shipped my own AI product to 40+ users, improving its accuracy from 66% to 90%. I’m looking for APM and AI PM roles where technical depth and customer insight matter.”
 
 ## Visual
 
@@ -83,7 +88,7 @@ Tailor the last line to each company.
 <defs><marker id="cs2-a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="d-fill-ink"/></marker></defs>
 <path d="M30 160 C 150 160 150 60 320 60 S 490 40 610 30" fill="none" class="d-ink" stroke-width="2" stroke-dasharray="6 4"/>
 <g font-size="11">
-<rect x="10" y="130" width="110" height="56" rx="10" class="d-surface d-ink" stroke-width="2"/><text x="22" y="154" class="d-text" font-weight="700">Past</text><text x="22" y="172" class="d-text" font-size="10">TME, 16 months</text>
+<rect x="10" y="130" width="110" height="56" rx="10" class="d-surface d-ink" stroke-width="2"/><text x="22" y="154" class="d-text" font-weight="700">Past</text><text x="22" y="172" class="d-text" font-size="10">your current role</text>
 <rect x="130" y="100" width="110" height="56" rx="10" class="d-pink d-ink" stroke-width="2"/><text x="142" y="124" class="d-text-dark" font-weight="700">Pivot</text><text x="142" y="142" class="d-text-dark" font-size="10">a real moment</text>
 <rect x="255" y="40" width="120" height="56" rx="10" class="d-mint d-ink" stroke-width="2"/><text x="267" y="64" class="d-text-dark" font-weight="700">Proof</text><text x="267" y="82" class="d-text-dark" font-size="10">P1–P4, numbers</text>
 <rect x="390" y="40" width="110" height="56" rx="10" class="d-sky d-ink" stroke-width="2"/><text x="402" y="64" class="d-text-dark" font-weight="700">Present</text><text x="402" y="82" class="d-text-dark" font-size="10">your combination</text>
@@ -97,14 +102,14 @@ Tailor the last line to each company.
 
 Writing your story:
 
-1. **List 5 moments** from your TME work where you influenced what was built, understood a customer deeply, or explained something complex.
+1. **List 5 moments** from your current or past work where you influenced what was built, understood a customer deeply, or explained something complex.
 2. **Pick the strongest pivot moment** (specific, with a result).
 3. **List your proof** (P1–P4 with 1 number each).
 4. **Write your “combination” line** (what you bring that others don’t).
 5. **Draft the 90-second version** using Past → Pivot → Proof → Present → Future.
 6. **Cut to 220–250 words**; read aloud and time it.
 7. **Write the 30-second version.**
-8. **Prepare answers** for “Why leave after 16 months?”, “Why product?”, “Why AI PM?”.
+8. **Prepare answers** for “Why switch now?”, “Why product?”, “Why AI PM?”.
 9. **Record yourself** (Loom) and refine twice.
 10. **Tailor the last line** for each company.
 
@@ -129,10 +134,10 @@ Writing your story:
 
 ## Practice exercise
 
-**Task (35 minutes):** Write your 90-second and 30-second stories using your real experience. Record the 90-second version on Loom, watch it once, and note 3 improvements. Then write a 3-sentence answer to “Why leave after 16 months?”.
+**Task (35 minutes):** Write your 90-second and 30-second stories using your real experience. Record the 90-second version on Loom, watch it once, and note 3 improvements. Then write a 3-sentence answer to “Why switch now?”.
 
-```answer Reveal a model answer (“Why leave after 16 months?”)
-“I’ve learned a lot as a TME, especially how enterprise customers use complex technical products. Over the past year I found myself most energised by the product decisions behind the features I was demoing, so I tested that interest seriously: I spent several months doing structured product work, including shipping my own AI product to real users. I’m moving towards product because that’s where I’ve seen I do my best work, not away from my current role.”
+```answer Reveal a model answer (“Why switch now?”)
+“I’ve learned a lot in customer success, especially how enterprise customers really use a complex product. Over the past year I found myself most energised by the product decisions behind the features I was onboarding people onto, so I tested that interest seriously: I spent several months doing structured product work, including shipping my own AI product to real users. I’m moving towards product because that’s where I’ve seen I do my best work, not away from my current role.”
 
 **Common improvements after watching the recording:** slow down at the numbers; cut the second example from the “Past” part; end with a specific reason for this company instead of a general one.
 ```
@@ -164,7 +169,7 @@ Q: Which line is the weakest?
 - [ ] Customer calls showed me a recurring problem I helped prioritise :: Concrete pivot.
 - [ ] Your fintech AI focus matches my recent work on accuracy and cost :: Tailored fit.
 
-Q: How should you answer “Why leave after 16 months?”
+Q: How should you answer “Why switch now?”
 - [ ] Criticise your manager :: Never badmouth employers.
 - [x] Focus on what you’re moving towards, with evidence of deliberate preparation :: Correct. Pull, not push, sounds considered and positive.
 - [ ] Say you were bored :: Sounds negative and impatient.
@@ -175,6 +180,6 @@ Q: How should you answer “Why leave after 16 months?”
 
 - Structure: **Past → Pivot → Proof → Present → Future**, in about **90 seconds**.
 - Use a **specific pivot moment** and **numbers** from P1–P4.
-- Frame the TME background as **technical depth + customer insight + translation skills**.
+- Frame your background by the **PM skills it already gives you** (see the table), not as a gap.
 - Answer the obvious questions (**why switch, why now, why AI PM**) with what you’re moving **towards**.
 - Prepare **30-second, 90-second and written** versions; **tailor the ending** for each company.

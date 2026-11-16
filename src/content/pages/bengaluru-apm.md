@@ -15,7 +15,7 @@ Bengaluru has more product roles than any other Indian city, but entry-level PM 
 | Large IT services and product units | Product arms of IT companies, global capability centres (GCCs) | Associate PM, Business Analyst → PM | Domain knowledge, stakeholder management |
 
 > [!TIP]
-> Your edge as an ex-Technical Marketing Engineer at Palo Alto Networks is strongest at **B2B SaaS, security, developer tools and global capability centres** of tech companies. Lead with those in your target list, while keeping a few consumer and AI roles.
+> Your edge is strongest where your background overlaps the product. Customer-facing or technical B2B experience fits **B2B SaaS, developer tools and global capability centres** of tech companies; analytics fits **growth and data-heavy consumer apps**; design or research fits **consumer products**. Lead with the companies that match your edge, while keeping a few stretch and AI roles.
 
 ## How hiring usually works
 
@@ -30,7 +30,7 @@ Start to offer is commonly **3–6 weeks**. Startups move faster; big tech is sl
 
 ## Where to find roles
 
-- **Referrals** (highest callback rate): LinkedIn, alumni groups, ex-colleagues from Palo Alto Networks who moved to product companies.
+- **Referrals** (highest callback rate): LinkedIn, alumni groups, ex-colleagues from your current and past companies who moved into product.
 - **Company careers pages**: check weekly; set alerts.
 - **LinkedIn Jobs** with filters: “Associate Product Manager”, “Product Manager I”, Bengaluru, past week.
 - **Startup job boards** and founder posts on LinkedIn and X (“we’re hiring our first PM”).

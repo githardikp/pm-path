@@ -23,7 +23,7 @@ Use your existing Notion workspace. Public publishing is free. Your page URL wil
 ### 1. Create the home page
 1. Create a new top-level page: “[Your Name] – Product Portfolio”.
 2. Add a cover image (simple, not busy) and an icon.
-3. Top section (callout block): one-line intro + links. Example: “Technical Marketing Engineer moving into product. I’ve shipped an AI product to 40+ users and completed four end-to-end case studies. Resume · LinkedIn · Email”.
+3. Top section (callout block): one-line intro + links. Example: “[Your current role] moving into product. I’ve shipped an AI product to 40+ users and completed four end-to-end case studies. Resume · LinkedIn · Email”.
 
 ### 2. Add the case study gallery
 1. Type `/gallery` to create a **Gallery database** called “Case studies”.

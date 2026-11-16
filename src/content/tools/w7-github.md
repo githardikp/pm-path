@@ -18,7 +18,7 @@ Many engineering teams track work in GitHub issues and review changes in pull re
 
 1. Go to github.com → **Sign up**. Choose a professional username (it appears on your portfolio links).
 2. Verify your email. The free plan includes unlimited public and private repositories.
-3. Optional: add a profile photo and a one-line bio (“Aspiring PM | ex-Technical Marketing Engineer”).
+3. Optional: add a profile photo and a one-line bio (“Aspiring PM | ex-[your current role]”).
 
 ## Walkthrough: your P3 repository
 

@@ -41,11 +41,11 @@ Product: {…} · Data: {…} · Technical: {…} · Tools: {…}
 Bengaluru · +91 9XXXX XXXXX · yourname@email.com · linkedin.com/in/yourname · yourname.notion.site
 
 ## Summary
-Associate-level product candidate with 16 months as a Technical Marketing Engineer at Palo Alto Networks, translating complex security products for customers and sales. Built 4 end-to-end product projects, including an AI expense assistant live with 40+ users.
+Associate-level product candidate with two years as a Customer Success Engineer at Nimbus Cloud, helping enterprise customers adopt a complex B2B product. Built 4 end-to-end product projects, including an AI expense assistant live with 40+ users.
 
 ## Experience
-**Technical Marketing Engineer**, Palo Alto Networks — Bengaluru · Jul 2024 – Oct 2025
-- Interviewed 20+ customers and field engineers to find the top 5 setup blockers for a firewall feature; findings shaped the next release’s onboarding changes
+**Customer Success Engineer**, Nimbus Cloud — Bengaluru · Jul 2023 – Oct 2025
+- Interviewed 20+ customers and support engineers to find the top 5 setup blockers for a backup feature; findings shaped the next release’s onboarding changes
 - Built demo environments and guides used by 150+ sales engineers, cutting prep time for customer demos by about 30%
 - Wrote launch content for 3 product releases, working with product managers and engineers to turn technical specs into customer value
 - Analysed support tickets in spreadsheets to prioritise documentation fixes, reducing repeat questions on one feature by about 20%

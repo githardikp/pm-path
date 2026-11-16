@@ -55,7 +55,7 @@ Structure it in the Job Tracker (Wishlist column) or a sheet:
 - **Tier B (10):** good fit, broader (consumer, quick commerce, edtech).
 - **Tier C (5):** reach/stretch (formal APM programs at big tech) or safer adjacent roles (product analyst).
 
-For each: role link (or “watch”), referral contacts, your angle (“payments teardown + TME security background”), status, next step.
+For each: role link (or “watch”), referral contacts, your angle (for example “payments teardown + customer-facing B2B background”), status, next step.
 
 ### Calendar strategy
 

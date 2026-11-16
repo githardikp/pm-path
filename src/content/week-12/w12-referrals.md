@@ -23,10 +23,10 @@ It doesn’t guarantee an interview, and referrers have different levels of conv
 ### Who to ask
 
 In order of strength:
-1. **People who know your work:** ex-colleagues, managers, classmates, people from Palo Alto Networks who moved to product companies.
+1. **People who know your work:** ex-colleagues, managers, classmates, people from your current or past companies who moved into product.
 2. **Alumni** from your college at target companies.
 3. **People in your extended network:** friends of friends, community members.
-4. **Thoughtful cold outreach:** PMs at the company whose posts you’ve engaged with, or people in similar backgrounds (ex-engineers or TMEs who became PMs).
+4. **Thoughtful cold outreach:** PMs at the company whose posts you’ve engaged with, or people from a background like yours who became PMs.
 
 Target **PMs, APMs and people in product-adjacent roles** at the company; engineers and others can refer too. Recruiters can be contacted directly as well.
 
@@ -75,11 +75,11 @@ Log every outreach in PM Path’s **Job Search** tracker (referral contact field
 > Hi Arjun, hope the new role at Razorpay is going well! I saw an Associate PM opening on the Payments team (link). I’ve been preparing for product for a while; recently I shipped an AI expense app to 40+ users and did a technical teardown of UPI payments, which feels very relevant. Would you be open to referring me? I’ve attached my resume and a 2-line summary you can paste. Completely fine if it’s not a good fit. Thanks either way!
 
 **Cold (alumnus, two-step):**
-> Hi Sneha, I’m a fellow [college] alum (2022) and a Technical Marketing Engineer moving into product. I enjoyed your post on how your team runs pricing experiments. I’m applying for the APM role at Groww and had one question: does the team look for analytics depth, or more product sense, from APMs? Any pointer would really help.
+> Hi Sneha, I’m a fellow [college] alum (2022) and a customer success engineer moving into product. I enjoyed your post on how your team runs pricing experiments. I’m applying for the APM role at Groww and had one question: does the team look for analytics depth, or more product sense, from APMs? Any pointer would really help.
 > *(After a reply:)* Thanks, that’s really helpful. I’ve been doing exactly that kind of work (an analytics case with SQL and an experiment plan). Would you be comfortable referring me for the role (link)? Resume and a short blurb attached; no worries at all if not.
 
 **2-line blurb for the referrer:**
-> “Asha is a Technical Marketing Engineer at Palo Alto Networks moving into product. She has shipped an AI product to 40+ users and completed product case studies in discovery, analytics and payments architecture.”
+> “Asha is a Customer Success Engineer at Nimbus Cloud moving into product. She has shipped an AI product to 40+ users and completed product case studies in discovery, analytics and payments architecture.”
 
 ## Visual
 
@@ -133,7 +133,7 @@ Running this week’s 25 referral messages:
 **Task (30 minutes):** Write 3 messages: (1) warm to an ex-colleague, (2) cold two-step to an alum, (3) cold to a PM whose post you genuinely engaged with. Each under 120 words, with a specific role link placeholder and a 2-line blurb.
 
 ```answer Reveal a model answer (message 3)
-“Hi Rahul, your post on how Swiggy measures the success of reorder prompts was really useful. I tried a similar metric in my own project and saw how much it depends on the time window. I’m applying for the APM role on the Growth team (link). My background: a Technical Marketing Engineer moving into product; recently built a funnel analysis and an experiment plan with sample sizing, and shipped an AI product to 40+ users. If you think I could be a fit, would you be open to referring me? Resume and a 2-line summary attached. Completely understand if not. Thanks for writing such practical posts!”
+“Hi Rahul, your post on how Swiggy measures the success of reorder prompts was really useful. I tried a similar metric in my own project and saw how much it depends on the time window. I’m applying for the APM role on the Growth team (link). My background: two years in customer success, moving into product; recently built a funnel analysis and an experiment plan with sample sizing, and shipped an AI product to 40+ users. If you think I could be a fit, would you be open to referring me? Resume and a 2-line summary attached. Completely understand if not. Thanks for writing such practical posts!”
 ```
 
 ## Quiz

@@ -38,7 +38,7 @@ Hi Aditi,
 
 I saw your post on how Razorpay’s payments team runs weekly customer calls. It’s the habit I try to copy in my own projects.
 
-I’m a former Technical Marketing Engineer at Palo Alto Networks moving into product. I recently built FlatSplit, a UPI-based settle-up flow for flatmates, from 12 user interviews to a tested prototype.
+I’m a Customer Success Engineer at Nimbus Cloud moving into product. I recently built FlatSplit, a UPI-based settle-up flow for flatmates, from 12 user interviews to a tested prototype.
 
 I’m applying for the APM role on the Payments team (Job ID 48213). Would you be open to referring me? My resume and a 1-page case study are attached so it takes you two minutes.
 
@@ -46,4 +46,4 @@ Totally understand if it’s not possible. Thanks either way!
 Asha
 
 ## Short connection note (≤ 300 characters)
-Hi Aditi, loved your post on weekly customer calls at Razorpay. I’m an ex-Palo Alto Networks TME moving into product and applying for the Payments APM role. Would love to connect and ask a quick question about the team.
+Hi Aditi, loved your post on weekly customer calls at Razorpay. I’m a customer success engineer moving into product and applying for the Payments APM role. Would love to connect and ask a quick question about the team.

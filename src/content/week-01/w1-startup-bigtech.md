@@ -148,7 +148,7 @@ How to tailor yourself to a company type:
 - Stage: seed/Series A, ~30 people on LinkedIn, founders active in hiring.
 - Challenge: finding which customer segment gets enough value to pay.
 - Traits: talks to customers constantly; ships scrappy experiments.
-- Why me: “I spent 16 months explaining a complex security product to customers and feeding their problems back to engineering. That’s the loop you need to find your best segment.”
+- Why me: “For the last two years I’ve talked to customers every week and fed their problems back to the team that builds the product. That’s the loop you need to find your best segment.” (Swap in your own experience.)
 
 **Growth stage: Razorpay**
 - Stage: large and scaling, many product lines, strong brand among businesses.
