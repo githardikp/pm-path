@@ -67,7 +67,7 @@ export function Quiz({ lessonId, questions }: { lessonId: string; questions: Qui
                   <div key={j}>
                     <label
                       className={cx(
-                        'flex cursor-pointer items-start gap-3 rounded-[8px] border-2 px-3 py-2 text-[0.95rem] transition-[background-color,border-color,transform] duration-150',
+                        'flex cursor-pointer items-start gap-3 rounded-none border-2 px-3 py-2 text-[0.95rem] transition-[background-color,border-color,transform] duration-150',
                         !submitted && 'hover:translate-x-1',
                         show && o.correct && 'bounce-in',
                         show && chosen && !o.correct && 'shake',
@@ -78,7 +78,7 @@ export function Quiz({ lessonId, questions }: { lessonId: string; questions: Qui
                       <input
                         type="radio"
                         name={`q-${lessonId}-${i}`}
-                        className="mt-1.5 accent-[#1E1E24]"
+                        className="mt-1.5 accent-[#1d1a33]"
                         checked={chosen}
                         disabled={submitted}
                         onChange={() => setAnswers((a) => a.map((x, k) => (k === i ? j : x)))}

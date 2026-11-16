@@ -130,7 +130,7 @@ export function MockMode() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="nb-label">{remaining >= 0 ? 'Time left' : 'Over time'}</p>
-              <p className={cx('font-mono text-5xl font-bold tabular-nums', remaining < 0 && 'inline-block rounded-[8px] bg-pink px-2 text-onpastel')} aria-live="off">{fmt(remaining)}</p>
+              <p className={cx('font-mono text-5xl font-bold tabular-nums', remaining < 0 && 'inline-block rounded-none bg-pink px-2 text-onpastel')} aria-live="off">{fmt(remaining)}</p>
             </div>
             <div className="flex gap-2">
               {sw.running ? (
@@ -145,7 +145,7 @@ export function MockMode() {
           {mode === 'full' && phase && (
             <ol className="mt-4 grid gap-2 sm:grid-cols-2">
               {FULL_PHASES.map((p, i) => (
-                <li key={p.label} className={cx('rounded-[8px] border-2 px-3 py-2 text-sm', i === phase.i ? 'border-line bg-butter text-onpastel' : i < phase.i ? 'border-transparent bg-mint/60 text-onpastel' : 'border-line/30')}>
+                <li key={p.label} className={cx('rounded-none border-2 px-3 py-2 text-sm', i === phase.i ? 'border-line bg-butter text-onpastel' : i < phase.i ? 'border-transparent bg-mint/60 text-onpastel' : 'border-line/30')}>
                   <div className="flex justify-between gap-2 font-semibold">
                     <span>{p.label}</span>
                     <span className="font-mono">{i === phase.i ? fmt(phase.endsIn) : `${p.min}m`}</span>
@@ -183,7 +183,7 @@ export function MockMode() {
                     onClick={() => setScores((s) => ({ ...s, [r.id]: n }))}
                     aria-pressed={scores[r.id] === n}
                     aria-label={`${r.label}: ${n} ${SCALE[n]}`}
-                    className={cx('flex-1 rounded-[8px] border-2 border-line py-1 text-xs font-semibold', scores[r.id] === n ? 'bg-butter text-onpastel' : 'bg-surface hover:bg-butter/40')}
+                    className={cx('flex-1 rounded-none border-2 border-line py-1 text-xs font-semibold', scores[r.id] === n ? 'bg-butter text-onpastel' : 'bg-surface hover:bg-butter/40')}
                   >
                     {n} <span className="hidden sm:inline">{SCALE[n]}</span>
                   </button>

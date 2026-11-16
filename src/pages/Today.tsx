@@ -96,7 +96,7 @@ export default function Today() {
                 const logged = minutesForBlock(data, t, b.key) + (running ? (tick - timer!.startedAt) / 60000 : 0);
                 const pct = (logged / (b.hours * 60)) * 100;
                 return (
-                  <li key={b.key} className={cx('rounded-[10px] border-2 border-line p-3 transition-colors duration-300', running && 'bg-butter text-onpastel shadow-[3px_3px_0_var(--c-line)]')}>
+                  <li key={b.key} className={cx('rounded-none border-2 border-line p-3 transition-colors duration-300', running && 'bg-butter text-onpastel ')}>
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="w-[92px] font-mono text-xs">
                         {b.start}–{b.end}

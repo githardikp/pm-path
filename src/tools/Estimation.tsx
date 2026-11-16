@@ -140,8 +140,8 @@ export default function Estimation() {
               Load example
             </Button>
           </div>
-          <div className="mt-4 rounded-[10px] border-2 border-line bg-mint p-4 text-onpastel" aria-live="polite">
-            <div className="font-display text-xs font-bold uppercase tracking-wide">Result</div>
+          <div className="mt-4 rounded-none border-2 border-line bg-mint p-4 text-onpastel" aria-live="polite">
+            <div className="font-display text-xs font-bold">Result</div>
             <div className="font-display text-3xl font-bold">{Number.isFinite(result) ? fmt(result) : '—'}</div>
           </div>
         </Card>

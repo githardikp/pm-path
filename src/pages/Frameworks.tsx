@@ -48,7 +48,7 @@ function FrameworkList() {
         <ul className="stagger grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {shown.map((f) => (
             <li key={f.id}>
-              <Link to={`/frameworks/${f.id}`} className="block h-full rounded-[10px]">
+              <Link to={`/frameworks/${f.id}`} className="block h-full rounded-none">
                 <Card hover className="flex h-full flex-col p-5">
                   <div className="mb-2 flex gap-2">
                     <Chip color={FW_COLOR[f.category]}>{f.category}</Chip>
@@ -120,7 +120,7 @@ function FrameworkDetail({ f }: { f: Framework }) {
         </Card>
         <Card className="p-5 lg:col-span-2" color="sky">
           <CardTitle>Worked example: {f.example.title}</CardTitle>
-          <div className="prose-pm mt-2 max-w-none rounded-[8px] bg-surface p-4" dangerouslySetInnerHTML={{ __html: exampleHtml }} />
+          <div className="prose-pm mt-2 max-w-none rounded-none bg-surface p-4" dangerouslySetInnerHTML={{ __html: exampleHtml }} />
         </Card>
         <Card className="p-5 lg:col-span-2">
           <CardTitle>Common mistakes</CardTitle>

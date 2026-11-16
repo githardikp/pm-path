@@ -67,8 +67,8 @@ export default function Styleguide() {
       <section aria-labelledby="sg-type">
         <h2 id="sg-type" className="mb-4 text-2xl font-bold">Typography</h2>
         <Card className="space-y-3 p-6">
-          <p className="font-display text-5xl font-bold">Space Grotesk 700</p>
-          <p className="font-display text-2xl font-semibold">Space Grotesk 600 — headings</p>
+          <p className="font-display text-5xl font-bold">Pixelify Sans 600</p>
+          <p className="font-display text-2xl font-semibold">Pixelify Sans 500 for buttons and labels</p>
           <p>Inter 400 at 17px with a 1.7 line height. Body copy stays under about 70 characters per line so it is easy to read for hours.</p>
           <p className="font-medium">Inter 500 — emphasis and labels.</p>
           <p className="font-mono text-sm">JetBrains Mono — SELECT * FROM orders;</p>

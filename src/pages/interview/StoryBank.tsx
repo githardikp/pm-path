@@ -78,7 +78,7 @@ export function StoryBank() {
         <ul className="space-y-1.5" aria-label="Stories">
           {[...STORY_THEMES.map((t) => ({ id: t.id, title: t.title })), ...extras.map((e) => ({ id: e.id, title: e.title || 'Untitled' }))].map((t) => (
             <li key={t.id}>
-              <button onClick={() => setOpen(t.id)} aria-current={open === t.id} className={cx('flex w-full items-center justify-between gap-2 rounded-[8px] border-2 px-3 py-2 text-left text-sm', open === t.id ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}>
+              <button onClick={() => setOpen(t.id)} aria-current={open === t.id} className={cx('flex w-full items-center justify-between gap-2 rounded-none border-2 px-3 py-2 text-left text-sm', open === t.id ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}>
                 <span>{t.title}</span>
                 {filled(byId.get(t.id)) && <Check size={16} aria-label="ready" />}
               </button>

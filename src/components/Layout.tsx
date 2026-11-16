@@ -1,5 +1,5 @@
 import { useEffect, useState, Suspense, type ReactNode } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Sun,
@@ -30,6 +30,10 @@ import { cx } from './ui';
 import { SearchDialog } from './SearchDialog';
 import { useTheme } from '../lib/theme';
 import { useSync } from '../lib/cloud/sync';
+import { Sprite, LOGO } from './pixel';
+import { Toaster } from './Toast';
+import { Modal } from './Modal';
+
 
 interface NavItem {
   to: string;
@@ -67,6 +71,16 @@ const NAV: { group: string; items: NavItem[] }[] = [
   },
 ];
 
+const GO_KEYS = [
+  { key: 'd', to: '/dashboard', label: 'Dashboard' },
+  { key: 't', to: '/today', label: 'Today' },
+  { key: 'r', to: '/roadmap', label: 'Roadmap' },
+  { key: 'k', to: '/toolkit', label: 'Toolkit' },
+  { key: 'i', to: '/interview', label: 'Interview prep' },
+  { key: 'j', to: '/jobs', label: 'Job search' },
+  { key: 's', to: '/settings', label: 'Settings' },
+];
+
 const MOBILE_TABS: NavItem[] = [
   { to: '/dashboard', label: 'Home', icon: <LayoutDashboard size={20} aria-hidden /> },
   { to: '/today', label: 'Today', icon: <Sun size={20} aria-hidden /> },
@@ -76,12 +90,9 @@ const MOBILE_TABS: NavItem[] = [
 
 function Logo({ compact }: { compact?: boolean }) {
   return (
-    <NavLink to="/dashboard" className="flex items-center gap-2 rounded-[10px]" aria-label="PM Path dashboard">
-      <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden>
-        <rect x="4" y="4" width="56" height="56" rx="12" fill="#D9CCF5" stroke="#1E1E24" strokeWidth="4" />
-        <path d="M20 44V20h14a8 8 0 0 1 0 16H20" fill="none" stroke="#1E1E24" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      {!compact && <span className="font-display text-lg font-bold">PM Path</span>}
+    <NavLink to="/dashboard" className="flex items-center gap-2 rounded-none" aria-label="PM Path dashboard">
+      <Sprite art={LOGO} scale={3} />
+      {!compact && <span className="font-display text-xl font-bold">PM Path</span>}
     </NavLink>
   );
 }
@@ -95,8 +106,8 @@ function SideLink({ item, collapsed, onClick }: { item: NavItem; collapsed?: boo
       title={collapsed ? item.label : undefined}
       className={({ isActive }) =>
         cx(
-          'nav-icon flex items-center gap-3 rounded-[10px] border-2 px-3 py-2 font-display text-[0.92rem] font-semibold transition-colors',
-          isActive ? 'border-line bg-butter text-onpastel shadow-[2px_2px_0_var(--c-line)]' : 'border-transparent hover:border-line',
+          'nav-icon flex items-center gap-3 rounded-none border-2 px-3 py-2 font-display text-[0.92rem] font-semibold transition-colors',
+          isActive ? 'border-line bg-butter text-onpastel ' : 'border-transparent hover:border-line',
           collapsed && 'justify-center px-0',
         )
       }
@@ -118,7 +129,7 @@ function SyncBadge({ collapsed }: { collapsed?: boolean }) {
       to="/account"
       title={collapsed ? label : undefined}
       className={({ isActive }) =>
-        cx('nav-icon flex items-center gap-3 rounded-[10px] border-2 px-3 py-2 font-display text-[0.92rem] font-semibold', isActive ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line', collapsed && 'justify-center px-0')
+        cx('nav-icon flex items-center gap-3 rounded-none border-2 px-3 py-2 font-display text-[0.92rem] font-semibold', isActive ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line', collapsed && 'justify-center px-0')
       }
     >
       <span className="relative">
@@ -154,6 +165,8 @@ export function Layout() {
   });
   const [moreOpen, setMoreOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const navigate = useNavigate();
   const data = useStore();
   const s = streak(data);
 
@@ -166,14 +179,30 @@ export function Layout() {
   }, [collapsed]);
 
   useEffect(() => {
+    let gAt = 0;
     const onKey = (e: KeyboardEvent) => {
+      const typing = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLSelectElement || (e.target as HTMLElement)?.isContentEditable;
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setSearchOpen(true);
+        return;
       }
-      if (e.key === '/' && !(e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || (e.target as HTMLElement)?.isContentEditable)) {
+      if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === '/') {
         e.preventDefault();
         setSearchOpen(true);
+      } else if (e.key === '?') {
+        e.preventDefault();
+        setHelpOpen(true);
+      } else if (e.key === 'g') {
+        gAt = Date.now();
+      } else if (Date.now() - gAt < 1200) {
+        const to = GO_KEYS.find((k) => k.key === e.key.toLowerCase())?.to;
+        gAt = 0;
+        if (to) {
+          e.preventDefault();
+          navigate(to);
+        }
       }
     };
     window.addEventListener('keydown', onKey);
@@ -203,14 +232,14 @@ export function Layout() {
           {!collapsed && (
             <>
               <span className="flex-1">Search…</span>
-              <kbd className="rounded border border-line/40 px-1 text-xs">⌘K</kbd>
+              <kbd className="px-1 font-mono text-xs" style={{ boxShadow: '0 0 0 1px var(--c-line)' }}>⌘K</kbd>
             </>
           )}
         </button>
         <nav className="scrollbar-thin flex-1 overflow-y-auto px-3 pb-3">
           {NAV.map((g) => (
             <div key={g.group} className="mb-3">
-              {!collapsed && <div className="px-3 pb-1 pt-2 font-display text-xs font-bold uppercase tracking-widest text-muted">{g.group}</div>}
+              {!collapsed && <div className="px-3 pb-1 pt-2 font-display text-xs font-bold text-muted">{g.group}</div>}
               <div className="space-y-1">
                 {g.items.map((it) => (
                   <SideLink key={it.to} item={it} collapsed={collapsed} />
@@ -224,12 +253,17 @@ export function Layout() {
           <SideLink item={{ to: '/settings', label: 'Settings', icon: <SettingsIcon size={18} aria-hidden /> }} collapsed={collapsed} />
           <button
             onClick={() => setCollapsed((c) => !c)}
-            className={cx('flex w-full items-center gap-3 rounded-[10px] border-2 border-transparent px-3 py-2 font-display text-[0.92rem] font-semibold hover:border-line', collapsed && 'justify-center px-0')}
+            className={cx('flex w-full items-center gap-3 rounded-none border-2 border-transparent px-3 py-2 font-display text-[0.92rem] font-semibold hover:border-line', collapsed && 'justify-center px-0')}
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {collapsed ? <PanelLeftOpen size={18} aria-hidden /> : <PanelLeftClose size={18} aria-hidden />}
             {!collapsed && 'Collapse'}
           </button>
+          {!collapsed && (
+            <button onClick={() => setHelpOpen(true)} className="w-full px-3 pt-1 text-left text-xs text-muted hover:underline">
+              Press ? for keyboard shortcuts
+            </button>
+          )}
         </div>
       </aside>
 
@@ -281,7 +315,7 @@ export function Layout() {
       {moreOpen && (
         <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="All pages">
           <button className="absolute inset-0 bg-black/30" aria-label="Close menu" onClick={() => setMoreOpen(false)} />
-          <div className="pop-in absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-[16px] border-t-2 border-line bg-surface p-4">
+          <div className="pop-in absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-none border-t-2 border-line bg-surface p-4">
             <div className="mb-2 flex items-center justify-between">
               <span className="font-display text-lg font-bold">All pages</span>
               <button className="nb-btn nb-btn-sm" onClick={() => setMoreOpen(false)} aria-label="Close">
@@ -290,7 +324,7 @@ export function Layout() {
             </div>
             {NAV.map((g) => (
               <div key={g.group} className="mb-3">
-                <div className="px-1 pb-1 font-display text-xs font-bold uppercase tracking-widest text-muted">{g.group}</div>
+                <div className="px-1 pb-1 font-display text-xs font-bold text-muted">{g.group}</div>
                 <div className="grid grid-cols-2 gap-2">
                   {g.items.map((it) => (
                     <SideLink key={it.to} item={it} onClick={() => setMoreOpen(false)} />
@@ -307,6 +341,27 @@ export function Layout() {
       )}
 
       {searchOpen && <SearchDialog onClose={() => setSearchOpen(false)} />}
+      {helpOpen && (
+        <Modal title="Keyboard shortcuts" onClose={() => setHelpOpen(false)}>
+          <dl className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3">
+            {[
+              ['Ctrl / ⌘ + K', 'Search everything'],
+              ['/', 'Search everything'],
+              ['?', 'Show this list'],
+              ...GO_KEYS.map((k) => [`g then ${k.key}`, `Go to ${k.label}`]),
+              ['Esc', 'Close a dialog'],
+            ].map(([k, v]) => (
+              <div key={k + v} className="contents">
+                <dt>
+                  <kbd className="nb-chip font-mono">{k}</kbd>
+                </dt>
+                <dd>{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </Modal>
+      )}
+      <Toaster />
     </div>
   );
 }

@@ -36,7 +36,7 @@ export function MockLogView() {
         <p className="nb-label mb-2">Average score by dimension (1–4)</p>
         <ul className="grid gap-2 sm:grid-cols-3">
           {RUBRIC.map((r) => (
-            <li key={r.id} className="flex justify-between rounded-[8px] border-2 border-line px-3 py-1.5 text-sm">
+            <li key={r.id} className="flex justify-between rounded-none border-2 border-line px-3 py-1.5 text-sm">
               <span>{r.label}</span>
               <span className="font-mono font-bold">{avg(r.id)}</span>
             </li>

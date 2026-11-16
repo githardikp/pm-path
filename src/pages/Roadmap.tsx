@@ -19,7 +19,9 @@ export default function Roadmap() {
         </Link>
         .
       </PageHeader>
-      <PhasePathIllustration className="mb-8 w-full max-w-[640px]" />
+      <div className="nb-card mb-10 p-3 sm:p-4">
+        <PhasePathIllustration heroWeek={Math.max(1, cur)} className="block w-full" title={`Map of the 14 weeks. You are on week ${Math.max(1, cur)}.`} />
+      </div>
 
       <ol className="space-y-10">
         {PHASES.map((p) => (
@@ -49,7 +51,7 @@ export default function Roadmap() {
                         aria-hidden
                         className={cx('absolute -left-[35px] top-5 grid h-5 w-5 place-items-center rounded-full border-2 border-line', st === 'done' ? 'bg-mint' : st === 'in_progress' ? 'bg-butter' : st === 'blocked' ? 'bg-pink' : 'bg-surface')}
                       />
-                      <Link to={`/week/${n}`} className="block rounded-[10px]" aria-label={`Week ${n === 15 ? '15+' : n}: ${w.title}. ${statusLabel(st)}.`}>
+                      <Link to={`/week/${n}`} className="block rounded-none" aria-label={`Week ${n === 15 ? '15+' : n}: ${w.title}. ${statusLabel(st)}.`}>
                         <Card hover className={cx('p-4 sm:p-5', isCurrent && 'outline outline-[3px] outline-offset-2 outline-[#F2C94C]')}>
                           <div className="flex flex-wrap items-start justify-between gap-2">
                             <div>

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-const COLORS = ['#D9CCF5', '#FFD6E0', '#CFE6FF', '#CDEFD9', '#FFF1B8', '#FFDCC2'];
+const COLORS = ['#c7b6ff', '#ffb3cf', '#9fd3ff', '#9eedc1', '#ffe27a', '#ffc096'];
 
 /** A small confetti burst + “DONE” stamp. Disappears after ~2.4s. Respects reduced motion via CSS. */
 export function Celebrate({ label, onDone }: { label: string; onDone: () => void }) {
@@ -36,19 +36,19 @@ export function Celebrate({ label, onDone }: { label: string; onDone: () => void
         {pieces.map((p) => (
           <span
             key={p.id}
-            className="absolute left-1/2 top-1/2 block h-3 w-2 border border-[#1E1E24]"
+            className="absolute left-1/2 top-1/2 block h-3 w-3"
             style={
               {
                 background: p.c,
                 '--x': `${p.x}px`,
                 '--y': `${p.y}px`,
                 '--r': `${p.r}deg`,
-                animation: `cf 1.6s ${p.d}ms cubic-bezier(.2,.7,.4,1) both`,
+                animation: `cf 1.6s ${p.d}ms steps(10) both`,
               } as React.CSSProperties
             }
           />
         ))}
-        <div className="stamp nb-card bg-pink px-8 py-4 text-center" style={{ boxShadow: '6px 6px 0 #1E1E24', borderWidth: 3, color: '#1E1E24' }}>
+        <div className="stamp nb-card bg-pink px-8 py-4 text-center" style={{ color: '#1d1a33' }}>
           <div className="font-display text-4xl font-bold tracking-wider">DONE!</div>
           <div className="font-display text-sm font-semibold">{label}</div>
         </div>

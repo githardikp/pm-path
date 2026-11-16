@@ -5,7 +5,7 @@ export function applyTheme(theme: 'light' | 'dark' | 'system') {
   const dark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   document.documentElement.classList.toggle('dark', dark);
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', dark ? '#1E1E24' : '#FFF8EE');
+  if (meta) meta.setAttribute('content', dark ? '#16142A' : '#F4F0FF');
 }
 
 export function useTheme() {

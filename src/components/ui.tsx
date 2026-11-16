@@ -208,7 +208,7 @@ export function Callout({ kind, title, children }: { kind: keyof typeof CALLOUT_
   const m = CALLOUT_META[kind];
   return (
     <div role="note" className={cx('nb-card p-4', `bg-${m.color}`)}>
-      <p className="mb-1 flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wide">
+      <p className="mb-1 flex items-center gap-2 font-display text-sm font-bold">
         {m.icon}
         {title ?? m.title}
       </p>
@@ -231,7 +231,7 @@ export function PageHeader({ title, kicker, children, color }: { title: ReactNod
 export function Stat({ label, value, sub }: { label: string; value: ReactNode; sub?: ReactNode }) {
   return (
     <div>
-      <div className="font-display text-xs font-semibold uppercase tracking-wide text-muted">{label}</div>
+      <div className="font-display text-xs font-semibold text-muted">{label}</div>
       <div className="font-display text-2xl font-bold leading-tight">{value}</div>
       {sub && <div className="text-xs text-muted">{sub}</div>}
     </div>
@@ -252,7 +252,7 @@ export function Reveal({ label, children }: { label: string; children: ReactNode
 
 export function EmptyState({ title, children, art = 'folder' }: { title: string; children?: ReactNode; art?: 'board' | 'chat' | 'notebook' | 'calendar' | 'search' | 'folder' }) {
   return (
-    <div className="pop-in rounded-[10px] border-2 border-dashed border-line/50 p-6 text-center">
+    <div className="pop-in rounded-none border-2 border-dashed border-line/50 p-6 text-center">
       <EmptyIllustration kind={art} className="mx-auto mb-2" />
       <p className="font-display font-bold">{title}</p>
       {children && <div className="mt-1 text-sm text-muted">{children}</div>}

@@ -39,7 +39,7 @@ function TemplateList() {
           const started = !!drafts[t.id] && drafts[t.id] !== t.blank;
           return (
             <li key={t.id}>
-              <Link to={`/templates/${t.id}`} className="block h-full rounded-[10px]">
+              <Link to={`/templates/${t.id}`} className="block h-full rounded-none">
                 <Card hover className="flex h-full flex-col p-5">
                   <div className="mb-2 flex flex-wrap items-center gap-2">
                     <Chip color={CAT_COLOR[t.category]}>{t.category}</Chip>
@@ -137,7 +137,7 @@ function TemplateDetail({ t }: { t: TemplateDoc }) {
                 </Button>
               </div>
               {preview ? (
-                <div className="prose-pm max-w-none rounded-[8px] border-2 border-line bg-surface p-4" dangerouslySetInnerHTML={{ __html: previewHtml }} />
+                <div className="prose-pm max-w-none rounded-none border-2 border-line bg-surface p-4" dangerouslySetInnerHTML={{ __html: previewHtml }} />
               ) : (
                 <Textarea
                   aria-label={`${t.title} draft`}
@@ -162,7 +162,7 @@ function TemplateDetail({ t }: { t: TemplateDoc }) {
             <div className="prose-pm prose-sm max-w-none text-onpastel" dangerouslySetInnerHTML={{ __html: guideHtml }} />
           </Card>
           {next && (
-            <Link to={`/templates/${next.id}`} className="block rounded-[10px]">
+            <Link to={`/templates/${next.id}`} className="block rounded-none">
               <Card hover className="p-4">
                 <p className="nb-label">Next template</p>
                 <p className="font-semibold">{next.title}</p>

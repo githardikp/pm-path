@@ -1,3 +1,4 @@
+import { copyText } from '../components/Toast';
 import { Plus, Trash2, RotateCcw, Copy } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { uid } from '../lib/uid';
@@ -45,7 +46,7 @@ function NodeRow({ node, depth, onChange }: { node: TreeNode; depth: number; onC
     <li>
       <div className="flex items-center gap-2" style={{ paddingLeft: depth * 24 }}>
         {depth > 0 && <span aria-hidden className="h-0.5 w-4 bg-ink" />}
-        <div className={cx('flex flex-1 flex-wrap items-center gap-2 rounded-[10px] border-2 border-line p-2', KIND_META[node.kind].color, node.kind !== 'sub' && 'text-onpastel')}>
+        <div className={cx('flex flex-1 flex-wrap items-center gap-2 rounded-none border-2 border-line p-2', KIND_META[node.kind].color, node.kind !== 'sub' && 'text-onpastel')}>
           <Input aria-label="Metric name" value={node.label} onChange={(e) => onChange(node.id, (n) => ({ ...n, label: e.target.value }))} className="min-w-[12rem] flex-1 bg-surface" />
           <Select aria-label="Metric type" value={node.kind} onChange={(e) => onChange(node.id, (n) => ({ ...n, kind: e.target.value as TreeNode['kind'] }))} className="w-36 bg-surface">
             {Object.entries(KIND_META).map(([k, m]) => (
@@ -91,7 +92,7 @@ export default function MetricsTree() {
           <RotateCcw size={16} aria-hidden /> Load P1 example
         </Button>
         <Button onClick={() => setTree({ id: uid(), label: 'Your North Star', kind: 'north', children: [] })}>Start blank</Button>
-        <Button onClick={() => navigator.clipboard?.writeText(treeToText(root))}>
+        <Button onClick={() => void copyText(treeToText(root), 'Tree copied as text')}>
           <Copy size={16} aria-hidden /> Copy as text
         </Button>
       </div>

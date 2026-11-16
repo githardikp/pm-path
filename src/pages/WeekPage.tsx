@@ -140,7 +140,7 @@ export default function WeekPage() {
                 return (
                   <li key={tool.id}>
                     {to ? (
-                      <Link to={to} className="block h-full rounded-[10px]">
+                      <Link to={to} className="block h-full rounded-none">
                         <Card hover color={tool.builtIn ? 'butter' : undefined} className="h-full p-4">
                           {inner}
                         </Card>
@@ -245,7 +245,7 @@ export default function WeekPage() {
             </CardTitle>
             <ul className="space-y-2">
               {schedule.map((b) => (
-                <li key={b.key} className={cx('flex items-start gap-3 rounded-[8px] border-2 px-3 py-2 text-sm', b.kind === 'lunch' ? 'border-dashed border-line/40' : 'border-line')}>
+                <li key={b.key} className={cx('flex items-start gap-3 rounded-none border-2 px-3 py-2 text-sm', b.kind === 'lunch' ? 'border-dashed border-line/40' : 'border-line')}>
                   <span className="w-[88px] shrink-0 font-mono text-xs leading-5">
                     {b.start}–{b.end}
                   </span>

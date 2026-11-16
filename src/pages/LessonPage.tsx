@@ -51,11 +51,11 @@ export function Toc({ headings }: { headings: { id: string; text: string }[] }) 
   }, [headings]);
   return (
     <nav aria-label="On this page" className="nb-card p-4">
-      <p className="mb-2 font-display text-xs font-bold uppercase tracking-widest text-muted">On this page</p>
+      <p className="mb-2 font-display text-xs font-bold text-muted">On this page</p>
       <ol className="space-y-1 text-sm">
         {headings.map((h) => (
           <li key={h.id}>
-            <a href={`#${h.id}`} className={`block rounded-[6px] px-2 py-1 leading-snug ${active === h.id ? 'bg-butter font-semibold text-onpastel' : 'hover:underline'}`}>
+            <a href={`#${h.id}`} className={`block rounded-none px-2 py-1 leading-snug ${active === h.id ? 'bg-butter font-semibold text-onpastel' : 'hover:underline'}`}>
               {h.text}
             </a>
           </li>

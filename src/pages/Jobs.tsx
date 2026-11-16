@@ -160,7 +160,7 @@ function Board() {
                   setOver(null);
                   move(e.dataTransfer.getData('text/plain'), s.id);
                 }}
-                className={cx('min-h-[320px] rounded-[10px] border-2 border-line p-2', `bg-${s.color}`, over === s.id && 'outline-dashed outline-2 outline-offset-2 outline-ink')}
+                className={cx('min-h-[320px] rounded-none border-2 border-line p-2', `bg-${s.color}`, over === s.id && 'outline-dashed outline-2 outline-offset-2 outline-ink')}
               >
                 <div className="mb-2 flex items-center justify-between px-1 text-onpastel">
                   <h3 className="font-display text-sm font-bold">{s.label}</h3>
@@ -170,7 +170,7 @@ function Board() {
                   {col.map((a) => (
                     <AppCard key={a.id} a={a} onEdit={() => setEditing(a)} onMove={(st) => move(a.id, st)} />
                   ))}
-                  <button onClick={() => setEditing(blank(s.id))} className="w-full rounded-[8px] border-2 border-dashed border-line/50 py-1.5 text-xs font-semibold text-onpastel hover:border-line">
+                  <button onClick={() => setEditing(blank(s.id))} className="w-full rounded-none border-2 border-dashed border-line/50 py-1.5 text-xs font-semibold text-onpastel hover:border-line">
                     + Add
                   </button>
                 </div>
@@ -234,7 +234,7 @@ function Outreach() {
           const v = outreachOn(data, day);
           return (
             <div key={day} className="flex flex-1 flex-col items-center gap-1">
-              <div className="flex h-16 w-full items-end rounded-[6px] border-2 border-line bg-surface">
+              <div className="flex h-16 w-full items-end rounded-none border-2 border-line bg-surface">
                 <div className={cx('w-full rounded-[3px]', v >= OUTREACH_TARGET ? 'bg-mint' : 'bg-butter')} style={{ height: `${Math.min(100, (v / OUTREACH_TARGET) * 100)}%` }} />
               </div>
               <span className={cx('text-xs', day === d && 'font-bold')}>{formatDate(day, { weekday: 'short' })}</span>

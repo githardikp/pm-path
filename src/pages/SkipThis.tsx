@@ -93,7 +93,7 @@ export default function SkipThis() {
                 <span className="font-semibold">Why skip: </span>
                 {s.why}
               </p>
-              <p className="mt-2 rounded-[8px] border-2 border-line bg-mint p-3 text-[0.95rem] text-onpastel">
+              <p className="mt-2 rounded-none border-2 border-line bg-mint p-3 text-[0.95rem] text-onpastel">
                 <span className="font-semibold">Do this instead: </span>
                 {s.instead}
               </p>

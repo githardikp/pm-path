@@ -195,6 +195,8 @@ export interface Settings {
   dailyHours: number;
   theme: 'light' | 'dark' | 'system';
   apiKey: string;
+  /** Set once the first-run setup on the Dashboard is finished or skipped. */
+  onboarded?: boolean;
 }
 
 export interface ProgressData {

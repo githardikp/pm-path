@@ -228,7 +228,7 @@ export default function FunnelExplorer() {
                   <XAxis type="number" tick={axis} />
                   <YAxis type="category" dataKey="step" tick={axis} width={100} />
                   <Tooltip contentStyle={{ background: 'var(--c-surface)', border: '2px solid var(--c-line)', borderRadius: 10, color: 'var(--c-ink)' }} />
-                  <Bar isAnimationActive={false} dataKey="users" fill="#9DB9F2" stroke="#1E1E24" strokeWidth={1.5} />
+                  <Bar isAnimationActive={false} dataKey="users" fill="#9DB9F2" stroke="#1d1a33" strokeWidth={1.5} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -254,8 +254,8 @@ export default function FunnelExplorer() {
                   <YAxis tick={axis} unit="%" domain={[50, 100]} />
                   <Tooltip contentStyle={{ background: 'var(--c-surface)', border: '2px solid var(--c-line)', borderRadius: 10, color: 'var(--c-ink)' }} />
                   <Legend />
-                  <Bar isAnimationActive={false} dataKey="before" fill="#B9E4C9" stroke="#1E1E24" />
-                  <Bar isAnimationActive={false} dataKey="after" fill="#F6B9C9" stroke="#1E1E24" />
+                  <Bar isAnimationActive={false} dataKey="before" fill="#B9E4C9" stroke="#1d1a33" />
+                  <Bar isAnimationActive={false} dataKey="after" fill="#F6B9C9" stroke="#1d1a33" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -274,7 +274,7 @@ export default function FunnelExplorer() {
                 <YAxis tick={axis} unit="%" />
                 <Tooltip contentStyle={{ background: 'var(--c-surface)', border: '2px solid var(--c-line)', borderRadius: 10, color: 'var(--c-ink)' }} />
                 <Legend />
-                <ReferenceLine y={20} stroke="#1E1E24" strokeDasharray="4 4" />
+                <ReferenceLine y={20} stroke="#1d1a33" strokeDasharray="4 4" />
                 <Line isAnimationActive={false} dataKey="Organic" stroke="#3FA36B" strokeWidth={2.5} />
                 <Line isAnimationActive={false} dataKey="Paid social" stroke="#E07A9B" strokeWidth={2.5} />
                 <Line isAnimationActive={false} dataKey="First-order coupon" stroke="#C9A227" strokeWidth={2.5} />

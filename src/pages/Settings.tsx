@@ -1,3 +1,4 @@
+import { toast } from '../components/Toast';
 import { useRef, useState } from 'react';
 import { Download, Upload, RotateCcw, Moon, Sun, Monitor, KeyRound } from 'lucide-react';
 import { useStore, getData } from '../store/useStore';
@@ -17,6 +18,7 @@ export default function Settings() {
   const doExport = () => {
     downloadText(`pm-path-backup-${today()}.json`, serializeBackup(getData()));
     setMsg({ kind: 'ok', text: 'Backup downloaded. Keep it somewhere safe, like Google Drive.' });
+    toast('Backup downloaded');
   };
 
   const doImport = async (file: File) => {
@@ -30,6 +32,7 @@ export default function Settings() {
     if (!window.confirm(`Import this backup${when}? It will replace all progress currently in this browser.`)) return;
     replaceAll(res.data);
     setMsg({ kind: 'ok', text: 'Backup imported. Your progress has been restored.' });
+    toast('Backup imported');
   };
 
   const doReset = () => {

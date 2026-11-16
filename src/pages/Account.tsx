@@ -178,7 +178,7 @@ export default function Account() {
                 <p className="truncate text-sm text-muted">{user.email}</p>
               </div>
             </div>
-            <div className="rounded-[10px] border-2 border-line p-4">
+            <div className="rounded-none border-2 border-line p-4">
               <p className="flex items-center gap-2 font-display font-semibold">
                 <span
                   className={cx(
@@ -226,7 +226,7 @@ export default function Account() {
             <Button variant="primary" className="w-full sm:w-auto" disabled={busy || !ready} onClick={() => void signInWithGoogle()}>
               <GoogleMark /> {ready ? 'Continue with Google' : 'Loading sign-in…'}
             </Button>
-            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-muted" aria-hidden>
+            <div className="flex items-center gap-3 text-xs font-semibold text-muted" aria-hidden>
               <span className="h-0.5 flex-1 bg-line/20" /> or <span className="h-0.5 flex-1 bg-line/20" />
             </div>
             {sent ? (

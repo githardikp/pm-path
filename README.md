@@ -68,8 +68,8 @@ From week 12, the **Job search** board tracks every application from Wishlist to
 
 | Area | What you get |
 |---|---|
-| Home page | What PM Path is, how it works and the 14-week plan at a glance, with a one-click start |
-| Dashboard | Overall progress, current week, study hours, streak and what to do next |
+| Home page | A pixel-art map of the 14 weeks, what PM Path is and how it works, with a one-click start |
+| Dashboard | A first-run setup, then your current week, overall progress, streak, hours and what to do next. Press **?** anywhere for keyboard shortcuts |
 | Account | Optional sign-in with Google or an email link to sync progress across devices |
 | Roadmap and weeks | 14 weeks in 4 phases, each with topics, a deliverable and a checkpoint |
 | Lessons | 101 original lessons with diagrams, worked examples, practice exercises with answers and quizzes |
@@ -182,4 +182,4 @@ To change the plan, edit `src/data/curriculum.ts`. To edit a lesson, edit its Ma
 
 ### Tech
 
-Vite, React, TypeScript, Tailwind CSS v4, React Router, Zustand, Recharts, sql.js, MiniSearch, marked, lucide icons, self-hosted fonts via Fontsource, vite-plugin-pwa, Firebase (optional sync) and Vitest. All illustrations are hand-written inline SVG and all animation is CSS, so there are no image downloads, and motion switches off for people who set “reduce motion” on their device. No runtime CDNs and no paid services.
+Vite, React, TypeScript, Tailwind CSS v4, React Router, Zustand, Recharts, sql.js, MiniSearch, marked, lucide icons, self-hosted fonts via Fontsource, vite-plugin-pwa, Firebase (optional sync) and Vitest. The look is retro pixel art with neo-brutalist pixel borders, using Pixelify Sans for headings. All sprites and scenes are original pixel art drawn in code (`src/components/pixel.tsx`) and all animation is CSS, so there are no image downloads, and motion switches off for people who set “reduce motion” on their device. No runtime CDNs and no paid services.

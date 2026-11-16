@@ -21,7 +21,7 @@ function readDrafts(): Record<string, string> {
 function ResultTable({ result }: { result: QueryResult }) {
   const rows = result.rows.slice(0, 200);
   return (
-    <div className="overflow-x-auto rounded-[10px] border-2 border-line">
+    <div className="overflow-x-auto rounded-none border-2 border-line">
       <table className="w-full text-left font-mono text-xs">
         <thead className="bg-butter text-onpastel">
           <tr>
@@ -151,7 +151,7 @@ export default function SqlPlayground() {
           </div>
           <ul className="scrollbar-thin mt-3 max-h-[46vh] space-y-1 overflow-y-auto pr-1">
             <li>
-              <button onClick={() => choose('free')} className={cx('w-full rounded-[8px] border-2 px-2 py-1.5 text-left text-sm', problemId === 'free' ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}>
+              <button onClick={() => choose('free')} className={cx('w-full rounded-none border-2 px-2 py-1.5 text-left text-sm', problemId === 'free' ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}>
                 ✎ Free play (no checking)
               </button>
             </li>
@@ -159,7 +159,7 @@ export default function SqlPlayground() {
               <li key={p.id}>
                 <button
                   onClick={() => choose(p.id)}
-                  className={cx('flex w-full items-center gap-2 rounded-[8px] border-2 px-2 py-1.5 text-left text-sm', problemId === p.id ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}
+                  className={cx('flex w-full items-center gap-2 rounded-none border-2 px-2 py-1.5 text-left text-sm', problemId === p.id ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line')}
                 >
                   <span className="w-6 font-mono text-xs text-muted">{SQL_PROBLEMS.indexOf(p) + 1 || i + 1}</span>
                   <span className="flex-1 leading-snug">{p.title}</span>
@@ -209,8 +209,8 @@ export default function SqlPlayground() {
                 <Eye size={14} aria-hidden /> {showSolution ? 'Hide solution' : 'Model solution'}
               </Button>
             </div>
-            {showHint && <p className="pop-in mt-3 rounded-[8px] bg-mint p-3 text-sm text-onpastel">{problem.hint}</p>}
-            {showSolution && <pre className="pop-in mt-3 overflow-x-auto rounded-[8px] border-2 border-line bg-codebg p-3 font-mono text-xs">{problem.solution}</pre>}
+            {showHint && <p className="pop-in mt-3 rounded-none bg-mint p-3 text-sm text-onpastel">{problem.hint}</p>}
+            {showSolution && <pre className="pop-in mt-3 overflow-x-auto rounded-none border-2 border-line bg-codebg p-3 font-mono text-xs">{problem.solution}</pre>}
           </Card>
         ) : (
           <Card className="p-5">

@@ -94,7 +94,7 @@ export default function EvalLabeler() {
       <p className="text-sm">
         Pairs compared: <strong>{a.total}</strong> · Agreement: <strong>{pct(a.accuracy)}</strong> · Failure recall: <strong>{pct(a.failRecall)}</strong> · Failure precision: <strong>{pct(a.failPrecision)}</strong>
       </p>
-      {a.failRecall !== null && a.failRecall < 0.8 && <p className="rounded-[8px] bg-pink p-2 text-sm text-onpastel">The judge misses many real failures. Read the false-pass cases and tighten the judge’s rubric before relying on it.</p>}
+      {a.failRecall !== null && a.failRecall < 0.8 && <p className="rounded-none bg-pink p-2 text-sm text-onpastel">The judge misses many real failures. Read the false-pass cases and tighten the judge’s rubric before relying on it.</p>}
     </div>
   );
 
