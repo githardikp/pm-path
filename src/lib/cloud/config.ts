@@ -1,7 +1,7 @@
 /**
- * Firebase web config. These values are public identifiers (not secrets); access is
- * protected by Firestore security rules (see firestore.rules). Set them as build-time
- * env vars: locally in `.env.local`, on GitHub in repo Settings → Secrets and variables → Actions → Variables.
+ * Firebase web config, read at build time from `.env.production` (committed) or `.env.local`.
+ * These values are public identifiers, not secrets; access is protected by Firestore security
+ * rules (see firestore.rules). Leave them unset to build PM Path without sign-in.
  */
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string | undefined,
