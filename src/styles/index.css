@@ -400,6 +400,8 @@ code, kbd, pre { font-family: var(--font-mono); }
 @keyframes frame-b { 0%, 49.9% { opacity: 0; } 50%, 100% { opacity: 1; } }
 .ill-bob { animation: ill-bob 1.2s steps(1) infinite; }
 .ill-blink { animation: ill-blink 1.4s steps(1) infinite; }
+@keyframes ill-blink-slow { 0%, 100% { opacity: 1; } 85% { opacity: 1; } 90% { opacity: 0.35; } }
+.ill-blink-slow { animation: ill-blink-slow 3s steps(1) infinite; }
 .ill-drift { animation: ill-drift 9s steps(8) infinite alternate; }
 .walking .frame-a { animation: frame-a 0.3s 0.5s linear var(--walk-n, 10); }
 .walking .frame-b { opacity: 0; animation: frame-b 0.3s 0.5s linear var(--walk-n, 10); }

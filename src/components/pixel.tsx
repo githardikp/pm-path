@@ -51,13 +51,22 @@ export function runs(art: Art, palette: Record<string, string> = PAL) {
   return out;
 }
 
-/** Pixel rects for use inside a larger <svg>. */
+/**
+ * Pixel rects for use inside a larger <svg>. The position lives on an outer group and any
+ * animation class on an inner one, so a CSS transform animation (bob, drift) never
+ * overrides where the sprite is placed.
+ */
 export function Pixels({ art, x = 0, y = 0, palette, className, style }: { art: Art; x?: number; y?: number; palette?: Record<string, string>; className?: string; style?: React.CSSProperties }) {
+  const rects = runs(art, palette).map((r, i) => <rect key={i} x={r.x} y={r.y} width={r.w} height={1} fill={r.c} />);
   return (
-    <g transform={`translate(${x} ${y})`} className={className} style={style}>
-      {runs(art, palette).map((r, i) => (
-        <rect key={i} x={r.x} y={r.y} width={r.w} height={1} fill={r.c} />
-      ))}
+    <g transform={x || y ? `translate(${x} ${y})` : undefined}>
+      {className || style ? (
+        <g className={className} style={style}>
+          {rects}
+        </g>
+      ) : (
+        rects
+      )}
     </g>
   );
 }
@@ -123,7 +132,20 @@ export const COIN: Art = ['..kkkk..', '.kyyyyk.', 'kyywyyYk', 'kyywyyYk', 'kyyyy
 
 export const HEART: Art = ['.kk...kk.', 'kppk.kppk', 'kpwppppPk', 'kppppppPk', '.kppppPk.', '..kpppk..', '...kPk...', '....k....'];
 
-export const FLAG: Art = ['kk.........', 'kmkkkkkk...', 'kmmmmmmmk..', 'kmwmmmmmmk.', 'kmmmmmmMk..', 'kmkkkkkk...', 'kk.........', 'kk.........', 'kk.........', 'kk.........', 'kk.........', 'kkk........'];
+export const FLAG: Art = [
+  'kk.........',
+  'kmkkkkkk...',
+  'kmmmmmmmk..',
+  'kmwmmmmmmk.',
+  'kmmmmmmMk..',
+  'kmkkkkkk...',
+  'kk.........',
+  'kk.........',
+  'kk.........',
+  'kk.........',
+  'kk.........',
+  'kkk........',
+];
 
 export const TROPHY: Art = [
   '.kkkkkkkkkk.',
@@ -158,29 +180,9 @@ export const SCROLL: Art = [
   '.kkkkkkkkkk.',
 ];
 
-export const CHEST: Art = [
-  '.kkkkkkkkkkkk.',
-  'kooooooooooOOk',
-  'kobbbbbbbbbbOk',
-  'kkkkkkyykkkkkk',
-  'kbbbbkyYkbbbBk',
-  'kbbbbbkkbbbbBk',
-  'kbbbbbbbbbbbBk',
-  'kBBBBBBBBBBBBk',
-  '.kkkkkkkkkkkk.',
-];
+export const CHEST: Art = ['.kkkkkkkkkkkk.', 'kooooooooooOOk', 'kobbbbbbbbbbOk', 'kkkkkkyykkkkkk', 'kbbbbkyYkbbbBk', 'kbbbbbkkbbbbBk', 'kbbbbbbbbbbbBk', 'kBBBBBBBBBBBBk', '.kkkkkkkkkkkk.'];
 
-export const CHAT: Art = [
-  '.kkkkkkkkkkk.',
-  'kwwwwwwwwwwwk',
-  'kwwwwwwwwwwgk',
-  'kwwkwwkwwkwgk',
-  'kwwwwwwwwwwgk',
-  'kwggggggggggk',
-  '.kkkkwkkkkkk.',
-  '....kwk......',
-  '....kk.......',
-];
+export const CHAT: Art = ['.kkkkkkkkkkk.', 'kwwwwwwwwwwwk', 'kwwwwwwwwwwgk', 'kwwkwwkwwkwgk', 'kwwwwwwwwwwgk', 'kwggggggggggk', '.kkkkwkkkkkk.', '....kwk......', '....kk.......'];
 
 export const CALENDAR: Art = [
   '..k....k....',
@@ -211,29 +213,9 @@ export const GLASS: Art = [
   '..........kk',
 ];
 
-export const BRIEFCASE: Art = [
-  '....kkkk....',
-  '...k....k...',
-  '.kkkkkkkkkk.',
-  'kbbbbbbbbbBk',
-  'kbbbbbbbbbBk',
-  'kkkkkyykkkkk',
-  'kbbbbkkbbbBk',
-  'kbbbbbbbbbBk',
-  'kBBBBBBBBBBk',
-  '.kkkkkkkkkk.',
-];
+export const BRIEFCASE: Art = ['....kkkk....', '...k....k...', '.kkkkkkkkkk.', 'kbbbbbbbbbBk', 'kbbbbbbbbbBk', 'kkkkkyykkkkk', 'kbbbbkkbbbBk', 'kbbbbbbbbbBk', 'kBBBBBBBBBBk', '.kkkkkkkkkk.'];
 
-export const CLOUD: Art = [
-  '......kkkk......',
-  '.....kwwwwk.....',
-  '..kkkwwwwwwkkk..',
-  '.kwwwwwwwwwwwwk.',
-  'kwwwwwwwwwwwwwwk',
-  'kwwwwwwwwwwwwwgk',
-  '.kgwwwwwwwwwwgk.',
-  '..kkkkkkkkkkkk..',
-];
+export const CLOUD: Art = ['......kkkk......', '.....kwwwwk.....', '..kkkwwwwwwkkk..', '.kwwwwwwwwwwwwk.', 'kwwwwwwwwwwwwwwk', 'kwwwwwwwwwwwwwgk', '.kgwwwwwwwwwwgk.', '..kkkkkkkkkkkk..'];
 
 export const LAPTOP: Art = [
   '..kkkkkkkkkkkk..',
@@ -249,7 +231,9 @@ export const LAPTOP: Art = [
   'kkkkkkkkkkkkkkkk',
 ];
 
-export const PHONE: Art = ['kkkkkkkk', 'kGkkkkGk', 'kkssssk.', 'kssssssk', 'kslllssk', 'kssssssk', 'ksmmsssk', 'kssssssk', 'ksyyyssk', 'kssssssk', 'kkkkkkkk', 'kGGwwGGk', 'kkkkkkkk'].map((r) => r.padEnd(8, 'k').slice(0, 8));
+export const PHONE: Art = ['kkkkkkkk', 'kGkkkkGk', 'kkssssk.', 'kssssssk', 'kslllssk', 'kssssssk', 'ksmmsssk', 'kssssssk', 'ksyyyssk', 'kssssssk', 'kkkkkkkk', 'kGGwwGGk', 'kkkkkkkk'].map((r) =>
+  r.padEnd(8, 'k').slice(0, 8),
+);
 
 export const SIGNPOST: Art = [
   '......kk........',
@@ -272,16 +256,7 @@ export const SIGNPOST: Art = [
 
 export const TREE: Art = ['...kkk...', '..kmmmk..', '.kmmwmmk.', '.kmmmmMk.', 'kmmmmmmMk', 'kmmmmmMMk', '.kMMMMMk.', '..kkbkk..', '....bk...', '...kbBk..'];
 
-export const MOUNTAIN: Art = [
-  '.......kk.......',
-  '......kwwk......',
-  '.....kwwwgk.....',
-  '....kGGwgGGk....',
-  '...kGGGGGGGGk...',
-  '..kGGGGGGGGGGk..',
-  '.kGGGGGGGGGGGGk.',
-  'kGGGGGGGGGGGGGGk',
-];
+export const MOUNTAIN: Art = ['.......kk.......', '......kwwk......', '.....kwwwgk.....', '....kGGwgGGk....', '...kGGGGGGGGk...', '..kGGGGGGGGGGk..', '.kGGGGGGGGGGGGk.', 'kGGGGGGGGGGGGGGk'];
 
 export const CASTLE: Art = [
   'kk.kk.kk......kk.kk.kk',
@@ -327,24 +302,8 @@ export const CHECKLIST_ART: Art = [
 ];
 
 /** The pet: a little pixel blob with a squash-and-stretch hop. */
-export const PET_A: Art = [
-  '...kkkk...',
-  '..kmmmmk..',
-  '.kmwmmmmk.',
-  'kmmmkmmkMk',
-  'kmmmmmmmMk',
-  'kMMmmmmMMk',
-  '.kkkkkkkk.',
-];
-export const PET_B: Art = [
-  '..........',
-  '...kkkk...',
-  '.kkmwmmkk.',
-  'kmmmkmmkMk',
-  'kmmmmmmmMk',
-  'kMMMMMMMMk',
-  '.kkkkkkkk.',
-];
+export const PET_A: Art = ['...kkkk...', '..kmmmmk..', '.kmwmmmmk.', 'kmmmkmmkMk', 'kmmmmmmmMk', 'kMMmmmmMMk', '.kkkkkkkk.'];
+export const PET_B: Art = ['..........', '...kkkk...', '.kkmwmmkk.', 'kmmmkmmkMk', 'kmmmmmmmMk', 'kMMMMMMMMk', '.kkkkkkkk.'];
 
 export const BIRD_A: Art = ['.k...k.', 'k.k.k.k', '...k...'];
 export const BIRD_B: Art = ['.......', 'kkk.kkk', '...k...'];

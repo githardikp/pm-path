@@ -146,10 +146,10 @@ export default function Landing() {
 
             <div className="nb-card mt-14 p-3 sm:p-5">
               <WorldMap
-                loop={!returning}
-                heroWeek={returning ? week : 15}
+                loop
+                youWeek={returning ? week : undefined}
                 className="block w-full"
-                title={returning ? `The PM Path map. You and your pet are on week ${week}.` : 'The PM Path map: an adventurer and their pet walk four phases, collecting coins, to the Offer castle.'}
+                title={`The PM Path map: an adventurer and their pet walk four phases, collecting coins, to the Offer castle.${returning ? ` A marker shows you are on week ${week}.` : ''}`}
               />
             </div>
             <ol className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 font-display text-sm sm:hidden" aria-label="The four phases">

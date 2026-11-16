@@ -151,7 +151,15 @@ ${COINS.map((_, i) => `.${id} .coin${i} { animation: ${id}-coin${i} ${total}s 0.
  * The adventurer and their pet walk the path; coins are collected on the way.
  * With `loop`, they walk into the castle and start again; otherwise they stop at `heroWeek`.
  */
-export function WorldMap({ heroWeek = 15, animate = true, loop = false, labels = true, className, ...props }: P & { heroWeek?: number; animate?: boolean; loop?: boolean; labels?: boolean }) {
+export function WorldMap({
+  heroWeek = 15,
+  animate = true,
+  loop = false,
+  labels = true,
+  youWeek,
+  className,
+  ...props
+}: P & { heroWeek?: number; animate?: boolean; loop?: boolean; labels?: boolean; youWeek?: number }) {
   const rawId = useId();
   const id = 'map' + rawId.replace(/[^a-zA-Z0-9]/g, '');
   const moving = animate && !reducedMotion();
@@ -161,11 +169,12 @@ export function WorldMap({ heroWeek = 15, animate = true, loop = false, labels =
   const x1 = loop ? 183 : Math.round(weekX(heroWeek) - 6);
   const walk = Math.max(2.4, (x1 - x0) / 24);
   const coinGone = (cx: number) => !moving && cx + 4 <= x1 + 6;
+  const petRest = x1 - 13 >= 0 ? x1 - 13 : x1 + 13;
   return (
     <Scene viewBox="0 16 202 82" className={[id, 'world-map', className].filter(Boolean).join(' ')} {...props}>
       {moving && <style>{mapCss(id, { x0, x1, y, walk, loop })}</style>}
       {/* sky */}
-      <Pixels art={CLOUD} x={24} y={22} className="ill-drift" />
+      <Pixels art={CLOUD} x={52} y={21} className="ill-drift" />
       <Pixels art={CLOUD} x={112} y={19} className="ill-drift" style={{ animationDelay: '-7s' }} />
       {moving && (
         <g className="bird-fly">
@@ -246,8 +255,23 @@ export function WorldMap({ heroWeek = 15, animate = true, loop = false, labels =
         </g>
       )}
 
+      {youWeek && (
+        <g transform={`translate(${Math.round(weekX(youWeek)) - 6} ${GROUND - 40})`} className="ill-blink-slow">
+          <rect x={0} y={0} width={13} height={7} fill="var(--c-pink)" />
+          <rect x={0} y={-1} width={13} height={1} fill="#1d1a33" />
+          <rect x={0} y={7} width={13} height={1} fill="#1d1a33" />
+          <rect x={-1} y={0} width={1} height={7} fill="#1d1a33" />
+          <rect x={13} y={0} width={1} height={7} fill="#1d1a33" />
+          <rect x={5} y={8} width={3} height={1} fill="#1d1a33" />
+          <rect x={6} y={9} width={1} height={1} fill="#1d1a33" />
+          <text x={6.5} y={5.4} textAnchor="middle" fontFamily="'Pixelify Sans', sans-serif" fontSize="5" fontWeight="700" fill="#1d1a33">
+            You
+          </text>
+        </g>
+      )}
+
       {/* the pet */}
-      <g className={moving ? 'mv-pet' : undefined} transform={moving ? undefined : `translate(${x1 - 13} ${y + 7})`}>
+      <g className={moving ? 'mv-pet' : undefined} transform={moving ? undefined : `translate(${petRest} ${y + 7})`}>
         <Pixels art={PET_A} className={moving ? 'pet-a' : undefined} />
         {moving && <Pixels art={PET_B} className="pet-b" />}
       </g>
