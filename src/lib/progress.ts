@@ -1,5 +1,5 @@
 import type { ProgressData, Week, Status, Application } from '../data/types';
-import { WEEKS, PHASES, buildSchedule } from '../data/curriculum';
+import { WEEKS, PHASES } from '../data/curriculum';
 import { addDays, daysBetween, mondayOf, today, weekdayOf, parseISODate } from './dates';
 
 export const CORE_WEEKS = WEEKS.filter((w) => w.n <= 14);
@@ -125,10 +125,6 @@ export function minutesOn(data: ProgressData, date: string): number {
 
 export function minutesBetween(data: ProgressData, start: string, end: string): number {
   return data.timeLogs.filter((l) => l.date >= start && l.date <= end).reduce((s, l) => s + l.minutes, 0);
-}
-
-export function minutesForBlock(data: ProgressData, date: string, blockKey: string): number {
-  return data.timeLogs.filter((l) => l.date === date && l.blockKey === blockKey).reduce((s, l) => s + l.minutes, 0);
 }
 
 export function hoursThisWeek(data: ProgressData, on: string = today()): number {
@@ -272,10 +268,6 @@ export function isTaskDone(data: ProgressData, week: Week, date: string, task: D
   if (task.kind === 'deliverable' && task.ref) return !!data.deliverables[week.n]?.checklist[Number(task.ref)];
   if (task.kind === 'checkpoint') return checkpointState(data, week) === 'pass';
   return !!data.todayChecks[date]?.[task.id];
-}
-
-export function scheduleFor(week: Week) {
-  return buildSchedule(week);
 }
 
 // ---------- Jobs ----------

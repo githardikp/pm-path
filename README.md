@@ -23,7 +23,7 @@ People switching into product management usually hit the same walls:
 | Problem | What PM Path does |
 |---|---|
 | Scattered material | 101 original lessons in one place, in the order you need them, each with worked Indian examples, exercises with answers and a short quiz |
-| No plan | A 14-week roadmap mapped to real dates from your start date, plus a **Today** page that turns each day into timed blocks |
+| No plan | A 14-week roadmap mapped to real dates from your start date, plus a **Today** page with a short list of the day’s tasks |
 | Learning without proof | Every week ends in a **portfolio deliverable**. By week 11 you have four projects, including a live AI product with real users |
 | Paid tools | 42 step-by-step guides for free tools (Figma, Notion, Jira, PostHog, BigQuery, Postman, Google AI Studio and more), and 10 practice tools built into the site |
 | Interviews too late | Interview practice is part of every day from week 1, with 207 questions, a timed mock mode and a STAR story bank |
@@ -46,17 +46,9 @@ The home page explains the plan; **Start the plan** takes you to the Dashboard. 
 Week 15 onwards is a repeatable job-search routine that runs until you have an offer.
 
 ### 3. Work through each day
-The **Today** page splits the day into blocks, each with a timer and a checklist:
+The **Today** page shows a short list of the day’s tasks: lessons to read, tool practice, a piece of this week’s portfolio build, interview practice and outreach. Tick them off in any order and at your own pace.
 
-| Block | Time | What you do |
-|---|---|---|
-| Learn | 2.5 h | Read the day’s lessons, do the exercises and quizzes |
-| Hands-on with tools | 2.25 h | Follow a tool guide or use a built-in tool (SQL, RICE, A/B tests and more) |
-| Portfolio deliverable | 2.5 h | Build this week’s project piece using a template |
-| Interview practice | 1 h | Answer questions from the bank or run a timed mock |
-| Write-up and applications | 0.75 h | Post your learning, update LinkedIn, send outreach |
-
-You end the day with a 3-question reflection. The timers feed your study-hour chart on the Dashboard.
+A single **study timer** tracks your hours (or add time yourself if you forget), and an optional end-of-day reflection helps you pick tomorrow’s first task.
 
 ### 4. Check in every week
 Each week ends with a **checkpoint** to confirm you’re ready to move on. On Sunday, the **Weekly review** asks 7 guided questions and fills in your stats automatically (lessons done, hours studied, quiz scores, applications sent).
@@ -69,7 +61,7 @@ From week 12, the **Job search** board tracks every application from Wishlist to
 | Area | What you get |
 |---|---|
 | Home page | A pixel-art map of the 14 weeks, what PM Path is and how it works, with a one-click start |
-| Dashboard | A first-run setup, then your current week, overall progress, streak, hours and what to do next. Press **?** anywhere for keyboard shortcuts |
+| Dashboard | A first-run setup, then your progress, the next lesson and this week’s goal. Press **?** anywhere for keyboard shortcuts |
 | Account | Optional sign-in with Google or an email link to sync progress across devices |
 | Roadmap and weeks | 14 weeks in 4 phases, each with topics, a deliverable and a checkpoint |
 | Lessons | 101 original lessons with diagrams, worked examples, practice exercises with answers and quizzes |
@@ -87,7 +79,7 @@ Search everything with **Ctrl/Cmd + K** or **/**.
 
 ## Your data and privacy
 
-- No account needed. All progress (lessons, quiz scores, notes, timers, reflections, applications, mocks, stories, portfolio, reviews and tool work) is saved in your browser under the key `pm-path-state`.
+- No account needed. All progress (lessons, quiz scores, notes, study time, reflections, applications, mocks, stories, portfolio, reviews and tool work) is saved in your browser under the key `pm-path-state`.
 - **Optional sign-in and sync:** on the **Account** page you can sign in with Google or an emailed link. Your progress is then saved to your account and kept in step across every device you sign in on, usually within a couple of seconds. It still works offline: changes made without internet sync when you reconnect. Only you can read your data. The first time you sign in on a device that already has different progress, PM Path shows both copies and asks which one to keep. Signing out keeps the copy on that device; **Delete cloud copy** removes it from your account.
 - Your Gemini API key is never uploaded, even when signed in.
 - The other optional network call is in **Prompt Lab**: if you add your own Gemini API key in Settings, prompts go straight from your browser to Google. The key is stored only in your browser. Everything else works without it.

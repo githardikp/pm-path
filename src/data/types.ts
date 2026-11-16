@@ -26,28 +26,6 @@ export interface ToolRef {
   builtIn?: string;
 }
 
-export type BlockKind =
-  | 'learn'
-  | 'tools'
-  | 'deliverable'
-  | 'interview'
-  | 'writeup'
-  | 'lunch'
-  | 'portfolio'
-  | 'applications'
-  | 'practice'
-  | 'mocks'
-  | 'build';
-
-export interface ScheduleBlock {
-  key: string;
-  label: string;
-  kind: BlockKind;
-  start: string; // "09:00"
-  end: string; // "11:30"
-  hours: number;
-}
-
 export type ProjectId = 'P1' | 'P2' | 'P3' | 'P4';
 
 export interface Week {
@@ -64,8 +42,6 @@ export interface Week {
     project?: ProjectId;
   };
   checkpoint: { summary: string; criteria: string[] };
-  /** Daily split in hours, if it differs from the standard day. */
-  split?: { kind: BlockKind; label: string; hours: number }[];
 }
 
 // ---------- Progress state ----------

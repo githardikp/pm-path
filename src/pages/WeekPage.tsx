@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, BookOpen, Wrench, Target, Flag, Clock, NotebookPen, ExternalLink, Check, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Wrench, Target, Flag, NotebookPen, ExternalLink, Check, X } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { WEEKS, PHASES, WEEKLY_RHYTHM, buildSchedule } from '../data/curriculum';
+import { WEEKS, PHASES, WEEKLY_RHYTHM } from '../data/curriculum';
 import { weekStatus, weekDates, topicPct, deliverableStatus, checkpointState, bestQuizScore, weekPct } from '../lib/progress';
 import { formatDate } from '../lib/dates';
 import { hasLesson, hasToolGuide } from '../lib/content';
@@ -41,7 +41,6 @@ export default function WeekPage() {
   const { start, end } = weekDates(data.settings.startDate, n);
   const deliv = data.deliverables[n] ?? { checklist: [], link: '', status: 'not_started' as Status };
   const cp = data.checkpoints[n] ?? { criteria: [], result: null, notes: '' };
-  const schedule = buildSchedule(week);
   const prev = WEEKS.find((w) => w.n === n - 1);
   const next = WEEKS.find((w) => w.n === n + 1);
   const label = n === 15 ? 'Week 15+' : `Week ${n}`;
@@ -239,22 +238,6 @@ export default function WeekPage() {
         </div>
 
         <aside className="space-y-6">
-          <Card className="p-5">
-            <CardTitle icon={<Clock size={18} aria-hidden />} className="mb-3">
-              Daily schedule
-            </CardTitle>
-            <ul className="space-y-2">
-              {schedule.map((b) => (
-                <li key={b.key} className={cx('flex items-start gap-3 rounded-none border-2 px-3 py-2 text-sm', b.kind === 'lunch' ? 'border-dashed border-line/40' : 'border-line')}>
-                  <span className="w-[88px] shrink-0 font-mono text-xs leading-5">
-                    {b.start}–{b.end}
-                  </span>
-                  <span className="font-medium leading-5">{b.label}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3 text-xs text-muted">{week.split ? 'This week uses its own daily split.' : 'Standard 9-hour day.'}</p>
-          </Card>
           <Card className="p-5">
             <CardTitle className="mb-3">Weekly rhythm</CardTitle>
             <ul className="space-y-1.5 text-sm">

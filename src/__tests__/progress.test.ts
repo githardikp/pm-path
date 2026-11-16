@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { defaultData, normalize } from '../store/useStore';
-import { WEEKS, buildSchedule } from '../data/curriculum';
+import { WEEKS } from '../data/curriculum';
 import { currentWeekNumber, overallPct, weekStatus, streak, topicPct, statusFromChecklist, callbackRate, hoursThisWeek, weekPct, tasksForDay } from '../lib/progress';
 import { mondayOf, addDays } from '../lib/dates';
 import type { Application } from '../data/types';
@@ -82,17 +82,7 @@ describe('hours', () => {
   });
 });
 
-describe('schedule', () => {
-  it('uses the standard 9-hour day by default', () => {
-    const s = buildSchedule(w1);
-    expect(s.filter((b) => b.kind !== 'lunch').reduce((a, b) => a + b.hours, 0)).toBe(9);
-  });
-  it('lays out custom splits with lunch', () => {
-    const w9 = WEEKS.find((w) => w.n === 9)!;
-    const s = buildSchedule(w9);
-    expect(s.some((b) => b.kind === 'lunch')).toBe(true);
-    expect(s.filter((b) => b.kind !== 'lunch').reduce((a, b) => a + b.hours, 0)).toBeCloseTo(9);
-  });
+describe('daily tasks', () => {
   it('spreads every topic across the week', () => {
     const d = defaultData();
     const ids = new Set<string>();

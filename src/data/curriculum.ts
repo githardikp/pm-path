@@ -1,19 +1,10 @@
-import type { Phase, Week, ScheduleBlock, BlockKind } from './types';
+import type { Phase, Week } from './types';
 
 export const PHASES: Phase[] = [
   { id: 1, title: 'PM foundations', color: 'lavender', weeks: [1, 2, 3, 4], summary: 'What PMs do, discovery, strategy and execution. Ends with a full PRD for your P1 product.' },
   { id: 2, title: 'Data, tech and UX', color: 'sky', weeks: [5, 6, 7, 8], summary: 'Metrics, SQL, experiments, technical fluency and usability testing. Ends with a published P1 case study.' },
   { id: 3, title: 'AI product management', color: 'mint', weeks: [9, 10, 11], summary: 'LLMs, prompting, RAG, agents, evals, cost and safety. Ends with a live AI product used by 20+ real people.' },
   { id: 4, title: 'Getting hired', color: 'peach', weeks: [12, 13, 14, 15], summary: 'Portfolio, resume, outreach and interview practice until you have an offer.' },
-];
-
-export const STANDARD_SCHEDULE: ScheduleBlock[] = [
-  { key: 'learn', label: 'Learn', kind: 'learn', start: '09:00', end: '11:30', hours: 2.5 },
-  { key: 'tools', label: 'Hands-on with tools', kind: 'tools', start: '11:45', end: '14:00', hours: 2.25 },
-  { key: 'lunch', label: 'Lunch', kind: 'lunch', start: '14:00', end: '15:00', hours: 1 },
-  { key: 'deliverable', label: 'Portfolio deliverable', kind: 'deliverable', start: '15:00', end: '17:30', hours: 2.5 },
-  { key: 'interview', label: 'Interview practice', kind: 'interview', start: '17:45', end: '18:45', hours: 1 },
-  { key: 'writeup', label: 'Write-up / LinkedIn / applications', kind: 'writeup', start: '18:45', end: '19:30', hours: 0.75 },
 ];
 
 export const WEEKLY_RHYTHM: Record<number, string> = {
@@ -416,13 +407,6 @@ export const WEEKS: Week[] = [
         'Named 2+ UX patterns that protect users (citations, editable output, feedback, fallbacks)',
       ],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 2 },
-      { kind: 'tools', label: 'Hands-on with tools', hours: 2.5 },
-      { kind: 'deliverable', label: 'Deliverable', hours: 3 },
-      { kind: 'interview', label: 'Interview practice', hours: 1 },
-      { kind: 'writeup', label: 'Write-up', hours: 0.5 },
-    ],
   },
   {
     n: 10,
@@ -465,13 +449,6 @@ export const WEEKS: Week[] = [
         'Can name the specific change that caused the difference',
       ],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 2 },
-      { kind: 'tools', label: 'Hands-on with tools', hours: 3 },
-      { kind: 'deliverable', label: 'Deliverable', hours: 2.5 },
-      { kind: 'interview', label: 'Interview practice', hours: 1 },
-      { kind: 'writeup', label: 'Write-up', hours: 0.5 },
-    ],
   },
   {
     n: 11,
@@ -514,13 +491,6 @@ export const WEEKS: Week[] = [
       summary: '20+ users, and one data-driven change shipped.',
       criteria: ['20+ real users', 'One change shipped because of data or feedback, with before/after numbers'],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 1.5 },
-      { kind: 'tools', label: 'Hands-on with tools', hours: 2 },
-      { kind: 'build', label: 'Build and user outreach', hours: 4 },
-      { kind: 'interview', label: 'Interview practice', hours: 1 },
-      { kind: 'writeup', label: 'Write-up', hours: 0.5 },
-    ],
   },
   // ---------------- Phase 4 ----------------
   {
@@ -560,12 +530,6 @@ export const WEEKS: Week[] = [
       summary: '2 working PMs review your resume and portfolio, and you fix everything they flag.',
       criteria: ['PM reviewer 1 gave feedback', 'PM reviewer 2 gave feedback', 'Every flagged issue fixed'],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 1 },
-      { kind: 'portfolio', label: 'Portfolio / resume', hours: 4 },
-      { kind: 'applications', label: 'Applications / outreach', hours: 2.5 },
-      { kind: 'interview', label: 'Interview practice', hours: 1.5 },
-    ],
   },
   {
     n: 13,
@@ -601,12 +565,6 @@ export const WEEKS: Week[] = [
       summary: '2 mock partners in a row rate you “would advance”.',
       criteria: ['Mock partner A rated “would advance”', 'Mock partner B (next mock) rated “would advance”'],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 1 },
-      { kind: 'practice', label: 'Practice', hours: 4 },
-      { kind: 'mocks', label: 'Mocks', hours: 1.5 },
-      { kind: 'applications', label: 'Applications', hours: 2.5 },
-    ],
   },
   {
     n: 14,
@@ -641,12 +599,6 @@ export const WEEKS: Week[] = [
       summary: 'Rated “would advance” in 3 mocks in a row, across round types.',
       criteria: ['Mock 1: “would advance”', 'Mock 2: “would advance”', 'Mock 3: “would advance”', 'The 3 mocks covered at least 2 different round types'],
     },
-    split: [
-      { kind: 'learn', label: 'Learn', hours: 0.5 },
-      { kind: 'practice', label: 'Practice', hours: 3.5 },
-      { kind: 'mocks', label: 'Mocks', hours: 2 },
-      { kind: 'applications', label: 'Applications', hours: 3 },
-    ],
   },
   {
     n: 15,
@@ -674,47 +626,8 @@ export const WEEKS: Week[] = [
       summary: 'Every Sunday: callback rate under 10% → fix resume and targeting. Callbacks but no offers → fix interviewing.',
       criteria: ['Callback rate calculated this week', 'One concrete fix made to the weakest stage'],
     },
-    split: [
-      { kind: 'applications', label: 'Applications + referrals', hours: 3 },
-      { kind: 'practice', label: 'Interview practice', hours: 2.5 },
-      { kind: 'mocks', label: 'Mocks', hours: 1 },
-      { kind: 'build', label: 'P4 improvements', hours: 2 },
-      { kind: 'writeup', label: 'Posting and follow-ups', hours: 0.5 },
-    ],
   },
 ];
-
-/** Lay out a daily split into timed blocks, starting 9:00 with 15-min breaks and lunch 14:00–15:00. */
-export function buildSchedule(week: Week): ScheduleBlock[] {
-  if (!week.split) return STANDARD_SCHEDULE;
-  const blocks: ScheduleBlock[] = [];
-  let cur = 9 * 60;
-  let lunchDone = false;
-  const fmt = (m: number) => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
-  const insertLunch = () => {
-    blocks.push({ key: 'lunch', label: 'Lunch', kind: 'lunch', start: fmt(cur), end: fmt(cur + 60), hours: 1 });
-    cur += 60;
-    lunchDone = true;
-  };
-  week.split.forEach((s, i) => {
-    let mins = Math.round(s.hours * 60);
-    if (!lunchDone && cur >= 13 * 60 + 30) insertLunch();
-    // split a block that crosses 14:00 around lunch
-    if (!lunchDone && cur < 14 * 60 && cur + mins > 14 * 60 + 15) {
-      const first = 14 * 60 - cur;
-      blocks.push({ key: `${s.kind}-${i}a`, label: s.label, kind: s.kind as BlockKind, start: fmt(cur), end: fmt(cur + first), hours: first / 60 });
-      cur += first;
-      insertLunch();
-      mins -= first;
-      blocks.push({ key: `${s.kind}-${i}b`, label: `${s.label} (cont.)`, kind: s.kind, start: fmt(cur), end: fmt(cur + mins), hours: mins / 60 });
-      cur += mins + 15;
-      return;
-    }
-    blocks.push({ key: `${s.kind}-${i}`, label: s.label, kind: s.kind, start: fmt(cur), end: fmt(cur + mins), hours: mins / 60 });
-    cur += mins + 15;
-  });
-  return blocks;
-}
 
 export const ALL_TOPICS = WEEKS.flatMap((w) => w.topics.map((tp) => ({ ...tp, week: w.n })));
 

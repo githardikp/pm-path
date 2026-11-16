@@ -5,7 +5,7 @@ Where the build stands, and exactly where to resume.
 ## Done
 - [x] Step 1: scaffold, design tokens, `/styleguide`, layout (sidebar + mobile tabs)
 - [x] Step 2: data model (`src/data/types.ts`), curriculum (`src/data/curriculum.ts`), Zustand store with localStorage persistence, JSON export/import, Settings
-- [x] Step 3: Dashboard, Roadmap, Week page, Lesson page (reading bar, TOC, quiz, notes), Today (timers, checklist, reflection)
+- [x] Step 3: Dashboard, Roadmap, Week page, Lesson page (reading bar, TOC, quiz, notes), Today (task list, study timer, reflection; the fixed timetable was removed later)
 
 ## Content (Step 4)
 Lessons live in `src/content/week-XX/<topic-id>.md`. Tool guides live in `src/content/tools/w<N>-<tool-id>.md`.

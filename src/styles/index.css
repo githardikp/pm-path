@@ -374,6 +374,17 @@ code, kbd, pre { font-family: var(--font-mono); }
 @keyframes pop-in { from { transform: translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
 .pop-in { animation: pop-in 160ms ease-out both; }
 
+/* Anything inside a pastel block keeps light-theme ink, lines and surfaces in both themes,
+   so nested checkboxes, buttons and chips stay readable on the pastel. */
+.dark :is(.bg-lavender, .bg-pink, .bg-sky, .bg-mint, .bg-butter, .bg-peach) * {
+  --c-line: #1d1a33;
+  --c-shadow: #1d1a33;
+  --c-ink: #1d1a33;
+  --c-muted: #46415f;
+  --c-surface: #fffdf7;
+  --c-code-bg: #ece6fb;
+}
+
 /* Illustrations on a pastel fill keep dark ink and light surfaces in both themes */
 :is(.bg-lavender, .bg-pink, .bg-sky, .bg-mint, .bg-butter, .bg-peach) .ill {
   --c-line: #1d1a33;

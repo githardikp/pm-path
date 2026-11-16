@@ -21,7 +21,7 @@ export interface SearchDoc {
 }
 
 const PAGES: SearchDoc[] = [
-  { id: 'page-today', kind: 'Page', title: 'Today', text: 'daily plan time blocks timer checklist reflection', to: '/today' },
+  { id: 'page-today', kind: 'Page', title: 'Today', text: 'daily tasks checklist study timer reflection', to: '/today' },
   { id: 'page-roadmap', kind: 'Page', title: 'Roadmap', text: '14 weeks phases calendar deliverables checkpoints', to: '/roadmap' },
   { id: 'page-jobs', kind: 'Page', title: 'Job search', text: 'applications kanban outreach referrals callback rate Bengaluru APM guide salary', to: '/jobs' },
   { id: 'page-portfolio', kind: 'Page', title: 'Portfolio', text: 'projects P1 P2 P3 P4 case study milestones links', to: '/portfolio' },

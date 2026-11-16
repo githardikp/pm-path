@@ -40,14 +40,6 @@ const STAT_ART: Record<string, Art> = {
   'Interview questions': CHAT,
 };
 
-const DAY = [
-  { t: 'Learn', h: 2.5, c: 'lavender' as Pastel, d: 'Lessons, exercises, quizzes' },
-  { t: 'Practise', h: 2.25, c: 'sky' as Pastel, d: 'SQL, RICE, A/B tests, AI tools' },
-  { t: 'Build', h: 2.5, c: 'mint' as Pastel, d: 'This week’s portfolio piece' },
-  { t: 'Interview', h: 1, c: 'pink' as Pastel, d: 'Questions or a timed mock' },
-  { t: 'Apply', h: 0.75, c: 'butter' as Pastel, d: 'Post, outreach, applications' },
-];
-
 const WORLD_TITLES = ['PM foundations', 'Data, tech and UX', 'AI product management', 'Getting hired'];
 const WORLD_INFO = [
   { learn: 'What PMs do, discovery, strategy, prioritisation, PRDs and launches.', finish: 'A full product case, from teardown to PRD and backlog.' },
@@ -59,27 +51,22 @@ const WORLD_COLOR: Pastel[] = ['lavender', 'sky', 'mint', 'peach'];
 
 const STEPS: { t: string; d: string; art: Art }[] = [
   { t: 'Set your start date', d: 'Every week is pinned to the calendar. Tell it how many hours a day you have.', art: FLAG },
-  { t: 'Open Today each morning', d: 'Your day is split into blocks with a timer and a checklist. Do them in order.', art: CALENDAR },
+  { t: 'Open Today each morning', d: 'A short list of today’s lessons and tasks. Tick them off at your own pace.', art: CALENDAR },
   { t: 'Finish the week’s build', d: 'Use the templates and filled examples, then pass the checkpoint before the next week.', art: CHEST },
   { t: 'Review on Sunday', d: 'Seven questions, with your stats filled in for you. Adjust, then start the next week.', art: TROPHY },
-];
-
-const PROBLEMS: { problem: string; fix: string; art: Art }[] = [
-  { problem: 'Twenty tabs of courses and no order', fix: '101 original lessons in the order you need them, with Indian examples, exercises and quizzes.', art: SCROLL },
-  { problem: '“What do I do today?”', fix: 'The Today page turns every day into timed blocks, mapped to real dates.', art: CALENDAR },
-  { problem: 'Studying with nothing to show', fix: 'Every week ends with a portfolio piece. You finish with four projects, one of them a live AI product.', art: CHEST },
-  { problem: 'Paid courses and tools', fix: '42 guides for free tools and 10 practice tools built into the site. Nothing to buy.', art: COIN },
-  { problem: 'Interview prep left too late', fix: 'Interview practice every day from week 1: 207 questions, timed mocks and a story bank.', art: CHAT },
-  { problem: 'Losing momentum', fix: 'A streak, hours studied, weekly checkpoints and a Sunday review keep you honest.', art: FLAME },
 ];
 
 const FAQ: { q: string; a: ReactNode }[] = [
   { q: 'Is it really free?', a: 'Yes. No subscription, no trial, no paywall. Every tool it recommends has a free tier, and the site itself runs on free hosting.' },
   { q: 'Do I need an account?', a: 'No. Open it and start: progress is saved in your browser. Sign in only if you want the same progress on your phone and laptop.' },
-  { q: 'What if I can’t study 9 hours a day?', a: 'Set your daily hours in Settings. The plan is built around 9 hours, so with fewer hours each week takes longer. The order and the portfolio pieces stay the same.' },
-  { q: 'I don’t have a technical background. Is that OK?', a: 'Yes. SQL, APIs and how LLMs work all start from zero, in plain English, with worked examples and practice.' },
-  { q: 'Which backgrounds is it for?', a: 'Anyone moving into product: engineers, analysts, designers, support and customer success, consultants, marketers and recent graduates. The career lessons show how to turn your background into a strength.' },
-  { q: 'Is it only for India?', a: 'The examples use Indian products and the job-search guide covers Bengaluru, but the skills, tools and interview prep apply anywhere.' },
+  {
+    q: 'How much time does it take?',
+    a: 'The plan is built around full-time study, about 9 hours a day. With less time, simply take longer over each week: the order and the portfolio projects stay the same. Set your own daily target in Settings.',
+  },
+  {
+    q: 'Who is it for?',
+    a: 'Anyone moving into product, with or without a technical background: engineers, analysts, designers, support, consultants, marketers and recent graduates. Technical topics start from zero, in plain English.',
+  },
   { q: 'Does it work offline?', a: 'Yes. After your first visit everything is cached, including the SQL engine. On a phone, use “Add to Home screen” to install it like an app.' },
 ];
 
@@ -107,7 +94,6 @@ export default function Landing() {
   const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   const startTo = returning ? '/today' : '/dashboard';
   const startLabel = returning ? `Continue week ${week >= 15 ? '15+' : week}` : 'Start week 1';
-  const total = DAY.reduce((a, b) => a + b.h, 0);
 
   return (
     <div className="min-h-screen overflow-x-clip">
@@ -125,11 +111,8 @@ export default function Landing() {
             <a href="#plan" className="hover:underline hover:decoration-[3px] hover:underline-offset-4">
               The plan
             </a>
-            <a href="#day" className="hover:underline hover:decoration-[3px] hover:underline-offset-4">
-              A day
-            </a>
-            <a href="#inside" className="hover:underline hover:decoration-[3px] hover:underline-offset-4">
-              Why it works
+            <a href="#how" className="hover:underline hover:decoration-[3px] hover:underline-offset-4">
+              How it works
             </a>
             <a href="#faq" className="hover:underline hover:decoration-[3px] hover:underline-offset-4">
               Questions
@@ -159,7 +142,9 @@ export default function Landing() {
                 From career switcher to product manager in 14 weeks.
               </h1>
               <div>
-                <p className="text-lg text-muted">A free, day-by-day plan for APM, PM and AI PM roles. It teaches each skill, gives you tools to practise it, and tracks you until you have a portfolio and an offer.</p>
+                <p className="text-lg text-muted">
+                  A free, day-by-day plan for APM, PM and AI PM roles. It teaches each skill, gives you tools to practise it, and tracks you until you have a portfolio and an offer.
+                </p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link to={startTo} className="nb-btn nb-btn-primary px-6 py-3.5 text-lg">
                     {startLabel}
@@ -236,31 +221,6 @@ export default function Landing() {
           </ol>
         </Section>
 
-        <Section id="day" title="Every day has the same shape" intro="Five blocks, each with a timer and a checklist. Your hours feed your stats. Sunday is a one-hour review." className="bg-surface/70">
-          <div className="nb-card p-5 sm:p-8">
-            <div className="flex h-16" style={{ boxShadow: '0 0 0 3px var(--c-line)' }} aria-hidden>
-              {DAY.map((b) => (
-                <div key={b.t} className={cx('day-bar grid place-items-center font-display text-sm font-semibold text-onpastel', `bg-${b.c}`)} style={{ width: `${(b.h / total) * 100}%`, boxShadow: 'inset -3px 0 0 var(--c-line)' }}>
-                  <span className="hidden px-1 sm:block">{b.t}</span>
-                </div>
-              ))}
-            </div>
-            <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-              {DAY.map((b) => (
-                <li key={b.t} className="flex gap-3">
-                  <span className={cx('mt-1.5 h-4 w-4 flex-none', `bg-${b.c}`)} style={{ boxShadow: '0 0 0 2px var(--c-line)' }} aria-hidden />
-                  <div>
-                    <p className="font-display text-lg font-semibold">
-                      {b.t} <span className="text-base font-normal text-muted">{b.h} h</span>
-                    </p>
-                    <p className="text-sm text-muted">{b.d}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Section>
-
         <Section id="how" title="How it works">
           <ol className="grid gap-10 md:grid-cols-4">
             {STEPS.map((s, i) => (
@@ -278,20 +238,6 @@ export default function Landing() {
           </ol>
         </Section>
 
-        <Section id="inside" title="Built for the walls every career switcher hits" className="bg-surface/70">
-          <ul className="grid gap-x-12 gap-y-10 md:grid-cols-2">
-            {PROBLEMS.map((p) => (
-              <li key={p.problem} className="flex gap-5">
-                <Sprite art={p.art} scale={4} className="flex-none" />
-                <div>
-                  <h3 className="text-xl font-bold">{p.problem}</h3>
-                  <p className="mt-1 text-muted">{p.fix}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
         <Section id="sync" title="Your progress, on every device" intro="No account needed: progress is saved in your browser from the first click.">
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
             <div className="nb-card bg-lavender p-6">
@@ -300,7 +246,11 @@ export default function Landing() {
             <ul className="space-y-6 text-lg">
               <li>
                 <h3 className="text-xl font-bold">Sign in only if you want to</h3>
-                <p className="text-muted">{cloudEnabled ? 'Use Google or an email link to keep your laptop and phone in step. Only you can read your progress.' : 'Move progress between devices with a one-click export and import.'}</p>
+                <p className="text-muted">
+                  {cloudEnabled
+                    ? 'Use Google or an email link to keep your laptop and phone in step. Only you can read your progress.'
+                    : 'Move progress between devices with a one-click export and import.'}
+                </p>
               </li>
               <li>
                 <h3 className="text-xl font-bold">Works offline</h3>
