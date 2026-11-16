@@ -4,7 +4,6 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   sendSignInLinkToEmail,
   isSignInWithEmailLink,
   signInWithEmailLink,
@@ -48,16 +47,8 @@ export const backend: CloudBackend = {
   async signInGoogle() {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (e) {
-      const code = (e as { code?: string }).code;
-      if (code === 'auth/popup-blocked' || code === 'auth/operation-not-supported-in-this-environment') {
-        await signInWithRedirect(auth, provider);
-        return;
-      }
-      throw e;
-    }
+    // Popup only: redirect sign-in breaks on Safari, which blocks the storage it relies on.
+    await signInWithPopup(auth, provider);
   },
   async sendEmailLink(email, returnUrl) {
     await sendSignInLinkToEmail(auth, email, {

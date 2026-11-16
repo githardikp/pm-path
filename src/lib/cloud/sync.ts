@@ -87,6 +87,7 @@ const isOffline = (): boolean => typeof navigator !== 'undefined' && navigator.o
 const friendly = (e: unknown) => {
   const code = (e as { code?: string })?.code ?? '';
   if (code.includes('popup-closed') || code.includes('cancelled-popup')) return 'Sign-in was cancelled.';
+  if (code.includes('popup-blocked')) return 'Your browser blocked the Google sign-in window. Tap “Continue with Google” again, allow pop-ups for this site, or use the email link below.';
   if (code.includes('network') || code === 'unavailable') return 'You seem to be offline. Your progress is safe on this device and will sync when you’re back online.';
   if (code.includes('permission-denied')) return 'The cloud refused this request. Try signing out and in again.';
   if (code.includes('unauthorized-domain')) return 'This website address isn’t allowed to sign in yet. The site owner needs to add it in Firebase → Authentication → Settings → Authorized domains.';
@@ -242,14 +243,24 @@ export async function syncNow() {
   }
 }
 
-export async function signInWithGoogle() {
+/** True once the Firebase code has downloaded, so a tap can open the Google window immediately. */
+export function backendReady() {
+  return backend !== null;
+}
+
+/**
+ * Must be called straight from a tap. Safari (especially on iPhone) only allows the Google
+ * window to open if nothing is awaited between the tap and opening it, so the Firebase code
+ * is preloaded when the Account page opens and used synchronously here.
+ */
+export function signInWithGoogle(): Promise<void> {
   set({ error: null });
-  try {
-    const b = await loadBackend();
-    await b.signInGoogle();
-  } catch (e) {
-    set({ error: friendly(e) });
-  }
+  const run = (b: CloudBackend) =>
+    b.signInGoogle().catch((e) => {
+      set({ error: friendly(e) });
+    });
+  if (backend) return run(backend);
+  return loadBackend().then(run, (e) => set({ error: friendly(e) }));
 }
 
 export async function sendEmailLink(email: string, returnUrl: string): Promise<boolean> {

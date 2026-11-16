@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Cloud, CloudOff, LogOut, Mail, RefreshCw, ShieldCheck, Trash2, Smartphone, Laptop, Check, Loader } from 'lucide-react';
 import { cloudEnabled } from '../lib/cloud/config';
-import { useSync, signInWithGoogle, sendEmailLink, isEmailLink, completeEmailLink, signOut, syncNow, resolveConflict, deleteCloudData, EMAIL_KEY, type SyncStatus } from '../lib/cloud/sync';
+import { useSync, signInWithGoogle, backendReady, loadBackend, sendEmailLink, isEmailLink, completeEmailLink, signOut, syncNow, resolveConflict, deleteCloudData, EMAIL_KEY, type SyncStatus } from '../lib/cloud/sync';
 import type { ProgressSummary } from '../lib/cloud/decide';
 import { Button, Callout, Card, CardTitle, Chip, Field, Input, PageHeader, cx } from '../components/ui';
 import { SyncIllustration } from '../components/illustrations';
@@ -63,6 +63,17 @@ export default function Account() {
   const [busy, setBusy] = useState(false);
   const [linkPending, setLinkPending] = useState(false);
   const [, tick] = useState(0);
+  const [ready, setReady] = useState(backendReady());
+
+  // Download the sign-in code as soon as this page opens, so tapping Google opens its window
+  // immediately (Safari blocks the window if it opens after a delay).
+  useEffect(() => {
+    if (!cloudEnabled || ready) return;
+    loadBackend().then(
+      () => setReady(true),
+      () => setReady(true),
+    );
+  }, [ready]);
 
   // Finish email-link sign-in when the user returns from their inbox.
   useEffect(() => {
@@ -212,8 +223,8 @@ export default function Account() {
               <CardTitle>Sign in</CardTitle>
               <p className="mt-1 text-sm text-muted">Use the same account on every device.</p>
             </div>
-            <Button variant="primary" className="w-full sm:w-auto" disabled={busy} onClick={() => void signInWithGoogle()}>
-              <GoogleMark /> Continue with Google
+            <Button variant="primary" className="w-full sm:w-auto" disabled={busy || !ready} onClick={() => void signInWithGoogle()}>
+              <GoogleMark /> {ready ? 'Continue with Google' : 'Loading sign-in…'}
             </Button>
             <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-muted" aria-hidden>
               <span className="h-0.5 flex-1 bg-line/20" /> or <span className="h-0.5 flex-1 bg-line/20" />
