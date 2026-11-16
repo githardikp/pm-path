@@ -4,8 +4,36 @@
  * Motion uses stepped CSS animations (see styles/index.css) and switches off for people
  * who prefer reduced motion.
  */
-import type { SVGProps } from 'react';
-import { BRIEFCASE, CALENDAR, CASTLE, CHAT, CHEST, CLOUD, COIN, FLAG, GLASS, HERO_A, HERO_B, LAPTOP, MOUNTAIN, PHONE, Pixels, SCROLL, SIGNPOST, STAR, TREE, type Art } from './pixel';
+import { useId, type SVGProps } from 'react';
+import {
+  BIRD_A,
+  BIRD_B,
+  BRIEFCASE,
+  CALENDAR,
+  CASTLE,
+  CHAT,
+  CHEST,
+  CLOUD,
+  COIN,
+  FLAG,
+  GLASS,
+  HERO_A,
+  HERO_B,
+  LAPTOP,
+  MOUNTAIN,
+  PENNANT_A,
+  PENNANT_B,
+  PET_A,
+  PET_B,
+  PHONE,
+  Pixels,
+  SCROLL,
+  SIGNPOST,
+  SPARK,
+  STAR,
+  TREE,
+  type Art,
+} from './pixel';
 
 type P = SVGProps<SVGSVGElement> & { title?: string };
 
@@ -39,50 +67,131 @@ const PATH_X1 = 166;
 /** x position on the path for a week number (1–15). */
 export const weekX = (week: number) => PATH_X0 + ((Math.min(Math.max(week, 1), 15) - 1) / 14) * (PATH_X1 - PATH_X0);
 
-// Discrete steps make the walk move in whole pixels, like a real sprite.
-function stepTimes(n: number) {
-  return Array.from({ length: n + 1 }, (_, i) => (i / n).toFixed(4)).join(';');
-}
-function stepValues(x0: number, x1: number, y: number, n: number) {
-  return Array.from({ length: n + 1 }, (_, i) => `${Math.round(x0 + ((x1 - x0) * i) / n)} ${y}`).join(';');
+const COINS = [30, 84, 120, 147];
+/** Draw a silhouette sprite in the theme's line colour, so it shows in light and dark mode. */
+const INK_PAL = { k: 'var(--c-line)' };
+
+/**
+ * Builds the CSS for one map's animation. Everything is generated from the same timeline so
+ * the walk, the pet, the coins and the castle stay in sync:
+ *   - loop (new visitors): walk to the castle, step inside, sparkle, start again
+ *   - no loop (returning visitors): walk once to the current week, then idle
+ * Movement uses steps() so sprites move in whole pixels.
+ */
+function mapCss(id: string, o: { x0: number; x1: number; y: number; walk: number; loop: boolean }) {
+  const { x0, x1, y, walk, loop } = o;
+  const total = loop ? walk + 3.2 : walk;
+  const pct = (sec: number) => +((sec / total) * 100).toFixed(2);
+  const steps = Math.max(8, Math.round((x1 - x0) / 2));
+  const wEnd = pct(walk);
+  const kf: string[] = [];
+  // the adventurer
+  kf.push(`@keyframes ${id}-hero {
+    0% { transform: translate(${x0}px, ${y}px); opacity: 1; animation-timing-function: steps(${steps}, end); }
+    ${wEnd}% { transform: translate(${x1}px, ${y}px); opacity: 1; }
+    ${
+      loop
+        ? `${pct(walk + 0.35)}% { transform: translate(${x1}px, ${y}px); opacity: 0; }
+    ${pct(total - 0.3)}% { transform: translate(${x0}px, ${y}px); opacity: 0; }
+    100% { transform: translate(${x0}px, ${y}px); opacity: 1; }`
+        : `100% { transform: translate(${x1}px, ${y}px); opacity: 1; }`
+    }
+  }`);
+  // the pet trails 13 pixels behind, a beat later
+  const petLag = 0.25;
+  kf.push(`@keyframes ${id}-pet {
+    0% { transform: translate(${x0 - 13}px, ${y + 7}px); opacity: 1; animation-timing-function: steps(${steps}, end); }
+    ${pct(Math.min(walk + petLag, total))}% { transform: translate(${x1 - (loop ? 2 : 13)}px, ${y + 7}px); opacity: 1; }
+    ${
+      loop
+        ? `${pct(walk + petLag + 0.35)}% { transform: translate(${x1 - 2}px, ${y + 7}px); opacity: 0; }
+    ${pct(total - 0.3)}% { transform: translate(${x0 - 13}px, ${y + 7}px); opacity: 0; }
+    100% { transform: translate(${x0 - 13}px, ${y + 7}px); opacity: 1; }`
+        : `100% { transform: translate(${x1 - 13}px, ${y + 7}px); opacity: 1; }`
+    }
+  }`);
+  // coins are collected as the adventurer passes them
+  COINS.forEach((cx, i) => {
+    if (cx + 4 > x1 + 6) return;
+    const t = ((cx - x0) / (x1 - x0)) * walk;
+    const a = pct(t);
+    const b = pct(t + 0.45);
+    kf.push(`@keyframes ${id}-coin${i} {
+      0%, ${a}% { transform: translateY(0); opacity: 1; }
+      ${b}% { transform: translateY(-8px); opacity: 0; }
+      ${loop ? `${pct(total - 0.4)}% { transform: translateY(0); opacity: 0; } 100% { transform: translateY(0); opacity: 1; }` : '100% { transform: translateY(-8px); opacity: 0; }'}
+    }`);
+  });
+  // a sparkle burst over the castle when the adventurer steps inside
+  if (loop) {
+    kf.push(`@keyframes ${id}-burst {
+      0%, ${pct(walk + 0.2)}% { opacity: 0; transform: translateY(0); }
+      ${pct(walk + 0.5)}% { opacity: 1; transform: translateY(-3px); }
+      ${pct(walk + 1.6)}% { opacity: 1; transform: translateY(-7px); }
+      ${pct(walk + 2)}%, 100% { opacity: 0; transform: translateY(-9px); }
+    }`);
+  }
+  const iter = loop ? 'infinite' : '1';
+  const legsIter = loop ? 'infinite' : String(Math.max(1, Math.round(walk / 0.3)));
+  return `
+${kf.join('\n')}
+.${id} .mv-hero { animation: ${id}-hero ${total}s 0.4s linear ${iter} both; }
+.${id} .mv-pet { animation: ${id}-pet ${total}s 0.4s linear ${iter} both; }
+.${id} .legs-a { animation: frame-a 0.3s 0.4s linear ${legsIter}; }
+.${id} .legs-b { opacity: 0; animation: frame-b 0.3s 0.4s linear ${legsIter}; }
+.${id} .pet-a { animation: frame-a 0.36s 0.4s linear ${legsIter}; }
+.${id} .pet-b { opacity: 0; animation: frame-b 0.36s 0.4s linear ${legsIter}; }
+${COINS.map((_, i) => `.${id} .coin${i} { animation: ${id}-coin${i} ${total}s 0.4s linear ${iter} both; }`).join('\n')}
+.${id} .burst { opacity: 0; animation: ${id}-burst ${total}s 0.4s linear infinite both; }
+`;
 }
 
 /**
- * The PM Path world map: four worlds (one per phase) on a path from the start flag to the
- * Offer castle. The adventurer walks from the start to `heroWeek` once, then stops.
+ * The PM Path world map: four phases on a path from the start flag to the Offer castle.
+ * The adventurer and their pet walk the path; coins are collected on the way.
+ * With `loop`, they walk into the castle and start again; otherwise they stop at `heroWeek`.
  */
-export function WorldMap({ heroWeek = 15, animate = true, labels = true, ...props }: P & { heroWeek?: number; animate?: boolean; labels?: boolean }) {
-  const walk = animate && !reducedMotion();
+export function WorldMap({ heroWeek = 15, animate = true, loop = false, labels = true, className, ...props }: P & { heroWeek?: number; animate?: boolean; loop?: boolean; labels?: boolean }) {
+  const rawId = useId();
+  const id = 'map' + rawId.replace(/[^a-zA-Z0-9]/g, '');
+  const moving = animate && !reducedMotion();
   const GROUND = 70;
   const y = GROUND - 14;
-  const target = Math.round(weekX(heroWeek) - 6);
-  const start = 2;
-  const steps = Math.max(6, Math.round((target - start) / 2));
-  const dur = Math.max(2, steps * 0.18);
+  const x0 = 2;
+  const x1 = loop ? 183 : Math.round(weekX(heroWeek) - 6);
+  const walk = Math.max(2.4, (x1 - x0) / 24);
+  const coinGone = (cx: number) => !moving && cx + 4 <= x1 + 6;
   return (
-    <Scene viewBox="0 16 202 82" {...props}>
-      {/* sky: clouds and mountains */}
+    <Scene viewBox="0 16 202 82" className={[id, 'world-map', className].filter(Boolean).join(' ')} {...props}>
+      {moving && <style>{mapCss(id, { x0, x1, y, walk, loop })}</style>}
+      {/* sky */}
       <Pixels art={CLOUD} x={24} y={22} className="ill-drift" />
       <Pixels art={CLOUD} x={112} y={19} className="ill-drift" style={{ animationDelay: '-7s' }} />
+      {moving && (
+        <g className="bird-fly">
+          <Pixels art={BIRD_A} className="wing-a" palette={INK_PAL} />
+          <Pixels art={BIRD_B} className="wing-b" palette={INK_PAL} />
+        </g>
+      )}
       <Pixels art={MOUNTAIN} x={56} y={GROUND - 8} />
       <Pixels art={MOUNTAIN} x={66} y={GROUND - 8} />
       <Pixels art={MOUNTAIN} x={126} y={GROUND - 8} />
 
-      {/* the four worlds as ground platforms */}
+      {/* ground: one platform per phase */}
       <rect x={1} y={GROUND} width={8} height={4} fill="var(--c-butter)" />
       <rect x={1} y={GROUND + 4} width={8} height={10} fill="#e7a92a" />
       {WORLDS.map((w) => {
-        const x0 = Math.round(weekX(w.weeks[0]) - 5);
-        const x1 = w.n === 4 ? 201 : Math.round(weekX(w.weeks[1] + 1) - 5);
+        const a = Math.round(weekX(w.weeks[0]) - 5);
+        const b = w.n === 4 ? 201 : Math.round(weekX(w.weeks[1] + 1) - 5);
         return (
           <g key={w.n}>
-            <rect x={x0} y={GROUND} width={x1 - x0} height={4} fill={w.top} />
-            <rect x={x0} y={GROUND + 4} width={x1 - x0} height={10} fill={w.side} />
-            {Array.from({ length: Math.floor((x1 - x0) / 7) }, (_, i) => (
-              <rect key={i} x={x0 + 2 + i * 7} y={GROUND + 7 + (i % 2) * 3} width={3} height={1} fill="#1d1a33" opacity={0.28} />
+            <rect x={a} y={GROUND} width={b - a} height={4} fill={w.top} />
+            <rect x={a} y={GROUND + 4} width={b - a} height={10} fill={w.side} />
+            {Array.from({ length: Math.floor((b - a) / 7) }, (_, i) => (
+              <rect key={i} x={a + 2 + i * 7} y={GROUND + 7 + (i % 2) * 3} width={3} height={1} fill="#1d1a33" opacity={0.28} />
             ))}
             {labels && (
-              <text x={x0 + 1} y={GROUND + 23} className="map-label" fontFamily="'Pixelify Sans', sans-serif" fontSize="5" fontWeight="600" fill="var(--c-ink)">
+              <text x={a + 1} y={GROUND + 23} className="map-label" fontFamily="'Pixelify Sans', sans-serif" fontSize="5" fontWeight="600" fill="var(--c-ink)">
                 {w.n}. {w.name}
               </text>
             )}
@@ -94,43 +203,60 @@ export function WorldMap({ heroWeek = 15, animate = true, labels = true, ...prop
       <rect x={1} y={GROUND + 14} width={200} height={1} fill="#1d1a33" />
       <rect x={0} y={GROUND} width={1} height={14} fill="#1d1a33" />
       <rect x={201} y={GROUND} width={1} height={14} fill="#1d1a33" />
-
-      {/* path stones, one per week; done weeks are dark */}
       {Array.from({ length: 15 }, (_, i) => (
-        <rect key={i} x={Math.round(weekX(i + 1)) - 1} y={GROUND + 1} width={3} height={2} fill="#1d1a33" opacity={i + 1 <= heroWeek ? 0.85 : 0.25} />
+        <rect key={i} x={Math.round(weekX(i + 1)) - 1} y={GROUND + 1} width={3} height={2} fill="#1d1a33" opacity={loop || i + 1 <= heroWeek ? 0.85 : 0.25} />
       ))}
 
       <Pixels art={TREE} x={40} y={GROUND - 10} />
       <Pixels art={TREE} x={102} y={GROUND - 10} />
       <Pixels art={TREE} x={150} y={GROUND - 10} />
 
-      {[30, 84, 120, 147].map((x, i) => (
-        <Pixels key={x} art={COIN} x={x} y={40 + (i % 2) * 5} className="ill-blink" style={{ animationDelay: `${i * 300}ms` }} />
-      ))}
+      {/* coins sit just above the adventurer's head */}
+      {COINS.map((cx, i) =>
+        coinGone(cx) ? null : (
+          <g key={cx} className={moving ? `coin${i}` : undefined}>
+            <Pixels art={COIN} x={cx} y={GROUND - 26} className="ill-bob" style={{ animationDelay: `${i * 200}ms` }} />
+          </g>
+        ),
+      )}
 
       <Pixels art={FLAG} x={2} y={GROUND - 12} />
 
-      {/* the Offer castle with its banner */}
+      {/* castle, pennant and banner */}
       <Pixels art={CASTLE} x={178} y={GROUND - 12} />
+      <g transform={`translate(${187} ${GROUND - 16})`}>
+        <Pixels art={PENNANT_A} className={moving ? 'wave-a' : undefined} />
+        {moving && <Pixels art={PENNANT_B} className="wave-b" />}
+      </g>
       <g>
-        <rect x={174} y={GROUND - 27} width={27} height={9} fill="var(--c-butter)" />
-        <rect x={174} y={GROUND - 28} width={27} height={1} fill="#1d1a33" />
-        <rect x={174} y={GROUND - 18} width={27} height={1} fill="#1d1a33" />
-        <rect x={173} y={GROUND - 27} width={1} height={9} fill="#1d1a33" />
-        <rect x={201} y={GROUND - 27} width={1} height={9} fill="#1d1a33" />
-        <text x={187.5} y={GROUND - 20.4} textAnchor="middle" fontFamily="'Pixelify Sans', sans-serif" fontSize="6" fontWeight="700" fill="#1d1a33">
+        <rect x={174} y={GROUND - 30} width={27} height={9} fill="var(--c-butter)" />
+        <rect x={174} y={GROUND - 31} width={27} height={1} fill="#1d1a33" />
+        <rect x={174} y={GROUND - 21} width={27} height={1} fill="#1d1a33" />
+        <rect x={173} y={GROUND - 30} width={1} height={9} fill="#1d1a33" />
+        <rect x={201} y={GROUND - 30} width={1} height={9} fill="#1d1a33" />
+        <text x={187.5} y={GROUND - 23.4} textAnchor="middle" fontFamily="'Pixelify Sans', sans-serif" fontSize="6" fontWeight="700" fill="#1d1a33">
           Offer
         </text>
       </g>
-      <Pixels art={STAR} x={168} y={GROUND - 34} className="ill-blink" />
-      <Pixels art={STAR} x={195} y={GROUND - 37} className="ill-blink" style={{ animationDelay: '500ms' }} />
+      {loop && moving && (
+        <g className="burst">
+          <Pixels art={SPARK} x={176} y={GROUND - 38} />
+          <Pixels art={STAR} x={186} y={GROUND - 42} />
+          <Pixels art={SPARK} x={196} y={GROUND - 37} />
+        </g>
+      )}
 
-      {/* the adventurer */}
-      <g transform={`translate(${walk ? start : target} ${y})`}>
-        {walk && <animateTransform attributeName="transform" type="translate" dur={`${dur}s`} begin="0.5s" fill="freeze" calcMode="discrete" keyTimes={stepTimes(steps)} values={stepValues(start, target, y, steps)} />}
-        <g className={walk ? 'walking' : undefined} style={walk ? ({ '--walk-n': Math.max(1, Math.round(dur / 0.3)) } as React.CSSProperties) : undefined}>
-          <Pixels art={HERO_A} className="frame-a" />
-          {walk && <Pixels art={HERO_B} className="frame-b" />}
+      {/* the pet */}
+      <g className={moving ? 'mv-pet' : undefined} transform={moving ? undefined : `translate(${x1 - 13} ${y + 7})`}>
+        <Pixels art={PET_A} className={moving ? 'pet-a' : undefined} />
+        {moving && <Pixels art={PET_B} className="pet-b" />}
+      </g>
+
+      {/* the adventurer (hops when you point at the map) */}
+      <g className={moving ? 'mv-hero' : undefined} transform={moving ? undefined : `translate(${x1} ${y})`}>
+        <g className="hop">
+          <Pixels art={HERO_A} className={moving ? 'legs-a' : undefined} />
+          {moving && <Pixels art={HERO_B} className="legs-b" />}
         </g>
       </g>
     </Scene>
@@ -138,13 +264,13 @@ export function WorldMap({ heroWeek = 15, animate = true, labels = true, ...prop
 }
 
 /** Hero section art for the landing page. */
-export function HeroIllustration(props: P & { heroWeek?: number }) {
+export function HeroIllustration(props: P & { heroWeek?: number; loop?: boolean }) {
   return <WorldMap {...props} />;
 }
 
 /** The roadmap's compact map, with the adventurer standing on the current week. */
 export function PhasePathIllustration({ heroWeek = 1, ...props }: P & { heroWeek?: number }) {
-  return <WorldMap heroWeek={heroWeek} animate={false} {...props} />;
+  return <WorldMap heroWeek={heroWeek} {...props} />;
 }
 
 /** A laptop and a phone kept in step through the cloud. */

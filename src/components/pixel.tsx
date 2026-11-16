@@ -325,3 +325,31 @@ export const CHECKLIST_ART: Art = [
   'kwppwwwwwwgk',
   '.kkkkkkkkkk.',
 ];
+
+/** The pet: a little pixel blob with a squash-and-stretch hop. */
+export const PET_A: Art = [
+  '...kkkk...',
+  '..kmmmmk..',
+  '.kmwmmmmk.',
+  'kmmmkmmkMk',
+  'kmmmmmmmMk',
+  'kMMmmmmMMk',
+  '.kkkkkkkk.',
+];
+export const PET_B: Art = [
+  '..........',
+  '...kkkk...',
+  '.kkmwmmkk.',
+  'kmmmkmmkMk',
+  'kmmmmmmmMk',
+  'kMMMMMMMMk',
+  '.kkkkkkkk.',
+];
+
+export const BIRD_A: Art = ['.k...k.', 'k.k.k.k', '...k...'];
+export const BIRD_B: Art = ['.......', 'kkk.kkk', '...k...'];
+
+export const PENNANT_A: Art = ['kyyyy', 'kyyy.', 'k....', 'k....'];
+export const PENNANT_B: Art = ['kyyy.', 'kyyyy', 'k....', 'k....'];
+
+export const SPARK: Art = ['.y.', 'yYy', '.y.'];

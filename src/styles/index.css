@@ -404,6 +404,18 @@ code, kbd, pre { font-family: var(--font-mono); }
 .walking .frame-a { animation: frame-a 0.3s 0.5s linear var(--walk-n, 10); }
 .walking .frame-b { opacity: 0; animation: frame-b 0.3s 0.5s linear var(--walk-n, 10); }
 @media (max-width: 639px) { .map-label { display: none; } }
+/* World map extras */
+@keyframes bird-fly { 0% { transform: translate(-12px, 30px); } 45% { transform: translate(214px, 22px); } 100% { transform: translate(214px, 22px); } }
+.bird-fly { animation: bird-fly 22s 3s steps(90) infinite both; }
+.wing-a { animation: frame-a 0.4s steps(1) infinite; }
+.wing-b { opacity: 0; animation: frame-b 0.4s steps(1) infinite; }
+.wave-a { animation: frame-a 0.8s steps(1) infinite; }
+.wave-b { opacity: 0; animation: frame-b 0.8s steps(1) infinite; }
+@keyframes hop { 0%, 100% { transform: translateY(0); } 35% { transform: translateY(-4px); } 60% { transform: translateY(-2px); } }
+.world-map:hover .hop { animation: hop 0.5s steps(3) infinite; }
+.group:hover .hover-hop, .hover-hop:hover { animation: hop 0.5s steps(3) infinite; }
+.phase-bar { transform-origin: left; transition: transform 160ms steps(4); }
+.phase-col:hover .phase-bar { transform: scaleX(1.08) translateY(-2px); }
 
 /* App-wide micro-interactions */
 @keyframes page-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }

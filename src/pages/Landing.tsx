@@ -7,8 +7,8 @@ import { isEmpty } from '../lib/cloud/decide';
 import { cloudEnabled } from '../lib/cloud/config';
 import { useSync } from '../lib/cloud/sync';
 import { currentWeekNumber } from '../lib/progress';
-import { WorldMap, WORLDS, SyncIllustration } from '../components/illustrations';
-import { Sprite, LOGO, SCROLL, CHAT, CHEST, CALENDAR, GLASS, COIN, HEART, FLAME, TROPHY, FLAG, LAPTOP, type Art } from '../components/pixel';
+import { WorldMap, WORLDS } from '../components/illustrations';
+import { Sprite, LOGO, SCROLL, CHAT, CHEST, CALENDAR, TROPHY, FLAG, type Art } from '../components/pixel';
 import { cx } from '../components/ui';
 import type { Pastel } from '../data/types';
 import { LANDING_STATS } from './landingStats';
@@ -33,41 +33,30 @@ function Section({ id, title, intro, children, className }: { id: string; title:
 
 const STAT_ART: Record<string, Art> = {
   Lessons: SCROLL,
-  'Tool guides': LAPTOP,
   'Practice tools': CHEST,
   Templates: CALENDAR,
-  Frameworks: GLASS,
   'Interview questions': CHAT,
 };
+const SHOWN_STATS = LANDING_STATS.filter((x) => x.label in STAT_ART);
 
-const WORLD_TITLES = ['PM foundations', 'Data, tech and UX', 'AI product management', 'Getting hired'];
-const WORLD_INFO = [
-  { learn: 'What PMs do, discovery, strategy, prioritisation, PRDs and launches.', finish: 'A full product case, from teardown to PRD and backlog.' },
-  { learn: 'Metrics, SQL, funnels, A/B tests, APIs and system basics, prototypes and usability tests.', finish: 'An analytics case, a technical teardown and a published case study.' },
-  { learn: 'How LLMs work, prompting, AI UX, RAG, agents, evals, cost and safety.', finish: 'A live AI product used by 20+ real people.' },
-  { learn: 'Portfolio, resume, LinkedIn, referrals and every interview question type.', finish: 'Applications going out, 10 mock interviews, a story for every question.' },
+const PHASE_INFO: { title: string; weeks: string; learn: string; finish: string; color: Pastel }[] = [
+  { title: 'PM foundations', weeks: 'Weeks 1–4', learn: 'Discovery, strategy, prioritisation and PRDs.', finish: 'a full product case', color: 'lavender' },
+  { title: 'Data, tech and UX', weeks: 'Weeks 5–8', learn: 'Metrics, SQL, A/B tests, APIs and usability tests.', finish: 'an analytics case and a technical teardown', color: 'sky' },
+  { title: 'AI product management', weeks: 'Weeks 9–11', learn: 'LLMs, prompting, RAG, agents, evals, cost and safety.', finish: 'a live AI product with real users', color: 'mint' },
+  { title: 'Getting hired', weeks: 'Weeks 12–14, then 15+', learn: 'Portfolio, resume, referrals and interview practice.', finish: 'applications, mock interviews and offers', color: 'peach' },
 ];
-const WORLD_COLOR: Pastel[] = ['lavender', 'sky', 'mint', 'peach'];
 
 const STEPS: { t: string; d: string; art: Art }[] = [
-  { t: 'Set your start date', d: 'Every week is pinned to the calendar. Tell it how many hours a day you have.', art: FLAG },
-  { t: 'Open Today each morning', d: 'A short list of today’s lessons and tasks. Tick them off at your own pace.', art: CALENDAR },
-  { t: 'Finish the week’s build', d: 'Use the templates and filled examples, then pass the checkpoint before the next week.', art: CHEST },
-  { t: 'Review on Sunday', d: 'Seven questions, with your stats filled in for you. Adjust, then start the next week.', art: TROPHY },
+  { t: 'Set your start date', d: 'Every week is pinned to your calendar, so you always know where you are.', art: FLAG },
+  { t: 'Do today’s tasks', d: 'A short list of lessons and practice. Tick them off at your own pace.', art: CALENDAR },
+  { t: 'Ship the week’s build', d: 'Templates with filled examples help you finish, then a quick checkpoint unlocks the next week.', art: CHEST },
 ];
 
 const FAQ: { q: string; a: ReactNode }[] = [
-  { q: 'Is it really free?', a: 'Yes. No subscription, no trial, no paywall. Every tool it recommends has a free tier, and the site itself runs on free hosting.' },
-  { q: 'Do I need an account?', a: 'No. Open it and start: progress is saved in your browser. Sign in only if you want the same progress on your phone and laptop.' },
-  {
-    q: 'How much time does it take?',
-    a: 'The plan is built around full-time study, about 9 hours a day. With less time, simply take longer over each week: the order and the portfolio projects stay the same. Set your own daily target in Settings.',
-  },
-  {
-    q: 'Who is it for?',
-    a: 'Anyone moving into product, with or without a technical background: engineers, analysts, designers, support, consultants, marketers and recent graduates. Technical topics start from zero, in plain English.',
-  },
-  { q: 'Does it work offline?', a: 'Yes. After your first visit everything is cached, including the SQL engine. On a phone, use “Add to Home screen” to install it like an app.' },
+  { q: 'Is it really free?', a: 'Yes. No subscription, no trial, no paywall. Every tool it recommends has a free tier.' },
+  { q: 'Do I need an account?', a: 'No. Progress is saved in your browser and works offline. Sign in only if you want the same progress on your phone and laptop.' },
+  { q: 'How much time does it take?', a: 'The plan is built around full-time study, about 9 hours a day. With less time, take longer over each week. The order and the projects stay the same.' },
+  { q: 'Who is it for?', a: 'Anyone moving into product, with or without a technical background. Technical topics start from zero, in plain English.' },
 ];
 
 export default function Landing() {
@@ -135,68 +124,52 @@ export default function Landing() {
       </header>
 
       <main id="main">
-        <section className="px-5 pt-10 sm:px-8 sm:pt-16" aria-labelledby="hero-h">
+        <section className="px-5 pt-12 sm:px-8 sm:pt-20" aria-labelledby="hero-h">
           <div className="mx-auto max-w-[1160px]">
             <div className="grid items-end gap-8 lg:grid-cols-[1.3fr_1fr]">
               <h1 id="hero-h" className="text-[2.6rem] font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
                 From career switcher to product manager in 14 weeks.
               </h1>
               <div>
-                <p className="text-lg text-muted">
-                  A free, day-by-day plan for APM, PM and AI PM roles. It teaches each skill, gives you tools to practise it, and tracks you until you have a portfolio and an offer.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-4">
+                <p className="text-lg text-muted">A free, day-by-day plan for APM, PM and AI PM roles. Learn each skill, practise it, and build a portfolio as you go.</p>
+                <div className="mt-6 flex flex-wrap items-center gap-5">
                   <Link to={startTo} className="nb-btn nb-btn-primary px-6 py-3.5 text-lg">
                     {startLabel}
                   </Link>
-                  <a href="#plan" className="nb-btn px-6 py-3.5 text-lg">
+                  <a href="#plan" className="font-display text-lg underline decoration-[3px] underline-offset-4 hover:decoration-[5px]">
                     See the plan
                   </a>
                 </div>
-                <ul className="mt-7 flex flex-wrap gap-3 text-sm" aria-label="Highlights">
-                  <li className="nb-chip bg-mint">
-                    <Sprite art={COIN} scale={2} /> Free
-                  </li>
-                  <li className="nb-chip bg-sky">
-                    <Sprite art={HEART} scale={2} /> No sign-up needed
-                  </li>
-                  <li className="nb-chip bg-lavender">
-                    <Sprite art={FLAME} scale={2} /> Works offline
-                  </li>
-                </ul>
+                <p className="mt-5 text-sm text-muted">Free. No sign-up. Works offline.</p>
               </div>
             </div>
 
-            <div className="nb-card mt-12 p-3 sm:p-5">
+            <div className="nb-card mt-14 p-3 sm:p-5">
               <WorldMap
+                loop={!returning}
                 heroWeek={returning ? week : 15}
                 className="block w-full"
-                title={returning ? `The PM Path map: four phases from week 1 to an offer. You are on week ${week}.` : 'The PM Path map: four phases on a path from week 1 to an offer.'}
+                title={returning ? `The PM Path map. You and your pet are on week ${week}.` : 'The PM Path map: an adventurer and their pet walk four phases, collecting coins, to the Offer castle.'}
               />
             </div>
             <ol className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 font-display text-sm sm:hidden" aria-label="The four phases">
               {WORLDS.map((w) => (
                 <li key={w.n} className="flex items-center gap-2">
-                  <span className={cx('inline-block h-3 w-3', `bg-${WORLD_COLOR[w.n - 1]}`)} style={{ boxShadow: '0 0 0 2px var(--c-line)' }} aria-hidden />
+                  <span className={cx('inline-block h-3 w-3', `bg-${PHASE_INFO[w.n - 1].color}`)} style={{ boxShadow: '0 0 0 2px var(--c-line)' }} aria-hidden />
                   {w.n}. {w.name}
                 </li>
               ))}
             </ol>
-          </div>
-        </section>
 
-        <section className="px-5 pb-6 pt-16 sm:px-8" aria-labelledby="inv-h">
-          <div className="mx-auto max-w-[1160px]">
-            <h2 id="inv-h" className="sr-only">
-              What’s included
-            </h2>
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
-              {LANDING_STATS.map((s) => (
-                <div key={s.label} className="relative flex min-h-12 flex-col-reverse justify-center pl-16">
-                  <dt className="mt-1 text-sm text-muted">{s.label}</dt>
+            <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4" aria-label="What’s included">
+              {SHOWN_STATS.map((x) => (
+                <div key={x.label} className="group relative flex min-h-12 flex-col-reverse justify-center pl-16">
+                  <dt className="mt-1 text-sm text-muted">{x.label}</dt>
                   <dd className="font-display text-3xl font-bold leading-none">
-                    <Sprite art={STAT_ART[s.label]} scale={3} className="absolute left-0 top-1/2 -translate-y-1/2" />
-                    {s.value}
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2">
+                      <Sprite art={STAT_ART[x.label]} scale={3} className="hover-hop block" />
+                    </span>
+                    {x.value}
                   </dd>
                 </div>
               ))}
@@ -204,73 +177,44 @@ export default function Landing() {
           </div>
         </section>
 
-        <Section id="plan" title="Four phases. Fourteen weeks. One offer." intro="Each week ends with a checkpoint. Each phase ends with a portfolio project you can show in interviews.">
-          <ol className="grid gap-8 md:grid-cols-2">
-            {WORLDS.map((w, i) => (
-              <li key={w.n} className={cx('nb-card p-6', `bg-${WORLD_COLOR[i]}`)}>
-                <p className="font-display text-sm">
-                  Phase {w.n}, weeks {w.n === 4 ? '12–14, then 15+' : `${w.weeks[0]}–${w.weeks[1]}`}
-                </p>
-                <h3 className="mt-1 text-2xl font-bold">{WORLD_TITLES[i]}</h3>
-                <p className="mt-3">{WORLD_INFO[i].learn}</p>
-                <p className="mt-4 bg-surface p-3 text-sm text-ink" style={{ boxShadow: '0 0 0 2px var(--c-line)' }}>
-                  <strong className="font-display font-semibold">You finish with:</strong> {WORLD_INFO[i].finish}
-                </p>
+        <Section id="plan" title="Four phases. One offer." intro="Each phase ends with a portfolio project you can show in interviews.">
+          <ol className="nb-card grid md:grid-cols-2 lg:grid-cols-4">
+            {PHASE_INFO.map((ph, i) => (
+              <li key={ph.title} className="phase-col group p-6" style={{ boxShadow: i ? 'inset 3px 0 0 var(--c-line)' : undefined }}>
+                <span className={cx('phase-bar mb-5 block h-3', `bg-${ph.color}`)} style={{ boxShadow: '0 0 0 2px var(--c-line)' }} aria-hidden />
+                <p className="font-display text-sm text-muted">{ph.weeks}</p>
+                <h3 className="mt-1 text-xl font-bold">{ph.title}</h3>
+                <p className="mt-2 text-sm">{ph.learn}</p>
+                <p className="mt-3 text-sm text-muted">You finish with {ph.finish}.</p>
               </li>
             ))}
           </ol>
         </Section>
 
         <Section id="how" title="How it works">
-          <ol className="grid gap-10 md:grid-cols-4">
-            {STEPS.map((s, i) => (
-              <li key={s.t}>
+          <ol className="grid gap-10 md:grid-cols-3">
+            {STEPS.map((x, i) => (
+              <li key={x.t} className="group">
                 <div className="flex items-end gap-3">
-                  <Sprite art={s.art} scale={4} />
-                  <span className="font-display text-5xl font-bold leading-none text-muted/60" aria-hidden>
+                  <Sprite art={x.art} scale={4} className="hover-hop" />
+                  <span className="font-display text-5xl font-bold leading-none text-muted/50" aria-hidden>
                     {i + 1}
                   </span>
                 </div>
-                <h3 className="mt-4 text-xl font-bold">{s.t}</h3>
-                <p className="mt-1 text-muted">{s.d}</p>
+                <h3 className="mt-4 text-xl font-bold">{x.t}</h3>
+                <p className="mt-1 text-muted">{x.d}</p>
               </li>
             ))}
           </ol>
         </Section>
 
-        <Section id="sync" title="Your progress, on every device" intro="No account needed: progress is saved in your browser from the first click.">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
-            <div className="nb-card bg-lavender p-6">
-              <SyncIllustration className="mx-auto block w-full max-w-[440px]" />
-            </div>
-            <ul className="space-y-6 text-lg">
-              <li>
-                <h3 className="text-xl font-bold">Sign in only if you want to</h3>
-                <p className="text-muted">
-                  {cloudEnabled
-                    ? 'Use Google or an email link to keep your laptop and phone in step. Only you can read your progress.'
-                    : 'Move progress between devices with a one-click export and import.'}
-                </p>
-              </li>
-              <li>
-                <h3 className="text-xl font-bold">Works offline</h3>
-                <p className="text-muted">Everything is cached after your first visit, including the SQL engine. Changes sync when you’re back online.</p>
-              </li>
-              <li>
-                <h3 className="text-xl font-bold">No ads, no tracking</h3>
-                <p className="text-muted">There are no analytics scripts. Your API key for the optional Prompt Lab never leaves your device.</p>
-              </li>
-            </ul>
-          </div>
-        </Section>
-
-        <Section id="faq" title="Questions" className="bg-surface/70">
-          <div className="max-w-[820px] space-y-5">
+        <Section id="faq" title="Questions">
+          <div className="max-w-[760px] space-y-5">
             {FAQ.map((f) => (
               <details key={f.q} className="nb-card faq group">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-display text-lg font-semibold">
                   {f.q}
-                  <ChevronDown size={20} aria-hidden className="flex-none group-open:rotate-180" />
+                  <ChevronDown size={20} aria-hidden className="flex-none transition-transform duration-150 group-open:rotate-180" />
                 </summary>
                 <div className="faq-body px-5 pb-5 text-muted">{f.a}</div>
               </details>
@@ -278,16 +222,13 @@ export default function Landing() {
           </div>
         </Section>
 
-        <section className="px-5 py-20 sm:px-8" aria-labelledby="cta-h">
-          <div className="nb-card mx-auto flex max-w-[1160px] flex-col items-start gap-6 bg-butter p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12">
+        <section className="px-5 pb-24 pt-4 sm:px-8" aria-labelledby="cta-h">
+          <div className="group nb-card mx-auto flex max-w-[1160px] flex-col items-start gap-6 bg-butter p-8 sm:flex-row sm:items-center sm:justify-between sm:p-12">
             <div className="flex items-center gap-5">
-              <Sprite art={TROPHY} scale={5} className="hidden flex-none sm:block" />
-              <div>
-                <h2 id="cta-h" className="text-3xl font-bold sm:text-4xl">
-                  Week 1 starts when you do.
-                </h2>
-                <p className="mt-2 text-lg">Set your start date and do today’s first block. It takes two minutes.</p>
-              </div>
+              <Sprite art={TROPHY} scale={5} className="hover-hop hidden flex-none sm:block" />
+              <h2 id="cta-h" className="text-3xl font-bold sm:text-4xl">
+                Week 1 starts when you do.
+              </h2>
             </div>
             <Link to={startTo} className="nb-btn bg-surface px-6 py-3.5 text-lg">
               {startLabel}
