@@ -4,6 +4,7 @@ import { useStore } from '../store/useStore';
 import { PHASES, WEEKS } from '../data/curriculum';
 import { weekStatus, topicPct, deliverableStatus, checkpointState, weekDates, currentWeekNumber, topicsDoneCount } from '../lib/progress';
 import { formatDate, today } from '../lib/dates';
+import { PhasePathIllustration } from '../components/illustrations';
 import { Card, Chip, PageHeader, ProgressBar, StatusChip, cx, statusLabel } from '../components/ui';
 
 export default function Roadmap() {
@@ -18,6 +19,7 @@ export default function Roadmap() {
         </Link>
         .
       </PageHeader>
+      <PhasePathIllustration className="mb-8 w-full max-w-[640px]" />
 
       <ol className="space-y-10">
         {PHASES.map((p) => (
@@ -32,7 +34,7 @@ export default function Roadmap() {
                 </div>
                 <Chip>Weeks {p.weeks[0]}–{p.weeks[p.weeks.length - 1] === 15 ? '15+' : p.weeks[p.weeks.length - 1]}</Chip>
               </div>
-              <ol className="relative ml-3 space-y-4 border-l-2 border-dashed border-line/60 pl-6 sm:ml-5">
+              <ol className="stagger relative ml-3 space-y-4 border-l-2 border-dashed border-line/60 pl-6 sm:ml-5">
                 {p.weeks.map((n) => {
                   const w = WEEKS.find((x) => x.n === n)!;
                   const st = weekStatus(data, w);

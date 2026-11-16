@@ -14,7 +14,7 @@ export function MockLogView() {
   const confirm = useConfirm();
   if (!mocks.length)
     return (
-      <EmptyState title="No mocks logged yet">
+      <EmptyState title="No mocks logged yet" art="chat">
         Run one in <Link to="/interview/mock" className="underline">Mock mode</Link>. Aim for at least 3 a week from Week 13.
       </EmptyState>
     );

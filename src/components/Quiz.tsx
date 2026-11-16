@@ -67,7 +67,10 @@ export function Quiz({ lessonId, questions }: { lessonId: string; questions: Qui
                   <div key={j}>
                     <label
                       className={cx(
-                        'flex cursor-pointer items-start gap-3 rounded-[8px] border-2 px-3 py-2 text-[0.95rem]',
+                        'flex cursor-pointer items-start gap-3 rounded-[8px] border-2 px-3 py-2 text-[0.95rem] transition-[background-color,border-color,transform] duration-150',
+                        !submitted && 'hover:translate-x-1',
+                        show && o.correct && 'bounce-in',
+                        show && chosen && !o.correct && 'shake',
                         show && o.correct ? 'border-line bg-mint text-onpastel' : show && chosen && !o.correct ? 'border-line bg-pink text-onpastel' : chosen ? 'border-line bg-butter text-onpastel' : 'border-line/30 hover:border-line',
                         submitted && 'cursor-default',
                       )}

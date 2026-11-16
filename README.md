@@ -4,7 +4,7 @@
 
 Live site: **https://githardikp.github.io/pm-path/**
 
-PM Path tells you what to study each day, teaches it, gives you the tools to practise it, and tracks your progress until you have a portfolio, a resume and interview practice behind you. There is no sign-up, no backend and no cost. Your progress stays in your own browser, and the site works offline once it has loaded.
+PM Path tells you what to study each day, teaches it, gives you the tools to practise it, and tracks your progress until you have a portfolio, a resume and interview practice behind you. There is no cost and no sign-up needed. Your progress is saved in your browser as you go, the site works offline once it has loaded, and you can optionally sign in to keep your progress in step across devices.
 
 ---
 
@@ -32,7 +32,7 @@ People switching into product management usually hit the same walls:
 ## How it works
 
 ### 1. Set up (two minutes)
-Open **Settings** and enter your name (optional), your start date and how many hours a day you can study. The roadmap is designed around 9 hours a day, Monday to Saturday, with a 1-hour review on Sunday. Every week is then pinned to real calendar dates.
+The home page explains the plan; **Start the plan** takes you to the Dashboard. Open **Settings** and enter your name (optional), your start date and how many hours a day you can study. The roadmap is designed around 9 hours a day, Monday to Saturday, with a 1-hour review on Sunday. Every week is then pinned to real calendar dates.
 
 ### 2. Follow the 14 weeks
 
@@ -68,7 +68,9 @@ From week 12, the **Job search** board tracks every application from Wishlist to
 
 | Area | What you get |
 |---|---|
+| Home page | What PM Path is, how it works and the 14-week plan at a glance, with a one-click start |
 | Dashboard | Overall progress, current week, study hours, streak and what to do next |
+| Account | Optional sign-in with Google or an email link to sync progress across devices |
 | Roadmap and weeks | 14 weeks in 4 phases, each with topics, a deliverable and a checkpoint |
 | Lessons | 101 original lessons with diagrams, worked examples, practice exercises with answers and quizzes |
 | Tool guides | 42 step-by-step guides, all on free tiers |
@@ -85,9 +87,11 @@ Search everything with **Ctrl/Cmd + K** or **/**.
 
 ## Your data and privacy
 
-- No account and no server. All progress (lessons, quiz scores, notes, timers, reflections, applications, mocks, stories, portfolio, reviews and tool work) is saved in your browser under the key `pm-path-state`.
-- The only optional network call is in **Prompt Lab**: if you add your own Gemini API key in Settings, prompts go straight from your browser to Google. The key is stored only in your browser. Everything else works without it.
-- **Back up regularly:** Settings → **Export JSON** downloads your progress as a file.
+- No account needed. All progress (lessons, quiz scores, notes, timers, reflections, applications, mocks, stories, portfolio, reviews and tool work) is saved in your browser under the key `pm-path-state`.
+- **Optional sign-in and sync:** on the **Account** page you can sign in with Google or an emailed link. Your progress is then saved to your account and kept in step across every device you sign in on, usually within a couple of seconds. It still works offline: changes made without internet sync when you reconnect. Only you can read your data. The first time you sign in on a device that already has different progress, PM Path shows both copies and asks which one to keep. Signing out keeps the copy on that device; **Delete cloud copy** removes it from your account.
+- Your Gemini API key is never uploaded, even when signed in.
+- The other optional network call is in **Prompt Lab**: if you add your own Gemini API key in Settings, prompts go straight from your browser to Google. The key is stored only in your browser. Everything else works without it.
+- **Back up regularly:** Settings → **Export JSON** downloads your progress as a file. Without sign-in, this is also how you move progress to another device.
 - **Move to another device or restore:** Settings → **Import JSON**.
 - Clearing browser data, private browsing, or switching browsers or devices starts fresh unless you import a backup.
 - **Reset** in Settings wipes everything after a double confirmation. Export first.
@@ -151,6 +155,21 @@ To build for any other sub-path:
 BASE_PATH=/my-sub-path/ npm run build
 ```
 
+### Switch on sign-in and sync (free Firebase project)
+
+Sign-in is optional. Without these settings the site works exactly the same, and the Account page explains that sync is off. To switch it on:
+
+1. Go to [console.firebase.google.com](https://console.firebase.google.com) and create a project (the free **Spark** plan is enough; no card needed). You can turn Google Analytics off.
+2. **Authentication → Get started → Sign-in method:** enable **Google**, and enable **Email/Password** with **Email link (passwordless sign-in)** switched on.
+3. **Authentication → Settings → Authorized domains:** add the domain you host on, for example `githardikp.github.io`. `localhost` is there already.
+4. **Firestore Database → Create database** (production mode, any location close to your users). Then open **Rules**, paste the contents of [`firestore.rules`](firestore.rules) and **Publish**. These rules let each person read and write only their own progress.
+5. **Project settings → General → Your apps → Add app → Web.** Copy the six values from the config it shows.
+6. Give the values to the build:
+   - Locally: copy `.env.example` to `.env.local` and fill it in, then restart `npm run dev`.
+   - On GitHub Pages: in the repo, **Settings → Secrets and variables → Actions → Variables**, add `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_STORAGE_BUCKET`, `VITE_FIREBASE_MESSAGING_SENDER_ID` and `VITE_FIREBASE_APP_ID`, then re-run the deploy workflow.
+
+These values are public identifiers, not secrets; the Firestore rules are what protect the data. Each person's progress is stored as one document at `users/{their uid}`. The Firebase code is downloaded only when someone signs in, so it doesn't slow the site down for everyone else.
+
 ### Project structure
 
 ```
@@ -158,9 +177,10 @@ src/
   content/        Markdown: week-XX lessons, tools/ guides, templates/, pages/
   data/           curriculum, frameworks, interview questions, glossary, types
   tools/          interactive Toolkit tools (sql/ has the dataset, problems and engine)
-  pages/          one file per route (interview/ holds the prep sub-pages)
-  components/     layout, UI kit, quiz, search, modal
+  pages/          one file per route: Landing (/), Dashboard (/dashboard), Account and the rest; interview/ holds the prep sub-pages
+  components/     layout, UI kit, quiz, search, modal, illustrations
   lib/            progress maths, dates, markdown, search, stats, backup
+  lib/cloud/      optional sign-in and sync (Firebase backend, sync engine, conflict rules)
   store/          Zustand store with persistence
   styles/         design tokens and component styles
 ```
@@ -169,4 +189,4 @@ To change the plan, edit `src/data/curriculum.ts`. To edit a lesson, edit its Ma
 
 ### Tech
 
-Vite, React, TypeScript, Tailwind CSS v4, React Router, Zustand, Recharts, sql.js, MiniSearch, marked, lucide icons, self-hosted fonts via Fontsource, vite-plugin-pwa and Vitest. No runtime CDNs and no paid services.
+Vite, React, TypeScript, Tailwind CSS v4, React Router, Zustand, Recharts, sql.js, MiniSearch, marked, lucide icons, self-hosted fonts via Fontsource, vite-plugin-pwa, Firebase (optional sync) and Vitest. All illustrations are hand-written inline SVG and all animation is CSS, so there are no image downloads, and motion switches off for people who set “reduce motion” on their device. No runtime CDNs and no paid services.

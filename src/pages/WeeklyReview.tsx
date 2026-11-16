@@ -6,7 +6,7 @@ import { addDays, formatDate, mondayOf, today } from '../lib/dates';
 import { activeWeek, currentWeekNumber, weekStats } from '../lib/progress';
 import { WEEKLY_TARGET_HOURS } from '../data/curriculum';
 import { uid } from '../lib/uid';
-import { Button, Card, CardTitle, Chip, Field, PageHeader, ProgressBar, Stat, Textarea, useConfirm } from '../components/ui';
+import { Button, Card, CardTitle, Chip, Field, PageHeader, ProgressBar, Stat, Textarea, useConfirm, EmptyState } from '../components/ui';
 
 export const REVIEW_QUESTIONS: { id: string; label: string; hint: string }[] = [
   { id: 'wins', label: 'What went well this week?', hint: 'Lessons finished, deliverables shipped, a mock that felt good.' },
@@ -106,7 +106,7 @@ export default function WeeklyReview() {
       <section className="mt-10">
         <h2 className="mb-3 text-xl font-bold">Past reviews</h2>
         {reviews.length === 0 ? (
-          <p className="text-muted">No reviews saved yet. Your first one will appear here.</p>
+          <EmptyState title="No reviews saved yet" art="calendar">Your first one will appear here.</EmptyState>
         ) : (
           <ul className="space-y-3">
             {reviews.map((r) => (

@@ -20,12 +20,16 @@ import {
   MoreHorizontal,
   X,
   Flame,
+  Cloud,
+  CloudOff,
+  UserRound,
 } from 'lucide-react';
 import { useStore } from '../store/useStore';
 import { streak } from '../lib/progress';
 import { cx } from './ui';
 import { SearchDialog } from './SearchDialog';
 import { useTheme } from '../lib/theme';
+import { useSync } from '../lib/cloud/sync';
 
 interface NavItem {
   to: string;
@@ -37,7 +41,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
   {
     group: 'Learn',
     items: [
-      { to: '/', label: 'Dashboard', icon: <LayoutDashboard size={18} aria-hidden /> },
+      { to: '/dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} aria-hidden /> },
       { to: '/today', label: 'Today', icon: <Sun size={18} aria-hidden /> },
       { to: '/roadmap', label: 'Roadmap', icon: <Map size={18} aria-hidden /> },
       { to: '/review', label: 'Weekly review', icon: <CalendarCheck size={18} aria-hidden /> },
@@ -64,7 +68,7 @@ const NAV: { group: string; items: NavItem[] }[] = [
 ];
 
 const MOBILE_TABS: NavItem[] = [
-  { to: '/', label: 'Home', icon: <LayoutDashboard size={20} aria-hidden /> },
+  { to: '/dashboard', label: 'Home', icon: <LayoutDashboard size={20} aria-hidden /> },
   { to: '/today', label: 'Today', icon: <Sun size={20} aria-hidden /> },
   { to: '/roadmap', label: 'Roadmap', icon: <Map size={20} aria-hidden /> },
   { to: '/toolkit', label: 'Toolkit', icon: <Wrench size={20} aria-hidden /> },
@@ -72,7 +76,7 @@ const MOBILE_TABS: NavItem[] = [
 
 function Logo({ compact }: { compact?: boolean }) {
   return (
-    <NavLink to="/" className="flex items-center gap-2 rounded-[10px]" aria-label="PM Path home">
+    <NavLink to="/dashboard" className="flex items-center gap-2 rounded-[10px]" aria-label="PM Path dashboard">
       <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden>
         <rect x="4" y="4" width="56" height="56" rx="12" fill="#D9CCF5" stroke="#1E1E24" strokeWidth="4" />
         <path d="M20 44V20h14a8 8 0 0 1 0 16H20" fill="none" stroke="#1E1E24" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
@@ -86,12 +90,12 @@ function SideLink({ item, collapsed, onClick }: { item: NavItem; collapsed?: boo
   return (
     <NavLink
       to={item.to}
-      end={item.to === '/'}
+      end={item.to === '/dashboard'}
       onClick={onClick}
       title={collapsed ? item.label : undefined}
       className={({ isActive }) =>
         cx(
-          'flex items-center gap-3 rounded-[10px] border-2 px-3 py-2 font-display text-[0.92rem] font-semibold transition-colors',
+          'nav-icon flex items-center gap-3 rounded-[10px] border-2 px-3 py-2 font-display text-[0.92rem] font-semibold transition-colors',
           isActive ? 'border-line bg-butter text-onpastel shadow-[2px_2px_0_var(--c-line)]' : 'border-transparent hover:border-line',
           collapsed && 'justify-center px-0',
         )
@@ -100,6 +104,40 @@ function SideLink({ item, collapsed, onClick }: { item: NavItem; collapsed?: boo
       {item.icon}
       {!collapsed && <span>{item.label}</span>}
       {collapsed && <span className="sr-only">{item.label}</span>}
+    </NavLink>
+  );
+}
+
+function SyncBadge({ collapsed }: { collapsed?: boolean }) {
+  const { status, user } = useSync();
+  if (status === 'off') return null;
+  const dot = status === 'synced' ? 'bg-mint' : status === 'error' || status === 'conflict' ? 'bg-pink' : status === 'signed-out' ? 'bg-surface' : 'pulse-dot bg-butter';
+  const label = user ? (status === 'synced' ? 'Synced' : status === 'saving' ? 'Saving…' : status === 'offline' ? 'Offline' : status === 'conflict' ? 'Choose a copy' : status === 'error' ? 'Sync problem' : 'Connecting…') : 'Sign in to sync';
+  return (
+    <NavLink
+      to="/account"
+      title={collapsed ? label : undefined}
+      className={({ isActive }) =>
+        cx('nav-icon flex items-center gap-3 rounded-[10px] border-2 px-3 py-2 font-display text-[0.92rem] font-semibold', isActive ? 'border-line bg-butter text-onpastel' : 'border-transparent hover:border-line', collapsed && 'justify-center px-0')
+      }
+    >
+      <span className="relative">
+        {user ? <Cloud size={18} aria-hidden /> : <UserRound size={18} aria-hidden />}
+        <span className={cx('absolute -bottom-0.5 -right-1 h-2.5 w-2.5 rounded-full border border-line', dot)} aria-hidden />
+      </span>
+      {collapsed ? <span className="sr-only">{label}</span> : <span className="truncate">{label}</span>}
+    </NavLink>
+  );
+}
+
+function MobileSyncButton() {
+  const { status, user } = useSync();
+  if (status === 'off') return null;
+  const label = user ? `Account: ${status === 'synced' ? 'synced' : status}` : 'Sign in to sync';
+  return (
+    <NavLink to="/account" className="nb-btn nb-btn-sm relative" aria-label={label}>
+      {status === 'offline' ? <CloudOff size={16} aria-hidden /> : user ? <Cloud size={16} aria-hidden /> : <UserRound size={16} aria-hidden />}
+      {user && <span className={cx('absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full border border-line', status === 'synced' ? 'bg-mint' : status === 'error' || status === 'conflict' ? 'bg-pink' : 'pulse-dot bg-butter')} aria-hidden />}
     </NavLink>
   );
 }
@@ -182,6 +220,7 @@ export function Layout() {
           ))}
         </nav>
         <div className="space-y-1 border-t-2 border-line p-3">
+          <SyncBadge collapsed={collapsed} />
           <SideLink item={{ to: '/settings', label: 'Settings', icon: <SettingsIcon size={18} aria-hidden /> }} collapsed={collapsed} />
           <button
             onClick={() => setCollapsed((c) => !c)}
@@ -200,9 +239,10 @@ export function Layout() {
         <div className="flex items-center gap-2">
           {s > 0 && (
             <span className="nb-chip bg-pink" aria-label={`${s}-day streak`}>
-              <Flame size={13} aria-hidden /> {s}
+              <Flame size={13} aria-hidden className="flicker" /> {s}
             </span>
           )}
+          <MobileSyncButton />
           <button className="nb-btn nb-btn-sm" onClick={() => setSearchOpen(true)} aria-label="Search">
             <Search size={16} aria-hidden />
           </button>
@@ -212,7 +252,9 @@ export function Layout() {
       <main id="main" className={cx('px-4 pb-28 pt-6 sm:px-6 lg:pb-12 lg:pt-8', collapsed ? 'lg:pl-[108px]' : 'lg:pl-[280px]', 'lg:pr-8')}>
         <div className="mx-auto max-w-[1180px]">
           <Suspense fallback={<PageLoading />}>
-            <Outlet />
+            <div key={loc.pathname} className="page-in">
+              <Outlet />
+            </div>
           </Suspense>
         </div>
       </main>
@@ -223,7 +265,7 @@ export function Layout() {
           <NavLink
             key={it.to}
             to={it.to}
-            end={it.to === '/'}
+            end={it.to === '/dashboard'}
             className={({ isActive }) => cx('flex flex-col items-center gap-0.5 py-2 font-display text-xs font-semibold', isActive && 'bg-butter text-onpastel')}
           >
             {it.icon}
@@ -256,7 +298,10 @@ export function Layout() {
                 </div>
               </div>
             ))}
-            <SideLink item={{ to: '/settings', label: 'Settings', icon: <SettingsIcon size={18} aria-hidden /> }} onClick={() => setMoreOpen(false)} />
+            <div className="grid grid-cols-2 gap-2">
+              <SideLink item={{ to: '/account', label: 'Account', icon: <UserRound size={18} aria-hidden /> }} onClick={() => setMoreOpen(false)} />
+              <SideLink item={{ to: '/settings', label: 'Settings', icon: <SettingsIcon size={18} aria-hidden /> }} onClick={() => setMoreOpen(false)} />
+            </div>
           </div>
         </div>
       )}
@@ -268,8 +313,16 @@ export function Layout() {
 
 export function PageLoading() {
   return (
-    <div className="grid min-h-[40vh] place-items-center" role="status" aria-live="polite">
-      <span className="nb-chip bg-butter">Loading…</span>
+    <div className="space-y-4" role="status" aria-live="polite">
+      <span className="sr-only">Loading…</span>
+      <div className="skeleton h-5 w-28" />
+      <div className="skeleton h-10 w-2/3 max-w-md" />
+      <div className="grid gap-4 md:grid-cols-3">
+        <div className="skeleton h-36" />
+        <div className="skeleton h-36" />
+        <div className="skeleton h-36" />
+      </div>
+      <div className="skeleton h-48" />
     </div>
   );
 }

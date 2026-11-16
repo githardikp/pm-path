@@ -96,7 +96,7 @@ export default function Today() {
                 const logged = minutesForBlock(data, t, b.key) + (running ? (tick - timer!.startedAt) / 60000 : 0);
                 const pct = (logged / (b.hours * 60)) * 100;
                 return (
-                  <li key={b.key} className={cx('rounded-[10px] border-2 border-line p-3', running && 'bg-butter text-onpastel')}>
+                  <li key={b.key} className={cx('rounded-[10px] border-2 border-line p-3 transition-colors duration-300', running && 'bg-butter text-onpastel shadow-[3px_3px_0_var(--c-line)]')}>
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="w-[92px] font-mono text-xs">
                         {b.start}–{b.end}
@@ -107,6 +107,7 @@ export default function Today() {
                       </span>
                       {running ? (
                         <Button size="sm" color="pink" onClick={data.stopTimer} aria-label={`Stop timer for ${b.label}`}>
+                          <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-[#e5484d]" aria-hidden />
                           <Square size={14} aria-hidden /> {fmtClock(tick - timer!.startedAt)}
                         </Button>
                       ) : (

@@ -45,7 +45,7 @@ function FrameworkList() {
       {shown.length === 0 ? (
         <p className="text-muted">No frameworks match “{q}”.</p>
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="stagger grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {shown.map((f) => (
             <li key={f.id}>
               <Link to={`/frameworks/${f.id}`} className="block h-full rounded-[10px]">

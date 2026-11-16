@@ -160,7 +160,7 @@ export default function EvalLabeler() {
             </details>
           </Card>
           {!shown.length ? (
-            <EmptyState title={`No ${version} examples yet`}>Add examples above or load the sample set.</EmptyState>
+            <EmptyState title={`No ${version} examples yet`} art="search">Add examples above or load the sample set.</EmptyState>
           ) : (
             <ul className="space-y-3">
               {shown.map((i, k) => (

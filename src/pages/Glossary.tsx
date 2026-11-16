@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { GLOSSARY, type GlossaryCategory } from '../data/glossary';
 import { slugify } from '../lib/markdown';
-import { Chip, Input, PageHeader, cx } from '../components/ui';
+import { Chip, Input, PageHeader, cx, EmptyState } from '../components/ui';
 
 const CATS: GlossaryCategory[] = ['Product', 'Discovery', 'Strategy', 'Metrics', 'Data', 'Experiments', 'Tech', 'Design', 'Delivery', 'AI', 'Business', 'Career'];
 
@@ -60,7 +60,7 @@ export default function Glossary() {
         )}
       </div>
       <p className="mb-3 text-sm text-muted" aria-live="polite">{shown.length} terms</p>
-      {shown.length === 0 && <p className="text-muted">No terms match “{q}”. Try a shorter word.</p>}
+      {shown.length === 0 && <EmptyState title={`No terms match “${q}”`} art="search">Try a shorter word.</EmptyState>}
       <dl className="grid gap-3 md:grid-cols-2">
         {shown.map((t, i) => {
           const first = grouped && (i === 0 || shown[i - 1].term[0].toUpperCase() !== t.term[0].toUpperCase());

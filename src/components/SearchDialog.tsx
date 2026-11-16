@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Search, X, CornerDownLeft } from 'lucide-react';
 import type MiniSearch from 'minisearch';
 import { cx } from './ui';
+import { EmptyIllustration } from './illustrations';
 import type { SearchDoc, DocKind } from '../lib/search';
 
 const KIND_COLOR: Record<DocKind, string> = {
@@ -94,7 +95,7 @@ export function SearchDialog({ onClose }: { onClose: () => void }) {
         <div className="overflow-y-auto">
           {!index && <p className="p-4 text-sm text-muted">Building search index…</p>}
           {index && q.trim().length < 2 && <p className="p-4 text-sm text-muted">Type at least 2 letters. Try “retention”, “RICE”, “PRD”, “evals” or “SQL join”.</p>}
-          {index && q.trim().length >= 2 && results.length === 0 && <p className="p-4 text-sm text-muted">No results for “{q}”.</p>}
+          {index && q.trim().length >= 2 && results.length === 0 && <div className="pop-in p-4 text-center text-sm text-muted"><EmptyIllustration kind="search" className="mx-auto" />No results for “{q}”.</div>}
           <ul id="search-results" role="listbox" aria-label="Results" className="divide-y-2 divide-line/20">
             {results.map((h, i) => (
               <li

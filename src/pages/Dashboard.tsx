@@ -71,7 +71,7 @@ export default function Dashboard() {
             </Chip>
           </div>
           <h1 className="text-3xl font-bold sm:text-4xl">
-            {greeting()}, {data.settings.name || 'there'}.
+            {greeting()}, {data.settings.name || 'there'}. <span className="wave" aria-hidden>👋</span>
           </h1>
           <p className="mt-1 text-muted">
             {wkNum === 0 ? `Your roadmap starts on ${formatDate(data.settings.startDate, { weekday: 'long', day: 'numeric', month: 'long' })}. Have a look around until then.` : `${week.n === 15 ? 'Week 15+' : `Week ${week.n} of 14`}: ${week.title}. ${WEEKLY_RHYTHM[dow]}`}
@@ -82,7 +82,7 @@ export default function Dashboard() {
         </LinkButton>
       </header>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-6 xl:grid-cols-12">
+      <div className="stagger grid grid-cols-1 gap-5 md:grid-cols-6 xl:grid-cols-12">
         {/* Overall */}
         <Card className="flex flex-col items-center justify-center gap-3 p-5 md:col-span-3 xl:col-span-4">
           <ProgressRing value={overall} size={150} color={phase.color} label={`Overall roadmap ${overall}% complete`}>

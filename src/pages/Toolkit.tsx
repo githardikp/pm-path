@@ -9,7 +9,7 @@ export default function Toolkit() {
       <PageHeader title="Toolkit" kicker={<Chip color="butter">Works offline</Chip>}>
         Ten built-in tools for hands-on practice. Everything runs in your browser; your work is saved locally.
       </PageHeader>
-      <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="stagger grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {TOOLS.map((t) => (
           <li key={t.slug}>
             <Link to={t.to ?? `/toolkit/${t.slug}`} className="block h-full rounded-[10px]">

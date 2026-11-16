@@ -81,7 +81,7 @@ export default function SkipThis() {
       <PageHeader title="Skip this" kicker={<Chip color="pink">Save time and money</Chip>}>
         Things that look useful but are not worth your time or money right now. Every hour you don’t spend here goes into projects, practice and outreach.
       </PageHeader>
-      <ul className="grid gap-4 md:grid-cols-2">
+      <ul className="stagger grid gap-4 md:grid-cols-2">
         {SKIPS.map((s) => (
           <li key={s.title}>
             <Card className="flex h-full flex-col p-5">

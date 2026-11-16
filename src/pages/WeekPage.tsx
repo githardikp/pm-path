@@ -123,7 +123,7 @@ export default function WeekPage() {
             <CardTitle icon={<Wrench size={18} aria-hidden />} className="mb-3">
               Tools this week
             </CardTitle>
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <ul className="stagger grid gap-3 sm:grid-cols-2">
               {week.tools.map((tool) => {
                 const guideId = `w${n}-${tool.id}`;
                 const to = tool.builtIn ?? (hasToolGuide(guideId) ? `/guide/${guideId}` : undefined);

@@ -34,7 +34,7 @@ function TemplateList() {
           </button>
         ))}
       </div>
-      <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="stagger grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {shown.map((t) => {
           const started = !!drafts[t.id] && drafts[t.id] !== t.blank;
           return (

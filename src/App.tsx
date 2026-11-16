@@ -1,9 +1,11 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { NotFound } from './pages/NotFound';
 
+const Landing = lazy(() => import('./pages/Landing'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Account = lazy(() => import('./pages/Account'));
 const Today = lazy(() => import('./pages/Today'));
 const Roadmap = lazy(() => import('./pages/Roadmap'));
 const WeekPage = lazy(() => import('./pages/WeekPage'));
@@ -25,10 +27,19 @@ const SkipThis = lazy(() => import('./pages/SkipThis'));
 const router = createBrowserRouter([
   {
     path: '/',
+    element: (
+      <Suspense fallback={null}>
+        <Landing />
+      </Suspense>
+    ),
+    errorElement: <NotFound />,
+  },
+  {
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <Dashboard /> },
+      { path: 'dashboard', element: <Dashboard /> },
+      { path: 'account', element: <Account /> },
       { path: 'today', element: <Today /> },
       { path: 'roadmap', element: <Roadmap /> },
       { path: 'week/:n', element: <WeekPage /> },

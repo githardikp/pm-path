@@ -9,8 +9,10 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import './styles/index.css';
 import { App } from './App';
 import { registerSW } from 'virtual:pwa-register';
+import { startSync } from './lib/cloud/sync';
 
 registerSW({ immediate: true });
+startSync();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

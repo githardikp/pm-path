@@ -1,7 +1,8 @@
-import { forwardRef, useId, useState, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from 'react';
+import { forwardRef, useEffect, useId, useState, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type ReactNode, type TextareaHTMLAttributes } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, Circle, Loader, OctagonAlert, Lightbulb, TriangleAlert, BookOpen, MessagesSquare } from 'lucide-react';
 import type { Pastel, Status } from '../data/types';
+import { EmptyIllustration } from './illustrations';
 
 export function cx(...c: (string | false | null | undefined)[]) {
   return c.filter(Boolean).join(' ');
@@ -79,11 +80,22 @@ export function StatusChip({ status, label }: { status: Status; label?: string }
 export const statusLabel = (s: Status) => STATUS_META[s].label;
 
 // ---------- Progress ----------
+/** Starts at 0 and moves to the real value after mount, so bars and rings fill in. */
+function useGrow(v: number) {
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setShown(v));
+    return () => cancelAnimationFrame(t);
+  }, [v]);
+  return shown;
+}
+
 export function ProgressBar({ value, color = 'mint', label, className }: { value: number; color?: Pastel; label?: string; className?: string }) {
   const v = Math.max(0, Math.min(100, value));
+  const shown = useGrow(v);
   return (
     <div className={cx('nb-progress', className)} role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(v)} aria-label={label ?? 'Progress'}>
-      <span className={`bg-${color}`} style={{ width: `${v}%`, borderRightWidth: v === 0 || v === 100 ? 0 : 2 }} />
+      <span className={`bg-${color}`} style={{ width: `${shown}%`, borderRightWidth: v === 0 || v === 100 ? 0 : 2 }} />
     </div>
   );
 }
@@ -92,6 +104,7 @@ export function ProgressRing({ value, size = 132, stroke = 14, color = 'mint', l
   const r = (size - stroke) / 2 - 2;
   const c = 2 * Math.PI * r;
   const v = Math.max(0, Math.min(100, value));
+  const shown = useGrow(v);
   return (
     <div className="relative inline-grid place-items-center" style={{ width: size, height: size }} role="img" aria-label={label ?? `${Math.round(v)}% complete`}>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden>
@@ -103,10 +116,10 @@ export function ProgressRing({ value, size = 132, stroke = 14, color = 'mint', l
           cy={size / 2}
           r={r}
           fill="none"
-          style={{ stroke: `var(--c-${color})`, transition: 'stroke-dashoffset 400ms ease' }}
+          style={{ stroke: `var(--c-${color})`, transition: 'stroke-dashoffset 900ms cubic-bezier(.2,.7,.3,1)' }}
           strokeWidth={stroke - 2}
           strokeDasharray={c}
-          strokeDashoffset={c * (1 - v / 100)}
+          strokeDashoffset={c * (1 - shown / 100)}
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
         />
       </svg>
@@ -232,14 +245,15 @@ export function Reveal({ label, children }: { label: string; children: ReactNode
       <Button size="sm" color={open ? 'butter' : undefined} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
         {open ? 'Hide' : label}
       </Button>
-      {open && <div className="pop-in mt-4">{children}</div>}
+      {open && <div className="bounce-in mt-4">{children}</div>}
     </div>
   );
 }
 
-export function EmptyState({ title, children }: { title: string; children?: ReactNode }) {
+export function EmptyState({ title, children, art = 'folder' }: { title: string; children?: ReactNode; art?: 'board' | 'chat' | 'notebook' | 'calendar' | 'search' | 'folder' }) {
   return (
-    <div className="rounded-[10px] border-2 border-dashed border-line/50 p-6 text-center">
+    <div className="pop-in rounded-[10px] border-2 border-dashed border-line/50 p-6 text-center">
+      <EmptyIllustration kind={art} className="mx-auto mb-2" />
       <p className="font-display font-bold">{title}</p>
       {children && <div className="mt-1 text-sm text-muted">{children}</div>}
     </div>

@@ -51,7 +51,7 @@ export default function RiceCalculator() {
         {!ideas.length && <Button onClick={loadExample}>Load example (P1)</Button>}
       </div>
       {!ideas.length ? (
-        <EmptyState title="No ideas yet">Add ideas or load the example to see how scoring works.</EmptyState>
+        <EmptyState title="No ideas yet" art="notebook">Add ideas or load the example to see how scoring works.</EmptyState>
       ) : (
         <div className="space-y-3">
           {sorted.map((i, k) => (

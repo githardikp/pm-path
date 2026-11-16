@@ -17,11 +17,11 @@ export default defineConfig({
       manifest: {
         name: 'PM Path',
         short_name: 'PM Path',
-        description: 'A self-contained 14-week PM & AI PM learning roadmap and tracker.',
+        description: 'A free 14-week plan to become an APM, PM or AI PM: lessons, tools, templates, interview prep and progress tracking.',
         theme_color: '#FFF8EE',
         background_color: '#FFF8EE',
         display: 'standalone',
-        start_url: base,
+        start_url: `${base}dashboard`,
         scope: base,
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
@@ -33,6 +33,15 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,wasm,json}'],
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
         navigateFallback: `${base}index.html`,
+        // Firebase is only needed by people who sign in, so it is cached on first use instead of pre-downloaded.
+        globIgnores: ['**/firebaseBackend-*.js'],
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => /\/assets\/firebaseBackend-.*\.js$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: { cacheName: 'pm-path-firebase', expiration: { maxEntries: 4 } },
+          },
+        ],
       },
     }),
   ],
