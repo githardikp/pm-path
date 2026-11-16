@@ -2,7 +2,7 @@
 
 **A free, 14-week plan for becoming an APM, PM or AI PM, with everything you need to follow it in one website.**
 
-Live site: **https://pm-path.vercel.app/** (mirror: https://githardikp.github.io/pm-path/)
+Live site: **https://pm-path.vercel.app/**
 
 PM Path tells you what to study each day, teaches it, gives you the tools to practise it, and tracks your progress until you have a portfolio, a resume and interview practice behind you. There is no cost and no sign-up needed. Your progress is saved in your browser as you go, the site works offline once it has loaded, and you can optionally sign in to keep your progress in step across devices.
 
@@ -140,16 +140,11 @@ The build output in `dist/` is a plain static site, so any static host works. Be
 
 **Vercel** (how the main live site is hosted): import the repo with the **Vite** preset (build `npm run build`, output `dist`). `vercel.json` serves `index.html` for every path, so deep links return a normal page. Every push to `main` redeploys.
 
-**GitHub Pages** (the mirror)
-1. Push to a repository with a `main` branch.
-2. In the repo, go to **Settings → Pages → Source** and choose **GitHub Actions**.
-3. The included workflow (`.github/workflows/deploy-pages.yml`) runs the tests, builds with the right sub-path (`/<repo-name>/`) and publishes on every push to `main`. It also copies `index.html` to `404.html` so deep links work.
-
 **Netlify:** import the repo, build command `npm run build`, publish directory `dist`. `public/_redirects` handles deep links.
 
 **Cloudflare Pages:** build command `npm run build`, output directory `dist`. `public/_redirects` works here too.
 
-To build for any other sub-path:
+To host under a sub-path (for example GitHub Pages at `/<repo-name>/`):
 
 ```bash
 BASE_PATH=/my-sub-path/ npm run build
@@ -161,7 +156,7 @@ Sign-in is optional. Without these settings the site works exactly the same, and
 
 1. Go to [console.firebase.google.com](https://console.firebase.google.com) and create a project (the free **Spark** plan is enough; no card needed). You can turn Google Analytics off.
 2. **Authentication → Get started → Sign-in method:** enable **Google**, and enable **Email/Password** with **Email link (passwordless sign-in)** switched on.
-3. **Authentication → Settings → Authorized domains:** add every domain you host on, for example `pm-path.vercel.app` and `githardikp.github.io`. `localhost` is there already. Sign-in doesn’t work on Vercel preview links, because each one has a different address.
+3. **Authentication → Settings → Authorized domains:** add every domain you host on, for example `pm-path.vercel.app`. `localhost` is there already. Sign-in doesn’t work on Vercel preview links, because each one has a different address.
 4. **Firestore Database → Create database** (production mode, any location close to your users). Then open **Rules**, paste the contents of [`firestore.rules`](firestore.rules) and **Publish**. These rules let each person read and write only their own progress.
 5. **Project settings → General → Your apps → Add app → Web.** Copy the six values from the config it shows.
 6. Put the values in `.env.production` (committed, used by every production build on any host) and push. For `npm run dev`, copy the same values into `.env.local`. To build without sign-in, delete `.env.production`. If a host has environment variables with the same `VITE_FIREBASE_…` names set, those take priority over the file.
